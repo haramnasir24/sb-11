@@ -4,13 +4,15 @@ Official Website for Science Bee 11 by NUST Science Society (Team Web and IT)
 
 # Stack:
 
-•⁠  ⁠Next.js, TailwindCSS, Typescript, ShadCN UI.
+•⁠ Frontend: Next.js, TailwindCSS, TypeScript, ShadCN UI
 
-•⁠  ⁠Backend: Nodemailer, Google APIs for Google Sheets
+•⁠ Backend: Nodemailer, Google APIs (Google Sheets integration)
 
-•⁠  ⁠React Hook-Form, Zod for schema validation.
+• Validation: React Hook-Form, Zod (schema validation)
 
-•⁠  ⁠Vercel for deployment
+• Deployment: Vercel
+
+
 
 
 # Instructions:
