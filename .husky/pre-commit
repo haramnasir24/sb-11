@@ -1,0 +1,6 @@
+# Run lint-staged for staged files
+pnpm lint-staged
+
+# Run comprehensive checks (includes type checking and build)
+echo "🔍 Running comprehensive checks..."
+pnpm check
