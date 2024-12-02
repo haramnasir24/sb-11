@@ -23,29 +23,29 @@ git clone https://github.com/haramnasir24/sb-11.git
 
 •⁠ To create a branch, use this command:
 
-git branch <branch_name>
+`git branch <branch_name>`
 
 •⁠ Switch to the newly created branch using:
 
-git checkout <branch_name>
+`git checkout <branch_name>`
 
 •⁠ Install dependencies (Note: Use pnpm, not npm)
 
-pnpm i 
+`pnpm i`
 
 • ⁠Pull the Latest Code (Ensure your branch is up-to-date with the main branch)
 
 Configure git pull to use a rebase strategy for cleaner commit history (run this once per local repo):
 
-git config pull.rebase true
+`git config pull.rebase true`
 
 Then, pull the latest code from the main branch:
 
-git pull origin main
+`git pull origin main`
 
 •⁠ Make Commits using this command: (We are using pnpm cz with Commitizen for standardized commit messages. Avoid using version control directly)
 
-pnpm cz 
+`pnpm cz`
 
 • ⁠Create a Pull Request (PR):
 Once your work is complete, push your branch and create a pull request for review.
