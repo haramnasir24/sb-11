@@ -1,6 +1,6 @@
 # SB-XI
-Official Website for Science Bee 11 by NUST Science Society (Team Web and IT)
 
+Official Website for Science Bee 11 by NUST Science Society (Team Web and IT)
 
 # Stack:
 
@@ -12,14 +12,11 @@ Official Website for Science Bee 11 by NUST Science Society (Team Web and IT)
 
 • Deployment: Vercel
 
-
-
-
 # Instructions:
 
 •⁠ Clone the repository
 
-git clone https://github.com/haramnasir24/sb-11.git 
+git clone https://github.com/haramnasir24/sb-11.git
 
 (Note: Everyone will work in a separate branch (e.g., for different features))
 
