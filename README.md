@@ -21,7 +21,7 @@ Official Website for Science Bee 11 by NUST Science Society (Team Web and IT)
 
 git clone https://github.com/haramnasir24/sb-11.git 
 
-(Note: Front-end team will work in /front-end branch and back-end team will work in /back-end branch)
+(Note: Everyone will work in a separate branch (e.g., for different features))
 
 •⁠ To create a branch, use this command:
 
