@@ -50,6 +50,10 @@ Then, pull the latest code from the main branch:
 
 `pnpm cz`
 
+Example usage:
+
+![alt text](image.png)
+
 • After making the commit, sync changes from here:
 
 • ⁠Create a Pull Request (PR):
