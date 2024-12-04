@@ -16,7 +16,7 @@ Official Website for Science Bee 11 by NUST Science Society (Team Web and IT)
 
 •⁠ Clone the repository
 
-git clone https://github.com/haramnasir24/sb-11.git
+`git clone https://github.com/haramnasir24/sb-11.git`
 
 (Note: Everyone will work in a separate branch (e.g., for different features))
 
