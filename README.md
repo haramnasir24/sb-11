@@ -54,7 +54,9 @@ Example usage:
 
 ![alt text](image.png)
 
-• After making the commit, sync changes from here:
+• After making the commit, sync changes from version control like this:
+
+![alt text](image.png)
 
 • ⁠Create a Pull Request (PR):
 Once your work is complete, push your branch and create a pull request for review.
