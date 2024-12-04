@@ -42,21 +42,9 @@ Then, pull the latest code from the main branch:
 
 `git pull origin main`
 
-• Before making commits, stage changes from version control in vscode like this:
-
-![alt text](image.png)
-
 •⁠ Then go to the terminal, and make commits using this command: (We are using pnpm cz with Commitizen for standardized commit messages. Avoid using version control directly for making commits)
 
 `pnpm cz`
-
-Example usage:
-
-![alt text](image.png)
-
-• After making the commit, sync changes from version control like this:
-
-![alt text](image.png)
 
 • ⁠Create a Pull Request (PR):
 Once your work is complete, push your branch and create a pull request for review.
