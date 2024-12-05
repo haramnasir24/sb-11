@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { google } from "googleapis";
 
 let sheetsInstance: any = null;

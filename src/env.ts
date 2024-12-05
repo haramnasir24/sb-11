@@ -1,21 +1,34 @@
 import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
 
 export const env = createEnv({
   server: {
-    // DATABASE_URL: z.string().url(),
-    // OPEN_AI_API_KEY: z.string().min(1),
+    GOOGLE_SHEET_ID: z.string().min(1),
+    GOOGLE_SERVICE_ACCOUNT: z.string().min(1),
+    GOOGLE_DRIVE_FOLDER_ID: z.string().min(1),
+    GOOGLE_REFRESH_TOKEN: z.string().min(1),
+    GOOGLE_CLIENT_ID: z.string().min(1),
+    GOOGLE_CLIENT_SECRET: z.string().min(1),
+    GOOGLE_REDIRECT_URI: z.string().min(1),
+    SMTP_HOST: z.string().min(1),
+    SMTP_PORT: z.string().min(1),
+    SMTP_USER: z.string().min(1),
+    SMTP_PASSWORD: z.string().min(1),
+    SMTP_EMAIL_FROM: z.string().min(1),
   },
-  client: {
-    // NEXT_PUBLIC_PUBLISHABLE_KEY: z.string().min(1),
-  },
-  // If you're using Next.js < 13.4.4, you'll need to specify the runtimeEnv manually
+  client: {},
   runtimeEnv: {
-    // DATABASE_URL: process.env.DATABASE_URL,
-    // OPEN_AI_API_KEY: process.env.OPEN_AI_API_KEY,
-    // NEXT_PUBLIC_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_PUBLISHABLE_KEY,
+    GOOGLE_SHEET_ID: process.env.GOOGLE_SHEET_ID,
+    GOOGLE_SERVICE_ACCOUNT: process.env.GOOGLE_SERVICE_ACCOUNT,
+    GOOGLE_DRIVE_FOLDER_ID: process.env.GOOGLE_DRIVE_FOLDER_ID,
+    GOOGLE_REFRESH_TOKEN: process.env.GOOGLE_REFRESH_TOKEN,
+    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+    GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+    GOOGLE_REDIRECT_URI: process.env.GOOGLE_REDIRECT_URI,
+    SMTP_HOST: process.env.SMTP_HOST,
+    SMTP_PORT: process.env.SMTP_PORT,
+    SMTP_USER: process.env.SMTP_USER,
+    SMTP_PASSWORD: process.env.SMTP_PASSWORD,
+    SMTP_EMAIL_FROM: process.env.SMTP_EMAIL_FROM,
   },
-  // For Next.js >= 13.4.4, you only need to destructure client variables:
-  // experimental__runtimeEnv: {
-  //   NEXT_PUBLIC_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_PUBLISHABLE_KEY,
-  // }
 });

@@ -1,13 +1,13 @@
-/* eslint-disable */
+import { google } from "googleapis";
 import { type NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import Mail from "nodemailer/lib/mailer";
+import { Readable } from "stream";
 
 import { sheets } from "@/lib/google-sheets";
-import { google } from "googleapis";
-import { Readable } from "stream";
+
 import Schema from "@/constant/form-schemas/schema";
-import { projectGetSourceForAsset } from "next/dist/build/swc/generated-native";
+import { env } from "@/env";
 
 export async function POST(request: NextRequest) {
   try {
@@ -35,19 +35,19 @@ export async function POST(request: NextRequest) {
 
     // Configure nodemailer transport
     const transport = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: 587,
+      host: env.SMTP_HOST,
+      port: Number(env.SMTP_PORT),
       secure: false,
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASSWORD,
+        user: env.SMTP_USER,
+        pass: env.SMTP_PASSWORD,
       },
       requireTLS: true,
     });
 
     // Email content
     const mailOptions: Mail.Options = {
-      from: process.env.SMTP_EMAIL_FROM,
+      from: env.SMTP_EMAIL_FROM,
       to: data.email,
       subject: "Thank you for subscribing to Connect Meses!",
       text: `Hello ${data.name}!\n\nThank you so much for signing up on NSS.\n\nHave a great day.`,
@@ -63,13 +63,13 @@ export async function POST(request: NextRequest) {
     };
 
     const oauth2Client = new google.auth.OAuth2(
-      process.env.GOOGLE_CLIENT_ID,
-      process.env.GOOGLE_CLIENT_SECRET,
-      process.env.GOOGLE_REDIRECT_URI,
+      env.GOOGLE_CLIENT_ID,
+      env.GOOGLE_CLIENT_SECRET,
+      env.GOOGLE_REDIRECT_URI,
     );
 
     oauth2Client.setCredentials({
-      refresh_token: process.env.GOOGLE_REFRESH_TOKEN,
+      refresh_token: env.GOOGLE_REFRESH_TOKEN,
     });
 
     // Google Drive Setup
@@ -79,13 +79,12 @@ export async function POST(request: NextRequest) {
     });
 
     // Create the main folder if it doesn't exist
-    const mainFolderName = "ScienceBeeWebsiteImages";
-    const mainFolderId = process.env.GOOGLE_DRIVE_FOLDER_ID!;
+    const mainFolderId = env.GOOGLE_DRIVE_FOLDER_ID!;
 
     // Find the current row count in the sheet
     const sheetInfo = await sheets.spreadsheets.values.get({
-      spreadsheetId: process.env.GOOGLE_SHEET_ID!,
-      range: "Sheet2!A:A",
+      spreadsheetId: env.GOOGLE_SHEET_ID!,
+      range: "Sheet1!A:A",
     });
     const rowNumber = (sheetInfo.data.values?.length || 0) + 1;
 
@@ -129,8 +128,8 @@ export async function POST(request: NextRequest) {
     ];
 
     const sheetRequest = {
-      spreadsheetId: process.env.GOOGLE_SHEET_ID!,
-      range: "Sheet2",
+      spreadsheetId: env.GOOGLE_SHEET_ID!,
+      range: "Sheet1",
       valueInputOption: "USER_ENTERED",
       insertDataOption: "INSERT_ROWS",
       resource: {
