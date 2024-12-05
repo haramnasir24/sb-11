@@ -49,13 +49,13 @@ export async function POST(request: NextRequest) {
     const mailOptions: Mail.Options = {
       from: env.SMTP_EMAIL_FROM,
       to: data.email,
-      subject: "Thank you for subscribing to Connect Meses!",
-      text: `Hello ${data.name}!\n\nThank you so much for signing up on NSS.\n\nHave a great day.`,
+      subject: "We have received your Science Bee Registration Request!",
+      text: `Hello ${data.name}!\n\nThank you so much for signing up for the Science Bee XI.\n\nHave a great day.`,
       html: `
         <html>
           <body>
             <p>Hello ${data.name}!</p>
-            <p>Thank you so much for signing up on NSS</p>
+            <p>Thank you so much for signing up for the Science Bee XI</p>
             <p>Have a great day,</p>
           </body>
         </html>
