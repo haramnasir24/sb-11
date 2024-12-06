@@ -25,6 +25,7 @@
     }
   },
   "dependencies": {
+    "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@svgr/webpack": "^8.1.0",
     "@t3-oss/env-nextjs": "^0.11.1",
@@ -32,6 +33,7 @@
     "@typescript-eslint/parser": "^8.17.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "embla-carousel-autoplay": "^8.5.1",
     "embla-carousel-react": "^8.5.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",

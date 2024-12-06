@@ -9,17 +9,21 @@ export default function AboutUs() {
       className="from-primary to-primary-foreground bg-gradient-to-br py-16"
     >
       <div className="container mx-auto px-4">
-        <h2 className="text-secondary mb-8 text-center text-4xl font-bold">
-          About Science Bee
+        <h2 className="text-secondary mb-8 text-center text-3xl font-bold">
+          What is Science Bee
         </h2>
         <div className="grid items-center gap-8 md:grid-cols-2">
           <Card className="bg-primary-foreground/10 border-none shadow-xl">
             <CardContent className="p-6">
+              <h3 className="mb-4 text-2xl font-bold text-yellow-400">
+                {" "}
+                About the event{" "}
+              </h3>
               <p className="text-primary-foreground mb-4 text-lg leading-relaxed">
                 <span className="text-secondary font-semibold">
-                  NUST Science Society
+                  NUST Science Society&nbsp;
                 </span>
-                proudly presents the crown jewel of its yearly tenure:{" "}
+                proudly presents the crown jewel of its yearly tenure:&nbsp;
                 <span className="text-secondary font-semibold">
                   Science Bee
                 </span>
@@ -27,9 +31,9 @@ export default function AboutUs() {
                 celebration of science and technology.
               </p>
               <p className="text-primary-foreground mb-4 text-lg leading-relaxed">
-                Featuring
+                Featuring&nbsp;
                 <span className="text-secondary font-semibold">
-                  12 mind-bending modules
+                  11 mind-bending modules
                 </span>
                 , Science Bee pushes participants to their mental and physical
                 limits. But it's more than just a competition - it's an
@@ -37,11 +41,13 @@ export default function AboutUs() {
                 interactive puzzle-based games.
               </p>
               <p className="text-primary-foreground text-lg leading-relaxed">
-                Don't miss out on the trademark
-                <span className="text-secondary font-semibold">Buzz Night</span>
-                for destressing and the
+                Don't miss out on the trademark&nbsp;
                 <span className="text-secondary font-semibold">
-                  Theme Dinner
+                  Buzz Night&nbsp;
+                </span>
+                for destressing and the&nbsp;
+                <span className="text-secondary font-semibold">
+                  Theme Dinner&nbsp;
                 </span>
                 for networking. Science Bee promises an unforgettable journey of
                 learning, challenge, and beautiful memories.

@@ -1,7 +1,8 @@
 # to-do
 
-1. the navigation bar hamburger menu doesnt work (mobile screens) -> fix it -> working now
-
-2. fix the navigation (make it to scroll)
-
-3. create a carousel of images for the past events section
+1. get the carousel (past events) to scroll on its own, make the arrows bigger and visible
+2. make the footer (contact section) \*\*\*
+3. make the dropdown for modules section \*\*\*
+4. add navbar in layout.tsx \*\*\*
+5. make the modules pages !!! \*\*\* assigned to mariam
+6. registration form page \*\*\* assigned to ali aqdas

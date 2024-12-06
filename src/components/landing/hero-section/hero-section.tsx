@@ -78,7 +78,7 @@ export default function HeroSection() {
         </p>
 
         <Button
-          className="bg-yellow-400 text-black hover:bg-yellow-500"
+          className="bg-yellow-400 text-base text-black hover:bg-yellow-500"
           size="lg"
           onClick={() => {}}
         >
