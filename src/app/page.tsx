@@ -1,7 +1,8 @@
-import AboutUs from "@/components/landing/about-us";
-import Navbar from "@/components/landing/navbar";
+import Navbar from "@/components/landing/hero-section/navbar";
+import AboutUs from "@/components/landing/info-sections/about-us";
+import PastEvents from "@/components/landing/info-sections/past-events";
 
-import HeroSection from "../components/landing/hero-section";
+import HeroSection from "../components/landing/hero-section/hero-section";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <AboutUs />
+      <PastEvents />
     </main>
   );
 }

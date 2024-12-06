@@ -13,7 +13,7 @@ export default function HeroSection() {
   return (
     <div className="relative min-h-screen overflow-hidden">
       <Image
-        src="/hero-section.JPG"
+        src="/hero-section.jpg"
         alt="Science Bee Background"
         fill
         style={{ objectFit: "cover" }}

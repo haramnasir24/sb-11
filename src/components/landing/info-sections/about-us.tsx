@@ -18,7 +18,7 @@ export default function AboutUs() {
               <p className="text-primary-foreground mb-4 text-lg leading-relaxed">
                 <span className="text-secondary font-semibold">
                   NUST Science Society
-                </span>{" "}
+                </span>
                 proudly presents the crown jewel of its yearly tenure:{" "}
                 <span className="text-secondary font-semibold">
                   Science Bee
@@ -27,7 +27,7 @@ export default function AboutUs() {
                 celebration of science and technology.
               </p>
               <p className="text-primary-foreground mb-4 text-lg leading-relaxed">
-                Featuring{" "}
+                Featuring
                 <span className="text-secondary font-semibold">
                   12 mind-bending modules
                 </span>
@@ -37,12 +37,12 @@ export default function AboutUs() {
                 interactive puzzle-based games.
               </p>
               <p className="text-primary-foreground text-lg leading-relaxed">
-                Don't miss out on the trademark{" "}
-                <span className="text-secondary font-semibold">Buzz Night</span>{" "}
-                for destressing and the{" "}
+                Don't miss out on the trademark
+                <span className="text-secondary font-semibold">Buzz Night</span>
+                for destressing and the
                 <span className="text-secondary font-semibold">
                   Theme Dinner
-                </span>{" "}
+                </span>
                 for networking. Science Bee promises an unforgettable journey of
                 learning, challenge, and beautiful memories.
               </p>
