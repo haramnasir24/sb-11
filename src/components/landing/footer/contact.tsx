@@ -1,15 +1,8 @@
 "use client";
-// import FacebookIcon from './facebook.svg';
-
-import {
-  ArrowRight,
-  Facebook,
-  Instagram,
-  Mail,
-  MapPin,
-  Phone,
-} from "lucide-react";
+import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
+import { FaInstagram } from "react-icons/fa6";
+import { IoLogoFacebook } from "react-icons/io";
 
 import { Button } from "@/components/ui/button";
 
@@ -146,14 +139,14 @@ export default function Contact() {
               href="https://www.instagram.com/nss_sciencebee/"
               className="text-gray-300 hover:text-yellow-500"
             >
-              <Instagram className="h-5 w-5" />
+              <FaInstagram className="h-5 w-5" />
               <span className="sr-only">Instagram</span>
             </Link>
             <Link
               href="https://www.facebook.com/ScienceBee.NSS/"
               className="text-gray-300 hover:text-yellow-500"
             >
-              <Facebook className="h-5 w-5" />
+              <IoLogoFacebook className="h-5 w-5" />
               <span className="sr-only">Facebook</span>
             </Link>
           </div>
