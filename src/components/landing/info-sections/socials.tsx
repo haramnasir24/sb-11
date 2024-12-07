@@ -27,7 +27,7 @@ const Socials = () => {
   return (
     <section
       id="socials"
-      className="from-primary to-primary-foreground bg-gradient-to-br py-16"
+      className="from-primary to-primary-foreground bg-gradient-to-br py-10 md:py-16"
     >
       <div className="container mx-auto px-4">
         <h2 className="text-secondary mb-8 text-center text-xl font-bold md:text-3xl">

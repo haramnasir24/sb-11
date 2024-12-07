@@ -13,7 +13,7 @@ const Sponsors = () => {
   return (
     <section
       id="sponsors"
-      className="bg-gradient-to-br from-gray-100 to-gray-200 py-16"
+      className="bg-gradient-to-br from-gray-100 to-gray-200 py-10 md:py-16"
     >
       <div className="container mx-auto px-4">
         <h2 className="mb-8 text-center text-xl font-bold text-gray-800 md:text-3xl">
