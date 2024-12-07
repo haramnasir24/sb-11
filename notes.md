@@ -6,3 +6,15 @@
 3. registration form page \*\*\* assigned to ali aqdas
 
 4. connect to backend \*\*\* do with zain
+
+# add logo
+
+# align the paragraph content
+
+# change images
+
+# add sponsors logos
+
+# add social events and relevant content
+
+# add contact info

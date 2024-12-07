@@ -4,6 +4,7 @@ import { Menu } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -84,6 +85,13 @@ export default function Navbar() {
                   </Link>
                 ),
               )}
+              <Button
+                className="bg-white text-sm text-black hover:bg-slate-100"
+                size="sm"
+                onClick={() => {}}
+              >
+                REGISTER NOW
+              </Button>
             </div>
           </div>
           <div className="md:hidden">
