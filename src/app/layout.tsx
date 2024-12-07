@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 
+import Contact from "@/components/landing/footer/contact";
 import Navbar from "@/components/landing/header/navbar";
 
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ export default function RootLayout({
       <body>
         <Navbar />
         {children}
+        <Contact />
       </body>
     </html>
   );
