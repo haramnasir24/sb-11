@@ -4,14 +4,35 @@ import { Menu } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+const moduleItems = [
+  { name: "Crimeline", href: "/crimeline" },
+  { name: "Escape Room", href: "/escape-room" },
+  { name: "Medical Mayhem", href: "/medical-mayhem" },
+  { name: "Scirun", href: "/scirun" },
+  { name: "Crack it out", href: "/crack-it-out" },
+  { name: "The Psych Realm", href: "/psych-realm" },
+  { name: "Mathelatics", href: "/mathelatics" },
+  { name: "Speed Programming", href: "/speed-programming" },
+  { name: "RoboWars", href: "/robowars" },
+  { name: "Chemathon", href: "/chemathon" },
+  { name: "HeatOps", href: "/heatops" },
+];
+
 const navItems = [
-  { name: "Home", href: "/" },
-  { name: "About Us", href: "about" },
-  { name: "Past Events", href: "past-events" },
-  { name: "Socials", href: "socials" },
-  { name: "Modules", href: "services" },
-  { name: "Sponsors", href: "sponsors" },
-  { name: "Contact Us", href: "contact" },
+  { name: "Home", link: "/", dropdown: false },
+  { name: "About Us", link: "about", dropdown: false },
+  { name: "Past Events", link: "past-events", dropdown: false },
+  { name: "Socials", link: "socials", dropdown: false },
+  { name: "Modules", link: "", dropdown: true },
+  { name: "Sponsors", link: "sponsors", dropdown: false },
+  { name: "Contact Us", link: "contact", dropdown: false },
 ];
 
 export default function Navbar() {
@@ -31,23 +52,38 @@ export default function Navbar() {
           </div>
           <div className="hidden md:block">
             <div className="ml-5 flex items-baseline space-x-4 lg:ml-10">
-              {navItems.map(({ name, href }, index) => (
-                <Link
-                  key={index}
-                  href={`#${href}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setIsOpen(false);
-                    setTimeout(() => {
-                      const element = document.getElementById(href);
-                      element?.scrollIntoView({ behavior: "smooth" });
-                    }, 300);
-                  }}
-                  className="rounded-md px-3 py-2 text-xs font-medium uppercase text-white hover:text-gray-300 lg:text-sm"
-                >
-                  {name}
-                </Link>
-              ))}
+              {navItems.map(({ name, link, dropdown }, index) =>
+                dropdown ? (
+                  <DropdownMenu key={index}>
+                    <DropdownMenuTrigger className="rounded-md px-3 py-2 text-xs font-medium uppercase text-white hover:text-gray-300 lg:text-sm">
+                      {name}
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="bg-white text-black">
+                      {moduleItems.map(({ name, href }, idx) => (
+                        <DropdownMenuItem key={idx} asChild>
+                          <Link href={href}>{name}</Link>
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                ) : (
+                  <Link
+                    key={index}
+                    href={`#${link}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setIsOpen(false);
+                      setTimeout(() => {
+                        const element = document.getElementById(link);
+                        element?.scrollIntoView({ behavior: "smooth" });
+                      }, 300);
+                    }}
+                    className="rounded-md px-3 py-2 text-xs font-medium uppercase text-white hover:text-gray-300 lg:text-sm"
+                  >
+                    {name}
+                  </Link>
+                ),
+              )}
             </div>
           </div>
           <div className="md:hidden">
@@ -65,23 +101,38 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden">
           <div className="space-y-1 bg-black bg-opacity-75 px-2 pb-3 pt-2 sm:px-3">
-            {navItems.map(({ name, href }, index) => (
-              <Link
-                key={index}
-                href={`#${href}`}
-                className="block rounded-md px-3 py-2 text-base font-medium text-white hover:text-gray-300"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setIsOpen(false);
-                  setTimeout(() => {
-                    const element = document.getElementById(href);
-                    element?.scrollIntoView({ behavior: "smooth" });
-                  }, 300);
-                }}
-              >
-                {name}
-              </Link>
-            ))}
+            {navItems.map(({ name, link, dropdown }, index) =>
+              dropdown ? (
+                <DropdownMenu key={index}>
+                  <DropdownMenuTrigger className="block w-full rounded-md px-3 py-2 text-left text-base font-medium text-white hover:text-gray-300">
+                    {name}
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="bg-white text-black">
+                    {moduleItems.map(({ name, href }, idx) => (
+                      <DropdownMenuItem key={idx} asChild>
+                        <Link href={href}>{name}</Link>
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <Link
+                  key={index}
+                  href={`#${link}`}
+                  className="block rounded-md px-3 py-2 text-base font-medium text-white hover:text-gray-300"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsOpen(false);
+                    setTimeout(() => {
+                      const element = document.getElementById(link);
+                      element?.scrollIntoView({ behavior: "smooth" });
+                    }, 300);
+                  }}
+                >
+                  {name}
+                </Link>
+              ),
+            )}
           </div>
         </div>
       )}

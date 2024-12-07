@@ -63,6 +63,32 @@ export default function Contact() {
               </li>
               <li>
                 <Link
+                  href="#socials"
+                  className="transition-colors hover:text-yellow-500"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const element = document.getElementById("socials");
+                    element?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
+                  Socials
+                </Link>
+              </li>
+              {/* <li>
+                <Link
+                  href="#modules"
+                  className="transition-colors hover:text-yellow-500"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const element = document.getElementById("modules");
+                    element?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
+                  Modules
+                </Link>
+              </li> */}
+              <li>
+                <Link
                   href="/register"
                   className="transition-colors hover:text-yellow-500"
                 >
