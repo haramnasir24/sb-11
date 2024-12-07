@@ -23,9 +23,9 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-br from-[#03071E] via-[#3C096C] to-[#9D4EDD] opacity-80" />
 
       {/* Content */}
-      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 text-center">
+      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 py-20 text-center">
         <h2 className="mb-2 text-xl font-medium text-yellow-400">Welcome to</h2>
-        <h1 className="mb-8 text-4xl font-bold text-white sm:text-6xl md:text-7xl">
+        <h1 className="mb-8 text-4xl font-bold text-white sm:text-xl md:text-5xl lg:text-7xl">
           Science Bee Gyara
         </h1>
 
@@ -72,7 +72,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <p className="mb-12 max-w-2xl text-lg font-medium text-yellow-400">
+        <p className="mb-12 max-w-2xl text-sm font-medium text-yellow-400 md:text-lg">
           3 Days of Innovation: 11 Modules, Stem Exhibitions, BUZZ Night, NUST
           Got Talent, and Beyond!
         </p>

@@ -30,11 +30,11 @@ const Socials = () => {
       className="from-primary to-primary-foreground bg-gradient-to-br py-16"
     >
       <div className="container mx-auto px-4">
-        <h2 className="text-secondary mb-8 text-center text-3xl font-bold">
+        <h2 className="text-secondary mb-8 text-center text-xl font-bold md:text-3xl">
           What happens in Science Bee
         </h2>
         <div className="rounded-lg bg-gradient-to-br from-[#03071E] via-[#3C096C] to-[#8f65b1] p-8 shadow-lg">
-          <h3 className="mb-6 text-center text-2xl font-bold text-yellow-400">
+          <h3 className="mb-6 text-center text-base font-bold text-yellow-400 md:text-2xl">
             Socials
           </h3>
           <div className="grid grid-cols-1 justify-center gap-6 sm:grid-cols-2 lg:grid-cols-3">

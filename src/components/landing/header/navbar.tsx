@@ -22,12 +22,15 @@ export default function Navbar() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
-            <Link href="/" className="text-2xl font-bold uppercase text-white">
+            <Link
+              href="/"
+              className="text:lg font-bold uppercase text-white md:text-2xl"
+            >
               Logo
             </Link>
           </div>
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+            <div className="ml-5 flex items-baseline space-x-4 lg:ml-10">
               {navItems.map(({ name, href }, index) => (
                 <Link
                   key={index}
@@ -40,7 +43,7 @@ export default function Navbar() {
                       element?.scrollIntoView({ behavior: "smooth" });
                     }, 300);
                   }}
-                  className="rounded-md px-3 py-2 text-sm font-medium uppercase text-white hover:text-gray-300"
+                  className="rounded-md px-3 py-2 text-xs font-medium uppercase text-white hover:text-gray-300 lg:text-sm"
                 >
                   {name}
                 </Link>

@@ -11,7 +11,7 @@ type Props = {
 };
 const SocialCard = ({ item }: Props) => {
   return (
-    <Card className="flex h-[550px] transform flex-col items-center gap-2 border-none transition-all duration-300 hover:scale-105 hover:shadow-xl">
+    <Card className="flex h-[400px] transform flex-col items-center gap-2 border-none transition-all duration-300 hover:scale-105 hover:shadow-xl md:h-[550px]">
       <CardHeader className="relative h-[350px] w-full overflow-hidden rounded-t-lg">
         <Image
           src={item.image}
@@ -23,7 +23,7 @@ const SocialCard = ({ item }: Props) => {
           {item.title}
         </CardTitle>
       </CardHeader>
-      <CardContent className="text-muted-foreground h-200 p-4 text-sm">
+      <CardContent className="text-muted-foreground h-200 p-4 text-xs md:text-sm">
         {item.content}
       </CardContent>
     </Card>

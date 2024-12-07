@@ -6,20 +6,19 @@ export default function AboutUs() {
   return (
     <section
       id="about"
-      className="from-primary to-primary-foreground bg-gradient-to-br py-16"
+      className="from-primary to-primary-foreground bg-gradient-to-br py-10 md:py-16"
     >
       <div className="container mx-auto px-4">
-        <h2 className="text-secondary mb-8 text-center text-3xl font-bold">
+        <h2 className="text-secondary mb-4 text-center text-xl font-bold md:mb-8 md:text-3xl">
           What is Science Bee
         </h2>
         <div className="grid items-center gap-8 md:grid-cols-2">
           <Card className="bg-primary-foreground/10 border-none shadow-xl">
             <CardContent className="p-6">
-              <h3 className="mb-4 text-2xl font-bold text-yellow-400">
-                {" "}
-                About the event{" "}
+              <h3 className="mb-4 text-base font-bold text-yellow-400 md:text-2xl">
+                About the event
               </h3>
-              <p className="text-primary-foreground mb-4 text-lg leading-relaxed">
+              <p className="text-primary-foreground mb-4 text-sm leading-relaxed md:text-lg">
                 <span className="text-secondary font-semibold">
                   NUST Science Society&nbsp;
                 </span>
@@ -30,7 +29,7 @@ export default function AboutUs() {
                 . This momentous event transforms the campus into a vibrant
                 celebration of science and technology.
               </p>
-              <p className="text-primary-foreground mb-4 text-lg leading-relaxed">
+              <p className="text-primary-foreground mb-4 text-sm leading-relaxed md:text-lg">
                 Featuring&nbsp;
                 <span className="text-secondary font-semibold">
                   11 mind-bending modules
@@ -40,7 +39,7 @@ export default function AboutUs() {
                 immersive experience including panel talks, a STEM Expo, and
                 interactive puzzle-based games.
               </p>
-              <p className="text-primary-foreground text-lg leading-relaxed">
+              <p className="text-primary-foreground text-sm leading-relaxed md:text-lg">
                 Don't miss out on the trademark&nbsp;
                 <span className="text-secondary font-semibold">
                   Buzz Night&nbsp;
@@ -54,7 +53,7 @@ export default function AboutUs() {
               </p>
             </CardContent>
           </Card>
-          <div className="relative h-[400px] overflow-hidden rounded-lg shadow-xl">
+          <div className="relative h-[350px] overflow-hidden rounded-lg shadow-xl md:h-[400px]">
             <Image
               src="/about.JPG"
               alt="Science Bee Event"

@@ -66,8 +66,8 @@ export function CountdownTimer({
       {Object.entries(timeLeft).map(([unit, value]) => (
         <Card key={unit} className="w-24">
           <CardContent className="flex flex-col items-center justify-center p-4">
-            <span className="text-3xl font-bold">{value}</span>
-            <span className="text-sm uppercase">{unit}</span>
+            <span className="text-2xl font-bold md:text-3xl">{value}</span>
+            <span className="text-xs uppercase md:text-sm">{unit}</span>
           </CardContent>
         </Card>
       ))}
