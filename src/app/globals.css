@@ -2,12 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --purple-deep: #120035;
+  --purple-dark: #1f0068;
+  --purple: #2f0a8f;
+  --purple-light: #9000a3;
+  --yellow-accent: #dfa702;
+  --yellow-bright: #ffd700;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@layer base {
-  :root {
-    --radius: 0.5rem;
+.shadow-text {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
   }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-700 {
+  animation-delay: 700ms;
 }

@@ -13,17 +13,17 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const moduleItems = [
-  { name: "Crimeline", href: "/crimeline" },
-  { name: "Escape Room", href: "/escape-room" },
-  { name: "Medical Mayhem", href: "/medical-mayhem" },
-  { name: "Scirun", href: "/scirun" },
-  { name: "Crack it out", href: "/crack-it-out" },
-  { name: "The Psych Realm", href: "/psych-realm" },
-  { name: "Mathelatics", href: "/mathelatics" },
-  { name: "Speed Programming", href: "/speed-programming" },
-  { name: "RoboWars", href: "/robowars" },
-  { name: "Chemathon", href: "/chemathon" },
-  { name: "HeatOps", href: "/heatops" },
+  { name: "Crimeline", href: "/modules/crimeline" },
+  { name: "Escape Room", href: "/modules/escape-room" },
+  { name: "Medical Mayhem", href: "/modules/medical-mayhem" },
+  { name: "Scirun", href: "/modules/scirun" },
+  { name: "Crack it out", href: "/modules/crack-it-out" },
+  { name: "The Psych Realm", href: "/modules/psych-realm" },
+  { name: "Mathelatics", href: "/modules/mathelatics" },
+  { name: "Speed Programming", href: "/modules/speed-programming" },
+  { name: "RoboWars", href: "/modules/robowars" },
+  { name: "Chemathon", href: "/modules/chemathon" },
+  { name: "HeatOps", href: "/modules/heatops" },
 ];
 
 const navItems = [

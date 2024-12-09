@@ -12,6 +12,12 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        "purple-deep": "var(--purple-deep)",
+        "yellow-accent": "var(--yellow-accent)",
+        "yellow-vibrant": "var(--yellow-vibrant)",
+        "yellow-bright": "var(--yellow-bright)",
+        "purple-dark": "var(--purple-dark)",
+        "purple-light": "var(--purple-light)",
       },
       borderRadius: {
         lg: "var(--radius)",
