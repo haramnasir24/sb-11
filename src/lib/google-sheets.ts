@@ -15,6 +15,7 @@ function getServiceAccountCredentials() {
     ).toString();
     return JSON.parse(decodedCredentials);
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error(
       "Failed to decode Google service account credentials:",
       error,
@@ -31,6 +32,7 @@ function initializeGoogleSheets() {
   const credentials = getServiceAccountCredentials();
 
   if (!credentials) {
+    // eslint-disable-next-line no-console
     console.warn(
       "Google Sheets integration is disabled - missing or invalid credentials",
     );
@@ -50,6 +52,7 @@ function initializeGoogleSheets() {
 
     return sheetsInstance;
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error("Failed to initialize Google Sheets:", error);
     return null;
   }
@@ -61,6 +64,7 @@ export async function appendToGoogleSheet(values: any[]) {
   const spreadsheetId = process.env.GOOGLE_SHEET_ID;
 
   if (!sheets || !spreadsheetId) {
+    // eslint-disable-next-line no-console
     console.warn("Skipping Google Sheets append - integration not configured");
     return;
   }
@@ -77,8 +81,10 @@ export async function appendToGoogleSheet(values: any[]) {
     };
 
     await sheets.spreadsheets.values.append(sheetRequest);
+    // eslint-disable-next-line no-console
     console.log("Successfully appended data to Google Sheets");
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error("Failed to append to Google Sheets:", error);
     throw error;
   }

@@ -49,7 +49,7 @@ const RegistrationForm: React.FC = () => {
           setCurrentStep(3);
         }
       }
-
+      // eslint-disable-next-line no-console
       console.log(errorMap);
       setFormData(formData);
       setIsSubmitting(false);
@@ -58,6 +58,7 @@ const RegistrationForm: React.FC = () => {
 
     // If no errors, reset errors and process the valid data
     setErrors({});
+    // eslint-disable-next-line no-console
     console.log("Valid Data:", result.data);
 
     setTimeout(() => {
@@ -116,6 +117,7 @@ const RegistrationForm: React.FC = () => {
     }));
   };
 
+  // eslint-disable-next-line unused-imports/no-unused-vars
   const [bankDetails, setBankDetails] = useState({
     accountName: "",
     accountNumber: "",

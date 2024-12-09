@@ -10,6 +10,7 @@ interface Step2Props {
 const Step2: React.FC<Step2Props> = ({
   formData,
   handleInputChange,
+  // eslint-disable-next-line unused-imports/no-unused-vars
   errors,
 }) => (
   <div>

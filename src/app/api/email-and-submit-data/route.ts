@@ -143,9 +143,11 @@ export async function POST(request: NextRequest) {
       new Promise<string>((resolve, reject) => {
         transport.sendMail(mailOptions, (err, info) => {
           if (err) {
+            // eslint-disable-next-line no-console
             console.error("Error sending email:", err);
             reject("Email not sent");
           } else {
+            // eslint-disable-next-line no-console
             console.log("Email sent:", info.response);
             resolve("Email sent");
           }
@@ -158,6 +160,7 @@ export async function POST(request: NextRequest) {
       message: "Email sent and data appended to Google Sheets",
     });
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error("Error during request:", error);
     return NextResponse.json(
       {
@@ -185,9 +188,11 @@ async function createFolder(
       requestBody: folderMetadata,
       fields: "id",
     });
+    // eslint-disable-next-line no-console
     console.log(`Folder created: ${folder.data.id}`);
     return folder.data.id!;
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error("Error creating folder:", error);
     throw new Error("Failed to create folder in Google Drive");
   }
@@ -221,10 +226,11 @@ async function uploadFile(
       media,
       fields: "id",
     });
-
+    // eslint-disable-next-line no-console
     console.log(`File uploaded: ${res.data.id}`);
     return `https://drive.google.com/uc?id=${res.data.id}`;
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error("Error uploading file:", error);
     throw new Error("Failed to upload file to Google Drive");
   }

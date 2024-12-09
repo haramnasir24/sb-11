@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ! DON'T REMOVE SHIT WITHOUT SEEING WHAT IT UNDOES OR DOES */
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}
+
 :root {
   --purple-deep: #120035;
   --purple-dark: #1f0068;
