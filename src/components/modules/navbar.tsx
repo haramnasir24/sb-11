@@ -28,21 +28,12 @@ const moduleItems = [
 
 const navItems = [
   { name: "Home", link: "/", dropdown: false },
-  { name: "About Us", link: "#about", dropdown: false },
-  { name: "Past Events", link: "#past-events", dropdown: false },
-  { name: "Socials", link: "#socials", dropdown: false },
-  { name: "Modules", link: "/modules", dropdown: true },
-  { name: "Sponsors", link: "#sponsors", dropdown: false },
-  { name: "Contact Us", link: "#contact", dropdown: false },
+  { name: "Modules", link: "modules", dropdown: true },
+  { name: "Contact Us", link: "modules-footer", dropdown: false },
 ];
 
-export default function Navbar() {
+export default function ModulesNavbar() {
   const [isOpen, setIsOpen] = useState(false);
-  // const router = useRouter();
-
-  // const handleRegisterClick = () => {
-  //   router.push("/register");
-  // };
 
   return (
     <nav className="absolute left-0 right-0 top-0 z-50 bg-transparent">
@@ -77,12 +68,14 @@ export default function Navbar() {
                     key={index}
                     href={link}
                     onClick={(e) => {
-                      e.preventDefault();
-                      setIsOpen(false);
-                      setTimeout(() => {
-                        const element = document.getElementById(link);
-                        element?.scrollIntoView({ behavior: "smooth" });
-                      }, 300);
+                      if (link !== "/") {
+                        e.preventDefault();
+                        setIsOpen(false);
+                        setTimeout(() => {
+                          const element = document.getElementById(link);
+                          element?.scrollIntoView({ behavior: "smooth" });
+                        }, 300);
+                      }
                     }}
                     className="rounded-md px-3 py-2 text-xs font-medium uppercase text-white hover:text-gray-300 lg:text-sm"
                   >
@@ -131,15 +124,17 @@ export default function Navbar() {
               ) : (
                 <Link
                   key={index}
-                  href={`#${link}`}
+                  href={link}
                   className="block rounded-md px-3 py-2 text-base font-medium text-white hover:text-gray-300"
                   onClick={(e) => {
-                    e.preventDefault();
-                    setIsOpen(false);
-                    setTimeout(() => {
-                      const element = document.getElementById(link);
-                      element?.scrollIntoView({ behavior: "smooth" });
-                    }, 300);
+                    if (link !== "/") {
+                      e.preventDefault();
+                      setIsOpen(false);
+                      setTimeout(() => {
+                        const element = document.getElementById(link);
+                        element?.scrollIntoView({ behavior: "smooth" });
+                      }, 300);
+                    }
                   }}
                 >
                   {name}
