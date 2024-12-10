@@ -38,6 +38,11 @@ const navItems = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  // const router = useRouter();
+
+  // const handleRegisterClick = () => {
+  //   router.push("/register");
+  // };
 
   return (
     <nav className="absolute left-0 right-0 top-0 z-50 bg-transparent">

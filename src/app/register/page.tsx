@@ -218,6 +218,6 @@ import RegistrationForm from "@/components/ui/forms/RegistrationForm";
 //       </div>
 //     );
 //   };
-export default function Home() {
+export default function Register() {
   return <RegistrationForm />;
 }
