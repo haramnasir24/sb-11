@@ -1,6 +1,5 @@
 # to-do
 
-issue: fix navbar, add between pages routing
 issue: register now button
 issue: for some reason, website is not working as expected on safari browser
 

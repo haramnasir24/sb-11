@@ -5,35 +5,30 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
-const moduleItems = [
-  { name: "Crimeline", href: "/modules/crimeline" },
-  { name: "Escape Room", href: "/modules/escape-room" },
-  { name: "Medical Mayhem", href: "/modules/medical-mayhem" },
-  { name: "Scirun", href: "/modules/scirun" },
-  { name: "Crack it out", href: "/modules/crack-it-out" },
-  { name: "The Psych Realm", href: "/modules/psych-realm" },
-  { name: "Mathelatics", href: "/modules/mathelatics" },
-  { name: "Speed Programming", href: "/modules/speed-programming" },
-  { name: "RoboWars", href: "/modules/robowars" },
-  { name: "Chemathon", href: "/modules/chemathon" },
-  { name: "HeatOps", href: "/modules/heatops" },
-];
+// const moduleItems = [
+//   { name: "Crimeline", href: "/modules/crimeline" },
+//   { name: "Escape Room", href: "/modules/escape-room" },
+//   { name: "Medical Mayhem", href: "/modules/medical-mayhem" },
+//   { name: "Scirun", href: "/modules/scirun" },
+//   { name: "Crack it out", href: "/modules/crack-it-out" },
+//   { name: "The Psych Realm", href: "/modules/psych-realm" },
+//   { name: "Mathelatics", href: "/modules/mathelatics" },
+//   { name: "Speed Programming", href: "/modules/speed-programming" },
+//   { name: "RoboWars", href: "/modules/robowars" },
+//   { name: "Chemathon", href: "/modules/chemathon" },
+//   { name: "HeatOps", href: "/modules/heatops" },
+//   { name: "See all", href: "/modules" },
+// ];
 
 const navItems = [
-  { name: "Home", link: "/", dropdown: false },
-  { name: "About Us", link: "#about", dropdown: false },
-  { name: "Past Events", link: "#past-events", dropdown: false },
-  { name: "Socials", link: "#socials", dropdown: false },
-  { name: "Modules", link: "/modules", dropdown: true },
-  { name: "Sponsors", link: "#sponsors", dropdown: false },
-  { name: "Contact Us", link: "#contact", dropdown: false },
+  { name: "Home", link: "/" },
+  { name: "About Us", link: "about" },
+  { name: "Past Events", link: "past-events" },
+  { name: "Socials", link: "socials" },
+  { name: "Modules", link: "/modules" },
+  { name: "Sponsors", link: "sponsors" },
+  { name: "Contact Us", link: "contact" },
 ];
 
 export default function Navbar() {
@@ -58,38 +53,25 @@ export default function Navbar() {
           </div>
           <div className="hidden md:block">
             <div className="ml-5 flex items-baseline space-x-4 lg:ml-10">
-              {navItems.map(({ name, link, dropdown }, index) =>
-                dropdown ? (
-                  <DropdownMenu key={index}>
-                    <DropdownMenuTrigger className="rounded-md px-3 py-2 text-xs font-medium uppercase text-white hover:text-gray-300 lg:text-sm">
-                      {name}
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="bg-white text-black">
-                      {moduleItems.map(({ name, href }, idx) => (
-                        <DropdownMenuItem key={idx} asChild>
-                          <Link href={href}>{name}</Link>
-                        </DropdownMenuItem>
-                      ))}
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                ) : (
-                  <Link
-                    key={index}
-                    href={link}
-                    onClick={(e) => {
+              {navItems.map(({ name, link }, index) => (
+                <Link
+                  key={index}
+                  href={link}
+                  onClick={(e) => {
+                    if (link !== "/" && link !== "/modules") {
                       e.preventDefault();
                       setIsOpen(false);
                       setTimeout(() => {
                         const element = document.getElementById(link);
                         element?.scrollIntoView({ behavior: "smooth" });
                       }, 300);
-                    }}
-                    className="rounded-md px-3 py-2 text-xs font-medium uppercase text-white hover:text-gray-300 lg:text-sm"
-                  >
-                    {name}
-                  </Link>
-                ),
-              )}
+                    }
+                  }}
+                  className="rounded-md px-3 py-2 text-xs font-medium uppercase text-white hover:text-gray-300 lg:text-sm"
+                >
+                  {name}
+                </Link>
+              ))}
               <Button
                 className="bg-white text-sm text-black hover:bg-slate-100"
                 size="sm"
@@ -114,38 +96,25 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden">
           <div className="space-y-1 bg-black bg-opacity-75 px-2 pb-3 pt-2 sm:px-3">
-            {navItems.map(({ name, link, dropdown }, index) =>
-              dropdown ? (
-                <DropdownMenu key={index}>
-                  <DropdownMenuTrigger className="block w-full rounded-md px-3 py-2 text-left text-base font-medium text-white hover:text-gray-300">
-                    {name}
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent className="bg-white text-black">
-                    {moduleItems.map(({ name, href }, idx) => (
-                      <DropdownMenuItem key={idx} asChild>
-                        <Link href={href}>{name}</Link>
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              ) : (
-                <Link
-                  key={index}
-                  href={`#${link}`}
-                  className="block rounded-md px-3 py-2 text-base font-medium text-white hover:text-gray-300"
-                  onClick={(e) => {
+            {navItems.map(({ name, link }, index) => (
+              <Link
+                key={index}
+                href={link}
+                className="block rounded-md px-3 py-2 text-base font-medium text-white hover:text-gray-300"
+                onClick={(e) => {
+                  if (link !== "/" && link !== "/modules") {
                     e.preventDefault();
                     setIsOpen(false);
                     setTimeout(() => {
                       const element = document.getElementById(link);
                       element?.scrollIntoView({ behavior: "smooth" });
                     }, 300);
-                  }}
-                >
-                  {name}
-                </Link>
-              ),
-            )}
+                  }
+                }}
+              >
+                {name}
+              </Link>
+            ))}
           </div>
         </div>
       )}

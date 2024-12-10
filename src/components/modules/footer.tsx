@@ -43,32 +43,6 @@ export default function ModulesFooter() {
             <ul className="space-y-2 text-sm text-gray-300">
               <li>
                 <Link
-                  href="#about"
-                  className="transition-colors hover:text-yellow-500"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const element = document.getElementById("about");
-                    element?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                >
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#socials"
-                  className="transition-colors hover:text-yellow-500"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const element = document.getElementById("socials");
-                    element?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                >
-                  Socials
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/modules"
                   className="transition-colors hover:text-yellow-500"
                 >
