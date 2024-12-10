@@ -7,7 +7,6 @@ import {
   Lock,
   Puzzle,
   Share2,
-  Zap,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -57,7 +56,7 @@ export default function ModuleDetail({ params }: ModuleProps) {
         ></div>
       </div>
 
-      <main className="container relative mx-auto px-6 py-12">
+      <main className="container relative mx-auto px-6 py-20">
         <Link
           href="/modules"
           className="group mb-8 inline-flex items-center gap-2 text-yellow-accent transition-colors hover:text-yellow-bright"
@@ -150,7 +149,7 @@ export default function ModuleDetail({ params }: ModuleProps) {
                 <button className="group relative inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-yellow-accent to-yellow-bright px-8 py-4 text-lg font-semibold text-purple-deep shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">
                   <Lock className="h-5 w-5" />
                   <span>Register for {sb_module.name}</span>
-                  <Zap className="absolute right-4 h-5 w-5 opacity-0 transition-opacity group-hover:opacity-100" />
+                  {/* <Zap className="absolute right-4 h-5 w-5 opacity-0 transition-opacity group-hover:opacity-100" /> */}
                 </button>
               </div>
             </div>

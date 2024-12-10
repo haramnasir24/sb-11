@@ -14,11 +14,11 @@ export default function ModulesPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-deep to-purple-light">
-      <main className="container mx-auto px-6 py-12">
+      <main className="container mx-auto px-6 py-20">
         <h1 className="shadow-text mb-8 mt-10 text-center text-4xl font-bold text-yellow-accent">
           Science Bee Modules
         </h1>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 py-10 sm:grid-cols-2 lg:grid-cols-3">
           {modules.map((module, index) => (
             <Link href={`/modules/${module.slug}`} key={module.slug}>
               <div
