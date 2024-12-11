@@ -16,11 +16,17 @@ export async function POST(request: NextRequest) {
     const parsed = Schema.safeParse(Object.fromEntries(form.entries()));
 
     if (!parsed.success) {
-      return NextResponse.json({ message: "Invalid data" }, { status: 400 });
+      return NextResponse.json(
+        {
+          message: "Invalid data",
+          errors: parsed.error.errors, // Return specific validation errors
+        },
+        { status: 400 },
+      );
     }
 
     const data = parsed.data;
-
+    console.log(data);
     // Extract image files from the form
     const profileImage = form.get("profileImage") as File;
     const uniIdImage = form.get("uniIdImage") as File;

@@ -1,4 +1,6 @@
 import { z } from "zod";
+const phoneRegex = /^03\d{9}$/; // Phone should start with '03' and have exactly 11 digits
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // Basic email validation regex
 
 const RegFormSchema = z.object({
   basicInfo: z.object({
