@@ -27,7 +27,9 @@ const Schema = z.object({
       phoneRegex,
       "Guardian phone must start with '03' and be 11 digits long",
     ),
-
+  uniIdImage: z.any(),
+  cnicImage: z.any(),
+  paymentProofImage: z.any(),
   city: z.string().min(1, "City is required"),
 
   paymentStatus: z.string().default("Submitted"),
