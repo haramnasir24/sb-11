@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const regFormSchema = z.object({
+const RegFormSchema = z.object({
   basicInfo: z.object({
     name: z.string().min(1, "Name is required"),
     email: z.string().email("Invalid email address"),
@@ -27,4 +27,4 @@ const regFormSchema = z.object({
       .refine((file) => file.size > 0, "Profile picture is required"), // Ensure file is uploaded
   }),
 });
-export default regFormSchema;
+export default RegFormSchema;

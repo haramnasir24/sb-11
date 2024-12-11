@@ -3,7 +3,7 @@
 // import { useDropzone } from 'react-dropzone';
 // import "../globals.css";
 
-import RegistrationForm from "@/components/ui/forms/RegistrationForm";
+import RegistrationForm from "@/components/form/registration-form";
 
 // interface BasicInfo {
 //   name: string;
@@ -219,5 +219,12 @@ import RegistrationForm from "@/components/ui/forms/RegistrationForm";
 //     );
 //   };
 export default function Register() {
-  return <RegistrationForm />;
+  return (
+    <div className="min-h-screen">
+      <main className="container mx-auto px-6 py-20">
+        {" "}
+        <RegistrationForm />
+      </main>
+    </div>
+  );
 }
