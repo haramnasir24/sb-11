@@ -3,7 +3,11 @@
 // import { useDropzone } from 'react-dropzone';
 // import "../globals.css";
 
+<<<<<<< HEAD
 import RegistrationForm from "@/components/form/registration-form";
+=======
+import RegistrationForm from "@/components/forms/RegistrationForm";
+>>>>>>> 253d3e7 (refactor(app): changed file names)
 
 // interface BasicInfo {
 //   name: string;
