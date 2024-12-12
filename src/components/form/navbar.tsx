@@ -4,8 +4,6 @@ import { Menu } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
-import { Button } from "@/components/ui/button";
-
 const navItems = [
   { name: "Home", link: "/" },
   { name: "Contact Us", link: "form-footer" },
@@ -15,9 +13,9 @@ export default function FormNavbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="absolute left-0 right-0 top-0 z-50 bg-gradient-to-br from-[#03071E] via-[#3C096C] to-[#9D4EDD] text-white">
+    <nav className="fixed left-0 right-0 top-0 z-50 bg-purple-900">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-24 items-center justify-between">
+        <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <Link
               href="/"
@@ -47,13 +45,6 @@ export default function FormNavbar() {
                   {name}
                 </Link>
               ))}
-              <Button
-                className="bg-yellow-400 text-sm text-black hover:bg-slate-100"
-                size="sm"
-                onClick={() => {}}
-              >
-                REGISTER NOW
-              </Button>
             </div>
           </div>
           <div className="md:hidden">

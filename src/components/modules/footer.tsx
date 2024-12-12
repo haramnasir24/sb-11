@@ -89,13 +89,12 @@ export default function ModulesFooter() {
             <p className="text-sm text-gray-300">
               Ready to unleash the scientist in you?
             </p>
-            <Button
-              className="bg-yellow-400 text-base text-black hover:bg-yellow-500"
-              size="lg"
-              onClick={() => {}}
+            <Link
+              href="/register"
+              className="inline-block rounded bg-yellow-500 px-4 py-2 text-base text-black hover:bg-yellow-600"
             >
-              Register Now
-            </Button>
+              REGISTER NOW
+            </Link>
           </div>
         </div>
         <div className="mt-12 flex flex-col items-center justify-between space-y-4 border-t border-gray-200 pt-8 sm:flex-row sm:space-y-0">
