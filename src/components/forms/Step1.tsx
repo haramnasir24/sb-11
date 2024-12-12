@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 
-import FileUpload from "../FileUpload";
-import InputField from "../InputField";
+import FileUpload from "../ui/FileUpload";
+import InputField from "../ui/InputField";
 
 interface BasicInfoProps {
   formData: any;
