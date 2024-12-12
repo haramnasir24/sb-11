@@ -4,8 +4,6 @@ import { Menu } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
-import { Button } from "@/components/ui/button";
-
 // const moduleItems = [
 //   { name: "Crimeline", href: "/modules/crimeline" },
 //   { name: "Escape Room", href: "/modules/escape-room" },
@@ -40,7 +38,7 @@ export default function Navbar() {
   // };
 
   return (
-    <nav className="absolute left-0 right-0 top-0 z-50 bg-transparent">
+    <nav className="fixed left-0 right-0 top-0 z-50 bg-purple-900">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
@@ -72,13 +70,12 @@ export default function Navbar() {
                   {name}
                 </Link>
               ))}
-              <Button
-                className="bg-white text-sm text-black hover:bg-slate-100"
-                size="sm"
-                onClick={() => {}}
+              <Link
+                href="/register"
+                className="inline-block rounded bg-white px-4 py-2 text-sm text-black hover:bg-slate-100"
               >
                 REGISTER NOW
-              </Button>
+              </Link>
             </div>
           </div>
           <div className="md:hidden">

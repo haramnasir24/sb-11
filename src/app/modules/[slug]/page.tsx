@@ -4,7 +4,6 @@ import {
   Brain,
   FlaskRoundIcon as Flask,
   Lightbulb,
-  Lock,
   Puzzle,
   Share2,
 } from "lucide-react";
@@ -142,15 +141,6 @@ export default function ModuleDetail({ params }: ModuleProps) {
                     </li>
                   </ul>
                 </section>
-              </div>
-
-              {/* Register Button */}
-              <div className="mt-8 flex justify-center">
-                <button className="group relative inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-yellow-accent to-yellow-bright px-8 py-4 text-lg font-semibold text-purple-deep shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">
-                  <Lock className="h-5 w-5" />
-                  <span>Register for {sb_module.name}</span>
-                  {/* <Zap className="absolute right-4 h-5 w-5 opacity-0 transition-opacity group-hover:opacity-100" /> */}
-                </button>
               </div>
             </div>
           </div>

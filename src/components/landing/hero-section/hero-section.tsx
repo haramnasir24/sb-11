@@ -1,9 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
-
-import { Button } from "@/components/ui/button";
 
 import { CountdownTimer } from "./countdown-timer";
 
@@ -77,13 +76,12 @@ export default function HeroSection() {
           Got Talent, and Beyond!
         </p>
 
-        <Button
-          className="bg-yellow-400 text-base text-black hover:bg-yellow-500"
-          size="lg"
-          onClick={() => {}}
+        <Link
+          href="/register"
+          className="inline-block rounded bg-yellow-500 px-4 py-2 text-base text-black hover:bg-yellow-600"
         >
           REGISTER NOW
-        </Button>
+        </Link>
 
         <div className="mt-24">
           <CountdownTimer targetDate={targetDate} />
