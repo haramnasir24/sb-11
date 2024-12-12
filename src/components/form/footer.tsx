@@ -49,14 +49,6 @@ export default function FormFooter() {
                   Modules
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/register"
-                  className="inline-block rounded bg-yellow-500 px-4 py-2 text-base text-black hover:bg-yellow-600"
-                >
-                  REGISTER NOW
-                </Link>
-              </li>
             </ul>
           </div>
           <div className="space-y-4">
