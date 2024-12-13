@@ -5,10 +5,10 @@ import Swal from "sweetalert2";
 
 import regFormSchema from "@/constant/form-schemas/RegistrationFormSchema";
 
-import Step1 from "./Step1";
-import Step2 from "./Step2";
-import Step3 from "./Step3";
-import { StepTracker } from "./StepTracker";
+import { StepTracker } from "./step-tracker";
+import Step1 from "./step1";
+import Step2 from "./step2";
+import Step3 from "./step3";
 
 const RegistrationForm: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<number>(1);

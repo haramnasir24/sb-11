@@ -3,7 +3,7 @@
 // import { useDropzone } from 'react-dropzone';
 // import "../globals.css";
 
-import RegistrationForm from "@/components/forms/RegistrationForm";
+import RegistrationForm from "@/components/forms/registration-form";
 
 // interface BasicInfo {
 //   name: string;
