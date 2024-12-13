@@ -37,8 +37,8 @@ const Schema = z.object({
 
   city: z.string().min(1, "City is required"), // City is required
 
-  accomodationDetails: z.string(),
-  isTeam: z.string(),
+  accomodationDetails: z.boolean(),
+  isTeam: z.boolean(),
   // Set a default value for paymentStatus if not provided
   paymentStatus: z.string().default("Submitted"),
 });
