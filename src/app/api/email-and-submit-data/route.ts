@@ -1,4 +1,4 @@
-import { google } from "googleapis";
+import { google } from "googleapis"; // Correct import
 import { type NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import Mail from "nodemailer/lib/mailer";
@@ -71,6 +71,9 @@ export async function POST(request: NextRequest) {
     oauth2Client.setCredentials({
       refresh_token: env.GOOGLE_REFRESH_TOKEN,
     });
+
+    // Check if the token is expired and refresh it if necessary
+    await refreshAccessTokenIfNeeded(oauth2Client);
 
     // Google Drive Setup
     const drive = google.drive({
@@ -171,6 +174,20 @@ export async function POST(request: NextRequest) {
       },
       { status: 500 },
     );
+  }
+}
+
+// Utility function to refresh the access token if expired
+async function refreshAccessTokenIfNeeded(oauth2Client: any) {
+  const tokenInfo = oauth2Client.getAccessToken();
+  const isTokenExpired =
+    tokenInfo && tokenInfo.expiry_date && tokenInfo.expiry_date <= Date.now();
+
+  if (isTokenExpired) {
+    console.log("Access token expired. Refreshing...");
+    const { credentials } = await oauth2Client.refreshAccessToken();
+    oauth2Client.setCredentials(credentials);
+    console.log("Access token refreshed.");
   }
 }
 
