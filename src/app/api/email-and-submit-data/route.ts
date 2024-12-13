@@ -22,11 +22,11 @@ export async function POST(request: NextRequest) {
     const data = parsed.data;
 
     // Extract image files from the form
-    const cnicImage = form.get("cnicImage") as File;
+    const profileImage = form.get("profileImage") as File;
     const uniIdImage = form.get("uniIdImage") as File;
     const paymentProofImage = form.get("paymentProofImage") as File;
 
-    if (!cnicImage || !uniIdImage || !paymentProofImage) {
+    if (!profileImage || !uniIdImage || !paymentProofImage) {
       return NextResponse.json(
         { message: "All images are required" },
         { status: 400 },
@@ -97,9 +97,9 @@ export async function POST(request: NextRequest) {
     );
 
     // Upload images to the transaction folder
-    const cnicImageUrl = await uploadFile(
+    const profileImageUrl = await uploadFile(
       drive,
-      cnicImage,
+      profileImage,
       transactionFolderId,
     );
     const uniIdImageUrl = await uploadFile(
@@ -118,11 +118,14 @@ export async function POST(request: NextRequest) {
       data.name,
       data.email,
       data.phone,
+      data.Cnic,
       data.university,
       data.guardianPhone,
       data.city,
       "Submitted", // Payment Status
-      cnicImageUrl,
+      data.accomodationDetails,
+      data.isTeam,
+      profileImageUrl,
       uniIdImageUrl,
       paymentProofImageUrl,
     ];
