@@ -1,7 +1,9 @@
 "use client";
+import axios from "axios";
 import React, { useState } from "react";
+import Swal from "sweetalert2";
 
-import regFormSchema from "@/constant/form-schemas/registration-form-schema";
+import RegFormSchema from "@/constant/form-schemas/registration-form-schema";
 
 import { StepTracker } from "./step-tracker";
 import Step1 from "./step1";
@@ -13,14 +15,15 @@ const RegistrationForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setIsSubmitting(true);
 
     // Validate form data using regFormSchema
-    const result = regFormSchema.safeParse(formData);
+    const result = RegFormSchema.safeParse(formData);
 
     if (!result.success) {
       // Map errors to the field names (keys)
+
       const errorMap = result.error.errors.reduce(
         (acc, err) => {
           acc[err.path.join(".")] = err.message;
@@ -49,18 +52,59 @@ const RegistrationForm: React.FC = () => {
           setCurrentStep(3);
         }
       }
-      // eslint-disable-next-line no-console
+
       console.log(errorMap);
       setFormData(formData);
       setIsSubmitting(false);
+      console.log(result.data);
       return;
     }
 
     // If no errors, reset errors and process the valid data
     setErrors({});
-    // eslint-disable-next-line no-console
-    console.log("Valid Data:", result.data);
+    const data = new FormData();
 
+    // Add form fields to the formData
+    data.append("name", formData.basicInfo.name);
+    data.append("email", formData.basicInfo.email);
+    data.append("phone", formData.basicInfo.phone);
+    data.append("university", formData.basicInfo.institute);
+    data.append("guardianPhone", formData.basicInfo.guardianPhone);
+    data.append("city", formData.basicInfo.city);
+    if (formData.basicInfo.studentCard) {
+      data.append("cnicImage", formData.basicInfo.studentCard);
+    }
+    if (formData.basicInfo.studentCard) {
+      data.append("uniIdImage", formData.basicInfo.studentCard);
+    }
+
+    if (formData.paymentInfo.paymentProof) {
+      data.append("paymentProofImage", formData.paymentInfo.paymentProof);
+    }
+    for (const [key, value] of data.entries()) {
+      console.log(key, value);
+    }
+    const response = await axios.post("/api/email-and-submit-data", data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    if (response.status === 200) {
+      // Success alert
+      Swal.fire({
+        icon: "success",
+        title: "Success!",
+        text: "Your data has been submitted successfully!",
+      });
+    } else {
+      // Error alert for unexpected responses
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong. Please try again.",
+      });
+    }
+    console.log("Response:", response.data); // Handle the response
     setTimeout(() => {
       setIsSubmitting(false);
     }, 2000);
@@ -75,15 +119,15 @@ const RegistrationForm: React.FC = () => {
       institute: string;
       guardianPhone: string;
       city: string;
-      profilePicture: string;
-      studentCard: string;
+      profilePicture: File | null;
+      studentCard: File | null;
     };
     applicationDetails: {
       accommodation: boolean;
       applyingAsTeam: boolean;
     };
     paymentInfo: {
-      paymentProof: string;
+      paymentProof: File | null;
     };
   }
 
@@ -96,11 +140,11 @@ const RegistrationForm: React.FC = () => {
       institute: "",
       guardianPhone: "",
       city: "",
-      profilePicture: "",
-      studentCard: "",
+      profilePicture: null,
+      studentCard: null,
     },
     applicationDetails: { accommodation: false, applyingAsTeam: false },
-    paymentInfo: { paymentProof: "" },
+    paymentInfo: { paymentProof: null },
   });
 
   const handleInputChange = (
@@ -108,6 +152,12 @@ const RegistrationForm: React.FC = () => {
     field: string,
     value: any,
   ) => {
+    if (value instanceof FileList) {
+      // Handle file input (extract the first file)
+      value = value[0] || null;
+      console.log("File Selected");
+    }
+    console.log(value);
     setFormData((prevState) => ({
       ...prevState,
       [section]: {
@@ -117,7 +167,6 @@ const RegistrationForm: React.FC = () => {
     }));
   };
 
-  // eslint-disable-next-line unused-imports/no-unused-vars
   const [bankDetails, setBankDetails] = useState({
     accountName: "",
     accountNumber: "",
