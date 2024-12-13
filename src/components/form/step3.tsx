@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import FileUpload from "../ui/file-upload";
 
+import FileUpload from "../ui/file-upload";
 
 interface Step3Props {
   formData: any;
