@@ -4,12 +4,12 @@ const RegFormSchema = z.object({
   basicInfo: z.object({
     name: z.string().min(1, "Name is required"),
     email: z.string().email("Invalid email address"),
-    phone: z.string().regex(/^03\d{9}$/, "Phone must be 10 digits"),
+    phone: z.string().regex(/^03\d{9}$/, "Phone must be 11 digits"),
     Cnic: z.string().regex(/^\d{13}$/, "CNIC must be 13 digits"),
     institute: z.string().min(1, "Institute is required"),
     guardianPhone: z
       .string()
-      .regex(/^03\d{9}$/, "Guardian phone must be 10 digits"),
+      .regex(/^03\d{9}$/, "Guardian phone must be 11 digits"),
     city: z.string().min(1, "City is required"),
     profilePicture: z
       .instanceof(File)

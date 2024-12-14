@@ -103,11 +103,34 @@ const RegistrationForm: React.FC = () => {
       },
     });
     if (response.status === 200) {
-      // Success alert
+      /// Success alert
       Swal.fire({
         icon: "success",
         title: "Success!",
         text: "Your data has been submitted successfully!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Reset form data to initial state
+          setFormData({
+            basicInfo: {
+              name: "",
+              email: "",
+              phone: "",
+              Cnic: "",
+              institute: "",
+              guardianPhone: "",
+              city: "",
+              profilePicture: null,
+              studentCard: null,
+            },
+            applicationDetails: { accommodation: false, applyingAsTeam: false },
+            paymentInfo: { paymentProof: null },
+          });
+          // Reset to first step
+          setCurrentStep(1);
+          // Redirect to homepage
+          window.location.href = "/";
+        }
       });
     } else {
       // Error alert for unexpected responses
