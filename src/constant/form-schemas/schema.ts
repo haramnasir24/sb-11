@@ -17,6 +17,7 @@ const Schema = z.object({
       phoneRegex,
       "Phone number must start with '03' and be 11 digits long",
     ),
+  Cnic: z.string().regex(/^\d{13}$/, "CNIC must be 13 digits"),
 
   university: z.string().min(1, "University is required"),
 
@@ -29,6 +30,8 @@ const Schema = z.object({
     ),
 
   city: z.string().min(1, "City is required"),
+  accomodationDetails: z.string().min(1, "Accomodation Details are required"),
+  isTeam: z.string().min(1, "Is Team is required"),
 
   paymentStatus: z.string().default("Submitted"),
 });

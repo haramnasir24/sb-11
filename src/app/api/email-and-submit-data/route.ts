@@ -16,17 +16,23 @@ export async function POST(request: NextRequest) {
     const parsed = Schema.safeParse(Object.fromEntries(form.entries()));
 
     if (!parsed.success) {
-      return NextResponse.json({ message: "Invalid data" }, { status: 400 });
+      return NextResponse.json(
+        {
+          message: "Invalid data",
+          errors: parsed.error.errors, // Return specific validation errors
+        },
+        { status: 400 },
+      );
     }
 
     const data = parsed.data;
 
     // Extract image files from the form
-    const cnicImage = form.get("cnicImage") as File;
+    const profileImage = form.get("profileImage") as File;
     const uniIdImage = form.get("uniIdImage") as File;
     const paymentProofImage = form.get("paymentProofImage") as File;
 
-    if (!cnicImage || !uniIdImage || !paymentProofImage) {
+    if (!profileImage || !uniIdImage || !paymentProofImage) {
       return NextResponse.json(
         { message: "All images are required" },
         { status: 400 },
@@ -72,6 +78,8 @@ export async function POST(request: NextRequest) {
       refresh_token: env.GOOGLE_REFRESH_TOKEN,
     });
 
+    await refreshAccessTokenIfNeeded(oauth2Client);
+
     // Google Drive Setup
     const drive = google.drive({
       version: "v3",
@@ -97,9 +105,9 @@ export async function POST(request: NextRequest) {
     );
 
     // Upload images to the transaction folder
-    const cnicImageUrl = await uploadFile(
+    const profileImageUrl = await uploadFile(
       drive,
-      cnicImage,
+      profileImage,
       transactionFolderId,
     );
     const uniIdImageUrl = await uploadFile(
@@ -118,11 +126,14 @@ export async function POST(request: NextRequest) {
       data.name,
       data.email,
       data.phone,
+      data.Cnic,
       data.university,
       data.guardianPhone,
       data.city,
       "Submitted", // Payment Status
-      cnicImageUrl,
+      data.accomodationDetails,
+      data.isTeam,
+      profileImageUrl,
       uniIdImageUrl,
       paymentProofImageUrl,
     ];
@@ -168,6 +179,19 @@ export async function POST(request: NextRequest) {
       },
       { status: 500 },
     );
+  }
+}
+
+// Utility function to refresh the access token if expired
+async function refreshAccessTokenIfNeeded(oauth2Client: any) {
+  const tokenInfo = oauth2Client.getAccessToken();
+  const isTokenExpired =
+    tokenInfo && tokenInfo.expiry_date && tokenInfo.expiry_date <= Date.now();
+  if (isTokenExpired) {
+    console.log("Access token expired. Refreshing...");
+    const { credentials } = await oauth2Client.refreshAccessToken();
+    oauth2Client.setCredentials(credentials);
+    console.log("Access token refreshed.");
   }
 }
 

@@ -68,11 +68,24 @@ const RegistrationForm: React.FC = () => {
     data.append("name", formData.basicInfo.name);
     data.append("email", formData.basicInfo.email);
     data.append("phone", formData.basicInfo.phone);
+    data.append("Cnic", formData.basicInfo.Cnic);
     data.append("university", formData.basicInfo.institute);
     data.append("guardianPhone", formData.basicInfo.guardianPhone);
     data.append("city", formData.basicInfo.city);
+    console.log(
+      formData.applicationDetails.accommodation,
+      formData.applicationDetails.applyingAsTeam,
+    );
+    data.append(
+      "accomodationDetails",
+      formData.applicationDetails.accommodation ? "yes" : "no",
+    );
+    data.append(
+      "isTeam",
+      formData.applicationDetails.applyingAsTeam ? "yes" : "no",
+    );
     if (formData.basicInfo.studentCard) {
-      data.append("cnicImage", formData.basicInfo.studentCard);
+      data.append("profileImage", formData.basicInfo.studentCard);
     }
     if (formData.basicInfo.studentCard) {
       data.append("uniIdImage", formData.basicInfo.studentCard);
