@@ -103,7 +103,6 @@ const Step1: React.FC<BasicInfoProps> = ({
       )}
     </div>
     <div className="mb-6">
-      ¿
       <h3 className="mb-4 text-xl font-semibold text-purple-600">
         Student Card
       </h3>
