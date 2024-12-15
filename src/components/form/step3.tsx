@@ -1,3 +1,4 @@
+/* eslint-disable unused-imports/no-unused-vars */
 "use client";
 import React from "react";
 
@@ -41,8 +42,8 @@ const Step3: React.FC<Step3Props> = ({
       section="paymentInfo"
       field="paymentProof"
       fileName={formData.paymentInfo.paymentProof}
-      onFileSelect={(fileName) =>
-        handleInputChange("paymentInfo", "paymentProof", fileName)
+      onFileSelect={(file) =>
+        handleInputChange("paymentInfo", "paymentProof", file)
       }
     />
     {errors?.paymentProof && (

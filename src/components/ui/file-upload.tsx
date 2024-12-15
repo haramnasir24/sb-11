@@ -6,8 +6,8 @@ import { useDropzone } from "react-dropzone";
 interface FileUploadProps {
   section: string;
   field: string;
-  fileName: File | null;
-  onFileSelect: (file: File | null) => void; // Accept the File object instead of just the fileName
+  fileName: File | null; // Change to accept File | null
+  onFileSelect: (file: File | null) => void; // Accept the File object or null
 }
 
 const FileUpload: React.FC<FileUploadProps> = ({
@@ -22,7 +22,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
       console.log("Files dropped:", acceptedFiles);
       if (file) {
         console.log(file);
-        onFileSelect(file); // Pass the selected file name back to the parent
+        onFileSelect(file); // Pass the selected file back to the parent
       }
     },
     multiple: false,
