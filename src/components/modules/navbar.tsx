@@ -1,6 +1,7 @@
 "use client";
 
 import { Menu } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -13,17 +14,21 @@ export default function ModulesNavbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed left-0 right-0 top-0 z-50 bg-purple-900">
+    <nav className="z-5 absolute left-0 right-0 top-0 bg-transparent">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <div className="flex items-center">
-            <Link
-              href="/"
-              className="text:lg font-bold uppercase text-white md:text-2xl"
-            >
-              Logo
+          <div className="flex h-24 items-center justify-between">
+            <Link href="/">
+              <Image
+                src="/images/sb11-logo.png"
+                alt="Science Bee Logo"
+                width={80}
+                height={80}
+                className="h-16 w-auto"
+              />
             </Link>
           </div>
+
           <div className="hidden md:block">
             <div className="ml-5 flex items-baseline space-x-4 lg:ml-10">
               {navItems.map(({ name, link }, index) => (

@@ -18,7 +18,7 @@ export default function Contact() {
   return (
     <footer
       id="contact"
-      className="iinset-0 border-t bg-gradient-to-br from-[#03071E] via-[#3C096C] to-[#9D4EDD] text-white"
+      className="inset-0 border-t bg-gradient-to-br from-[#03071E] via-[#2F114A] to-[#9D4EDD] text-white"
     >
       <div className="container px-16 py-12 md:px-20 md:py-16 lg:py-20">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">

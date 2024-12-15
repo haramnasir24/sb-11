@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-import { Card, CardContent } from "@/components/ui/card";
-
 interface CountdownTimerProps {
   targetDate: Date;
   onComplete?: () => void;
@@ -64,12 +62,14 @@ export function CountdownTimer({
   return (
     <div className="flex flex-wrap justify-center gap-4">
       {Object.entries(timeLeft).map(([unit, value]) => (
-        <Card key={unit} className="w-24">
-          <CardContent className="flex flex-col items-center justify-center p-4">
-            <span className="text-2xl font-bold md:text-3xl">{value}</span>
-            <span className="text-xs uppercase md:text-sm">{unit}</span>
-          </CardContent>
-        </Card>
+        <div key={unit} className="w-24 text-center">
+          <span className="text-2xl font-bold text-white md:text-4xl">
+            {value.toString().padStart(2, "0")}
+          </span>
+          <span className="block text-xs uppercase text-white md:text-base">
+            {unit}
+          </span>
+        </div>
       ))}
     </div>
   );

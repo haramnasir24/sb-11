@@ -13,7 +13,7 @@ export default function ModulesPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-deep to-purple-light">
+    <div className="min-h-screen bg-gradient-to-br from-[#03071E] via-[#2F114A] to-[#9D4EDD]">
       <main className="container mx-auto px-6 py-20">
         <h1 className="shadow-text mb-8 mt-10 text-center text-4xl font-bold text-yellow-accent">
           Science Bee Modules

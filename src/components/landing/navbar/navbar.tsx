@@ -1,23 +1,9 @@
 "use client";
 
 import { Menu } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-
-// const moduleItems = [
-//   { name: "Crimeline", href: "/modules/crimeline" },
-//   { name: "Escape Room", href: "/modules/escape-room" },
-//   { name: "Medical Mayhem", href: "/modules/medical-mayhem" },
-//   { name: "Scirun", href: "/modules/scirun" },
-//   { name: "Crack it out", href: "/modules/crack-it-out" },
-//   { name: "The Psych Realm", href: "/modules/psych-realm" },
-//   { name: "Mathelatics", href: "/modules/mathelatics" },
-//   { name: "Speed Programming", href: "/modules/speed-programming" },
-//   { name: "RoboWars", href: "/modules/robowars" },
-//   { name: "Chemathon", href: "/modules/chemathon" },
-//   { name: "HeatOps", href: "/modules/heatops" },
-//   { name: "See all", href: "/modules" },
-// ];
 
 const navItems = [
   { name: "Home", link: "/" },
@@ -31,24 +17,23 @@ const navItems = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  // const router = useRouter();
-
-  // const handleRegisterClick = () => {
-  //   router.push("/register");
-  // };
 
   return (
-    <nav className="fixed left-0 right-0 top-0 z-50 bg-purple-900">
+    <nav className="absolute left-0 right-0 top-0 z-50 bg-transparent">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <div className="flex items-center">
-            <Link
-              href="/"
-              className="text:lg font-bold uppercase text-white md:text-2xl"
-            >
-              Logo
+          <div className="flex h-24 items-center justify-between">
+            <Link href="/">
+              <Image
+                src="/images/sb11-logo.png"
+                alt="Science Bee Logo"
+                width={80}
+                height={80}
+                className="h-16 w-auto"
+              />
             </Link>
           </div>
+
           <div className="hidden md:block">
             <div className="ml-5 flex items-baseline space-x-4 lg:ml-10">
               {navItems.map(({ name, link }, index) => (
@@ -118,3 +103,5 @@ export default function Navbar() {
     </nav>
   );
 }
+
+// from-[#03071E] via-[#3C096C] to-[#2F114A]

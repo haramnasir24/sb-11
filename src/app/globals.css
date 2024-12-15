@@ -2,6 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "NeueMontreal";
+  src: url("/fonts/NeueMontreal-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NeueMontreal-Bold";
+  src: url("/fonts/NeueMontreal-Bold.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "AkiraExpanded";
+  src: url("/fonts/Akira-Expanded.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Aventi-Bold";
+  src: url("/fonts/Aventi-Bold.ttf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "kaffe-regular";
+  src: url("/fonts/kaffe-regular.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
 /* ! DON'T REMOVE SHIT WITHOUT SEEING WHAT IT UNDOES OR DOES */
 @layer base {
   :root {
@@ -19,7 +54,16 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "NeueMontreal", Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "NeueMontreal-Bold", "Georgia", serif;
 }
 
 .shadow-text {

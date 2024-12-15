@@ -19,7 +19,7 @@ export default function HeroSection() {
         quality={100}
         priority
       />
-      <div className="absolute inset-0 bg-gradient-to-br from-[#03071E] via-[#3C096C] to-[#9D4EDD] opacity-80" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#03071E] via-[#2F114A] to-[#9D4EDD] opacity-80" />
 
       {/* Content */}
       <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 py-20 text-center">
