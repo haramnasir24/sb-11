@@ -1,52 +1,54 @@
-/* eslint-disable unused-imports/no-unused-vars */
 "use client";
 import React from "react";
-import { useDropzone } from "react-dropzone";
 
-interface FileUploadProps {
-  section: string;
-  field: string;
-  fileName: File;
-  onFileSelect: (file: File | null) => void; // Accept the File object instead of just the fileName
+import FileUpload from "../ui/file-upload";
+
+interface Step3Props {
+  formData: any;
+  handleInputChange: any;
+  bankDetails: any;
+  errors: any;
 }
 
-const FileUpload: React.FC<FileUploadProps> = ({
-  section,
-  field,
-  fileName,
-  onFileSelect,
-}) => {
-  const { getRootProps, getInputProps } = useDropzone({
-    onDrop: (acceptedFiles) => {
-      const file = acceptedFiles[0];
-      console.log("Files dropped:", acceptedFiles);
-      if (file) {
-        console.log(file);
-        onFileSelect(file); // Pass the selected file name back to the parent
-      }
-    },
-    multiple: false,
-  });
-
-  return (
-    <div>
-      <div
-        {...getRootProps()}
-        className="cursor-pointer rounded-lg border-2 border-dashed border-gray-300 p-4 hover:bg-gray-100"
-      >
-        <input {...getInputProps()} />
-        <p className="text-center text-purple-600">
-          Drag & drop your file here, or click to select
-        </p>
-      </div>
-
-      {fileName && (
-        <div className="mt-2 text-gray-700">
-          <strong>Selected file:</strong> {fileName.name}
-        </div>
-      )}
+const Step3: React.FC<Step3Props> = ({
+  formData,
+  handleInputChange,
+  errors,
+  bankDetails,
+}) => (
+  <div>
+    <h3 className="mb-4 text-xl font-semibold text-purple-600">
+      Bank Details:
+    </h3>
+    <div className="mb-4">
+      <p>
+        <strong>Account Name:</strong> {bankDetails.accountName}
+      </p>
+      <p>
+        <strong>Account Number:</strong> {bankDetails.accountNumber}
+      </p>
+      <p>
+        <strong>Bank Name:</strong> {bankDetails.bankName}
+      </p>
+      <p>
+        <strong>Branch Name:</strong> {bankDetails.branchName}
+      </p>
     </div>
-  );
-};
+    <h3 className="mb-4 text-xl font-semibold text-purple-600">
+      Payment Proof
+    </h3>
+    <FileUpload
+      section="paymentInfo"
+      field="paymentProof"
+      fileName={formData.paymentInfo.paymentProof}
+      onFileSelect={(fileName) =>
+        handleInputChange("paymentInfo", "paymentProof", fileName)
+      }
+    />
+    {errors?.paymentProof && (
+      <p className="text-xs text-red-500">{errors.paymentProof}</p>
+    )}
+  </div>
+);
 
-export default FileUpload;
+export default Step3;
