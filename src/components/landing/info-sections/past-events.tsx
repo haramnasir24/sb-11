@@ -12,27 +12,27 @@ import {
 const CAROUSEL_ITEMS = [
   {
     id: 1,
-    image: "/image2.jpg",
+    image: "/images/image2.jpg",
   },
   {
     id: 2,
-    image: "/image3.jpg",
+    image: "/images/image3.jpg",
   },
   {
     id: 3,
-    image: "/image1.jpg",
+    image: "/images/image1.jpg",
   },
   {
     id: 4,
-    image: "/buzz.jpg",
+    image: "/images/buzz.jpg",
   },
   {
     id: 5,
-    image: "/bee.jpg",
+    image: "/images/bee.jpg",
   },
   {
     id: 6,
-    image: "/image1.jpg",
+    image: "/images/image1.jpg",
   },
 ];
 

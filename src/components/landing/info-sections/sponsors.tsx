@@ -2,11 +2,11 @@ import Image from "next/image";
 import React from "react";
 
 const SPONSORS = [
-  { name: "Sponsor 1", logo: "/about.jpg" },
-  { name: "Sponsor 2", logo: "/about2.jpg" },
-  { name: "Sponsor 3", logo: "/image1.jpg" },
-  { name: "Sponsor 4", logo: "/image2.jpg" },
-  { name: "Sponsor 5", logo: "/image3.jpg" },
+  { name: "Sponsor 1", logo: "/images/about.jpg" },
+  { name: "Sponsor 2", logo: "/images/about2.jpg" },
+  { name: "Sponsor 3", logo: "/images/image1.jpg" },
+  { name: "Sponsor 4", logo: "/images/image2.jpg" },
+  { name: "Sponsor 5", logo: "/images/image3.jpg" },
 ];
 
 const Sponsors = () => {
