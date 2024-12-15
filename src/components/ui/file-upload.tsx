@@ -6,7 +6,7 @@ import { useDropzone } from "react-dropzone";
 interface FileUploadProps {
   section: string;
   field: string;
-  fileName: File;
+  fileName: File | null;
   onFileSelect: (file: File | null) => void; // Accept the File object instead of just the fileName
 }
 

@@ -88,6 +88,22 @@ const Step1: React.FC<BasicInfoProps> = ({
 
     <div className="mb-6">
       <h3 className="mb-4 text-xl font-semibold text-purple-600">
+        Referral Code (Optional)
+      </h3>
+      <InputField
+        label="Referral Code"
+        value={formData.basicInfo.referralCode}
+        onChange={(e) =>
+          handleInputChange("basicInfo", "referralCode", e.target.value)
+        }
+      />
+      {errors?.referralCode && (
+        <p className="text-xs text-red-500">{errors.referralCode}</p>
+      )}
+    </div>
+
+    <div className="mb-6">
+      <h3 className="mb-4 text-xl font-semibold text-purple-600">
         Profile Picture
       </h3>
       <FileUpload
@@ -102,20 +118,21 @@ const Step1: React.FC<BasicInfoProps> = ({
         <p className="text-xs text-red-500">{errors.profilePicture}</p>
       )}
     </div>
+
     <div className="mb-6">
       <h3 className="mb-4 text-xl font-semibold text-purple-600">
-        Student Card
+        Student Card / CNIC <span className="text-red-500">*</span>
       </h3>
       <FileUpload
         section="basicInfo"
-        field="studentCard"
-        fileName={formData.basicInfo.studentCard}
+        field="studentCardCnic"
+        fileName={formData.basicInfo.studentCardCnic}
         onFileSelect={(fileName) =>
-          handleInputChange("basicInfo", "studentCard", fileName)
+          handleInputChange("basicInfo", "studentCardCnic", fileName)
         }
       />
-      {errors?.studentCard && (
-        <p className="text-xs text-red-500">{errors.studentCard}</p>
+      {errors?.studentCardCnic && (
+        <p className="text-xs text-red-500">{errors.studentCardCnic}</p>
       )}
     </div>
   </div>
