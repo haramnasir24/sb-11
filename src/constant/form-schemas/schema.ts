@@ -4,6 +4,7 @@ import { z } from "zod";
 const phoneRegex = /^03\d{9}$/; // Phone should start with '03' and have exactly 11 digits
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // Basic email validation regex
 
+// Main schema
 const Schema = z.object({
   name: z.string().min(1, "Name is required"),
 
@@ -30,10 +31,15 @@ const Schema = z.object({
     ),
 
   city: z.string().min(1, "City is required"),
+  referralCode: z.string().optional().default("-"),
   accomodationDetails: z.string().min(1, "Accomodation Details are required"),
   isTeam: z.string().min(1, "Is Team is required"),
+  teamName: z.string().optional().default("-"),
+  nights: z.string().optional().default("-"),
 
   paymentStatus: z.string().default("Submitted"),
+
+  teamMembers: z.string().optional().default(""),
 });
 
 export default Schema;

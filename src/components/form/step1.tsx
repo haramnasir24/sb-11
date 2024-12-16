@@ -125,14 +125,14 @@ const Step1: React.FC<BasicInfoProps> = ({
       </h3>
       <FileUpload
         section="basicInfo"
-        field="studentCardCnic"
-        fileName={formData.basicInfo.studentCardCnic}
+        field="studentCard"
+        fileName={formData.basicInfo.studentCard}
         onFileSelect={(fileName) =>
-          handleInputChange("basicInfo", "studentCardCnic", fileName)
+          handleInputChange("basicInfo", "studentCard", fileName)
         }
       />
-      {errors?.studentCardCnic && (
-        <p className="text-xs text-red-500">{errors.studentCardCnic}</p>
+      {errors?.studentCard && (
+        <p className="text-xs text-red-500">{errors.studentCard}</p>
       )}
     </div>
   </div>

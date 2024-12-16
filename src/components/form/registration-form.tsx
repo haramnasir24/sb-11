@@ -72,10 +72,8 @@ const RegistrationForm: React.FC = () => {
     data.append("university", formData.basicInfo.institute);
     data.append("guardianPhone", formData.basicInfo.guardianPhone);
     data.append("city", formData.basicInfo.city);
-    console.log(
-      formData.applicationDetails.accommodation,
-      formData.applicationDetails.applyingAsTeam,
-    );
+
+    data.append("referralCode", formData.basicInfo.referralCode);
     data.append(
       "accomodationDetails",
       formData.applicationDetails.accommodation ? "yes" : "no",
@@ -84,6 +82,30 @@ const RegistrationForm: React.FC = () => {
       "isTeam",
       formData.applicationDetails.applyingAsTeam ? "yes" : "no",
     );
+
+    if (formData.applicationDetails.accommodation) {
+      data.append("nights", formData.applicationDetails.nights);
+    }
+
+    if (formData.applicationDetails.applyingAsTeam) {
+      data.append("teamName", formData.applicationDetails.teamName);
+      data.append(
+        "teamMembers",
+        JSON.stringify(
+          formData.applicationDetails.teamMembers.map((member) => ({
+            memberName: member.name,
+            memberCNIC: member.cnic,
+          })),
+        ),
+      );
+
+      formData.applicationDetails.teamMembers.map((member, index) => {
+        if (member.studentCard) {
+          data.append(`studentCardImage${index + 1}`, member.studentCard);
+        }
+      });
+    }
+
     if (formData.basicInfo.studentCard) {
       data.append("profileImage", formData.basicInfo.studentCard);
     }
@@ -122,8 +144,21 @@ const RegistrationForm: React.FC = () => {
               city: "",
               profilePicture: null,
               studentCard: null,
+              referralCode: "",
             },
-            applicationDetails: { accommodation: false, applyingAsTeam: false },
+            applicationDetails: {
+              accommodation: false,
+              applyingAsTeam: false,
+              nights: "",
+              teamName: "",
+              teamMembers: [
+                {
+                  name: "",
+                  cnic: "",
+                  studentCard: null,
+                },
+              ],
+            },
             paymentInfo: { paymentProof: null },
           });
           // Reset to first step
@@ -157,10 +192,18 @@ const RegistrationForm: React.FC = () => {
       city: string;
       profilePicture: File | null;
       studentCard: File | null;
+      referralCode: string;
     };
     applicationDetails: {
       accommodation: boolean;
       applyingAsTeam: boolean;
+      nights: string;
+      teamName: string;
+      teamMembers: Array<{
+        name: string;
+        cnic: string;
+        studentCard: File | null;
+      }>;
     };
     paymentInfo: {
       paymentProof: File | null;
@@ -178,8 +221,21 @@ const RegistrationForm: React.FC = () => {
       city: "",
       profilePicture: null,
       studentCard: null,
+      referralCode: "",
     },
-    applicationDetails: { accommodation: false, applyingAsTeam: false },
+    applicationDetails: {
+      accommodation: false,
+      applyingAsTeam: false,
+      nights: "",
+      teamName: "",
+      teamMembers: [
+        {
+          name: "",
+          cnic: "",
+          studentCard: null,
+        },
+      ],
+    },
     paymentInfo: { paymentProof: null },
   });
 

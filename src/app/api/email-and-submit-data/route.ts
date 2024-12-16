@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           message: "Invalid data",
-          errors: parsed.error.errors, // Return specific validation errors
+          errors: parsed.error.errors,
         },
         { status: 400 },
       );
@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
 
     const data = parsed.data;
 
-    // Extract image files from the form
+    // Extract image files from the form data.profileImage
     const profileImage = form.get("profileImage") as File;
     const uniIdImage = form.get("uniIdImage") as File;
     const paymentProofImage = form.get("paymentProofImage") as File;
@@ -51,12 +51,10 @@ export async function POST(request: NextRequest) {
       requireTLS: true,
     });
 
-    // Email content
     const mailOptions: Mail.Options = {
       from: env.SMTP_EMAIL_FROM,
       to: data.email,
       subject: "We have received your Science Bee Registration Request!",
-      text: `Hello ${data.name}!\n\nThank you so much for signing up for the Science Bee XI.\n\nHave a great day.`,
       html: `
         <html>
           <body>
@@ -86,17 +84,12 @@ export async function POST(request: NextRequest) {
       auth: oauth2Client,
     });
 
-    // Create the main folder if it doesn't exist
     const mainFolderId = env.GOOGLE_DRIVE_FOLDER_ID!;
-
-    // Find the current row count in the sheet
     const sheetInfo = await sheets.spreadsheets.values.get({
       spreadsheetId: env.GOOGLE_SHEET_ID!,
       range: "Sheet1!A:A",
     });
     const rowNumber = (sheetInfo.data.values?.length || 0) + 1;
-
-    // Create a new folder for the current transaction
     const transactionFolderName = `Transaction-${rowNumber}`;
     const transactionFolderId = await createFolder(
       drive,
@@ -104,7 +97,6 @@ export async function POST(request: NextRequest) {
       mainFolderId,
     );
 
-    // Upload images to the transaction folder
     const profileImageUrl = await uploadFile(
       drive,
       profileImage,
@@ -121,7 +113,39 @@ export async function POST(request: NextRequest) {
       transactionFolderId,
     );
 
-    // Prepare values for Google Sheets
+    const teamMembersData = [];
+    const teamMembersCopy = JSON.parse(data.teamMembers);
+    if (teamMembersCopy.length > 5) {
+      return NextResponse.json(
+        { message: "A team can have a maximum of 5 members" },
+        { status: 400 },
+      );
+    }
+
+    for (const [index, member] of teamMembersCopy.entries()) {
+      const studentCardImage = form.get(`studentCardImage${index + 1}`) as File;
+      if (!studentCardImage) {
+        return NextResponse.json(
+          {
+            message: `StudentCardImage is required for team member ${index + 1}`,
+          },
+          { status: 400 },
+        );
+      }
+
+      const studentCardImageUrl = await uploadFile(
+        drive,
+        studentCardImage,
+        transactionFolderId,
+      );
+
+      teamMembersData.push(
+        member.memberName || "",
+        member.memberCNIC || "",
+        studentCardImageUrl,
+      );
+    }
+
     const values = [
       data.name,
       data.email,
@@ -130,12 +154,16 @@ export async function POST(request: NextRequest) {
       data.university,
       data.guardianPhone,
       data.city,
-      "Submitted", // Payment Status
-      data.accomodationDetails,
-      data.isTeam,
+      data.referralCode,
+      "Submitted",
       profileImageUrl,
       uniIdImageUrl,
+      data.accomodationDetails, // Assuming this is a boolean
+      data.nights,
+      data.isTeam,
+      data.teamName,
       paymentProofImageUrl,
+      ...teamMembersData, // Includes URLs for StudentCardImage
     ];
 
     const sheetRequest = {
@@ -149,19 +177,11 @@ export async function POST(request: NextRequest) {
       auth: sheets.context._options.auth,
     };
 
-    // Send email and append data to the Google Sheet
     await Promise.all([
       new Promise<string>((resolve, reject) => {
         transport.sendMail(mailOptions, (err, info) => {
-          if (err) {
-            // eslint-disable-next-line no-console
-            console.error("Error sending email:", err);
-            reject("Email not sent");
-          } else {
-            // eslint-disable-next-line no-console
-            console.log("Email sent:", info.response);
-            resolve("Email sent");
-          }
+          if (err) reject("Email not sent");
+          else resolve("Email sent");
         });
       }),
       sheets.spreadsheets.values.append(sheetRequest),
@@ -171,31 +191,25 @@ export async function POST(request: NextRequest) {
       message: "Email sent and data appended to Google Sheets",
     });
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error("Error during request:", error);
     return NextResponse.json(
       {
-        error: `Failed to send email or append data: ${(error as any).message}`,
+        error: `Failed to process request: ${(error as any).message}`,
       },
       { status: 500 },
     );
   }
 }
 
-// Utility function to refresh the access token if expired
 async function refreshAccessTokenIfNeeded(oauth2Client: any) {
   const tokenInfo = oauth2Client.getAccessToken();
   const isTokenExpired =
     tokenInfo && tokenInfo.expiry_date && tokenInfo.expiry_date <= Date.now();
   if (isTokenExpired) {
-    console.log("Access token expired. Refreshing...");
     const { credentials } = await oauth2Client.refreshAccessToken();
     oauth2Client.setCredentials(credentials);
-    console.log("Access token refreshed.");
   }
 }
 
-// Utility function to create a folder in Google Drive
 async function createFolder(
   drive: any,
   folderName: string,
@@ -212,17 +226,12 @@ async function createFolder(
       requestBody: folderMetadata,
       fields: "id",
     });
-    // eslint-disable-next-line no-console
-    console.log(`Folder created: ${folder.data.id}`);
     return folder.data.id!;
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error("Error creating folder:", error);
     throw new Error("Failed to create folder in Google Drive");
   }
 }
 
-// Utility function to upload a file to Google Drive
 async function uploadFile(
   drive: any,
   file: File,
@@ -250,12 +259,8 @@ async function uploadFile(
       media,
       fields: "id",
     });
-    // eslint-disable-next-line no-console
-    console.log(`File uploaded: ${res.data.id}`);
     return `https://drive.google.com/uc?id=${res.data.id}`;
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error("Error uploading file:", error);
     throw new Error("Failed to upload file to Google Drive");
   }
 }

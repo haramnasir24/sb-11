@@ -24,7 +24,11 @@ const Step2: React.FC<Step2Props> = ({
   );
 
   const handleAddMember = () => {
-    const newMember = { name: "", cnic: "", studentCard: null }; // Set studentCard as null initially
+    if (teamMembers.length >= 5) {
+      alert("You can have a maximum of 5 team members.");
+      return;
+    }
+    const newMember = { name: "", cnic: "", studentCard: null }; // Default values
     setTeamMembers([...teamMembers, newMember]);
     handleInputChange("applicationDetails", "teamMembers", [
       ...teamMembers,
@@ -58,6 +62,8 @@ const Step2: React.FC<Step2Props> = ({
       <h3 className="mb-4 text-xl font-semibold text-purple-600">
         Details for Applying
       </h3>
+
+      {/* Accommodation Selection */}
       <div>
         <label className="mb-2 block text-purple-600">
           Do you want accommodation?
@@ -83,7 +89,7 @@ const Step2: React.FC<Step2Props> = ({
               Select number of nights:
             </label>
             <select
-              value={formData.applicationDetails.nights || "2 Nights"}
+              value={formData.applicationDetails.nights || "2 Nights"} // Default fallback value
               onChange={(e) =>
                 handleInputChange(
                   "applicationDetails",
@@ -99,6 +105,7 @@ const Step2: React.FC<Step2Props> = ({
           </div>
         )}
 
+        {/* Applying as Team or Individual */}
         <label className="mb-2 mt-6 block text-purple-600">
           Applying as a team or individual?
         </label>
@@ -119,12 +126,13 @@ const Step2: React.FC<Step2Props> = ({
           <option value="Team">Team</option>
         </select>
 
+        {/* Team Details */}
         {formData.applicationDetails.applyingAsTeam && (
           <div className="mt-4">
             <label className="mb-2 block text-purple-600">Team Name:</label>
             <input
               type="text"
-              value={formData.applicationDetails.teamName || ""}
+              value={formData.applicationDetails.teamName || ""} // Default fallback value
               onChange={(e) =>
                 handleInputChange(
                   "applicationDetails",
@@ -135,6 +143,7 @@ const Step2: React.FC<Step2Props> = ({
               className="w-full rounded border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-purple-600"
             />
 
+            {/* Team Members */}
             <div className="mt-6">
               <h4 className="mb-4 text-lg font-semibold text-purple-600">
                 Team Members ({teamMembers.length}):
@@ -144,7 +153,7 @@ const Step2: React.FC<Step2Props> = ({
                   <label className="mb-2 block text-purple-600">Name:</label>
                   <input
                     type="text"
-                    value={member.name}
+                    value={member.name || ""} // Default fallback value
                     onChange={(e) =>
                       handleMemberChange(index, "name", e.target.value)
                     }
@@ -156,7 +165,7 @@ const Step2: React.FC<Step2Props> = ({
                   </label>
                   <input
                     type="text"
-                    value={member.cnic}
+                    value={member.cnic || ""} // Default fallback value
                     onChange={(e) =>
                       handleMemberChange(index, "cnic", e.target.value)
                     }
@@ -169,7 +178,7 @@ const Step2: React.FC<Step2Props> = ({
                   <FileUpload
                     section={`teamMember_${index}`}
                     field="studentCard"
-                    fileName={member.studentCard} // Pass the File or null
+                    fileName={member.studentCard} // Default value for file input (null or file object)
                     onFileSelect={(file) => handleFileSelect(index, file)} // Handle file selection
                   />
 
