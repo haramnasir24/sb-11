@@ -27,9 +27,9 @@ export default function Navbar() {
               <Image
                 src="/images/sb11-logo.png"
                 alt="Science Bee Logo"
-                width={60} // Logo size reduced
+                width={60}
                 height={60}
-                className="h-12 w-auto" // Smaller logo
+                className="h-12 w-auto"
               />
             </Link>
           </div>

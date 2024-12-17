@@ -17,7 +17,7 @@ export default function Contact() {
 
   return (
     <footer
-      id="form-footer"
+      id="contact"
       className="inset-0 w-full items-center justify-center border-t bg-gradient-to-br from-[#03071E] via-[#03071E] to-[#03071E] text-white"
     >
       <div className="container px-16 py-12 md:px-20 md:py-16 lg:py-20">
