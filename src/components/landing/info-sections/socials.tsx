@@ -27,11 +27,21 @@ const Socials = () => {
   return (
     <section
       id="socials"
-      className="from-primary to-primary-foreground bg-gradient-to-br py-10 md:py-16"
+      className="relative bg-gradient-to-t from-[#03071E] to-[#24114A] py-10 md:py-16"
     >
+      {/* Top Glowing Line */}
+      <div
+        className="absolute left-0 top-0 h-[4px] w-full"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(216, 180, 248, 0.8), rgba(216, 180, 248, 0.2), rgba(216, 180, 248, 0.8))",
+          boxShadow: "0 0 8px 4px rgba(216, 180, 248, 0.6)",
+        }}
+      ></div>
+
       <div className="container mx-auto px-4">
-        <h2 className="text-secondary mb-8 text-center text-xl font-bold md:text-3xl">
-          What happens in Science Bee
+        <h2 className="mb-8 text-center text-xl font-bold text-[#D8B4F8] md:text-3xl">
+          What happens in Science Bee?
         </h2>
         <div className="rounded-lg bg-gradient-to-br from-[#03071E] via-[#3C096C] to-[#8f65b1] p-8 shadow-lg">
           <h3 className="mb-6 text-center text-base font-bold text-yellow-400 md:text-2xl">
@@ -44,6 +54,15 @@ const Socials = () => {
           </div>
         </div>
       </div>
+      {/* Bottom Glowing Line */}
+      <div
+        className="absolute bottom-0 left-0 h-[4px] w-full"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(216, 180, 248, 0.8), rgba(216, 180, 248, 0.2), rgba(216, 180, 248, 0.8))",
+          boxShadow: "0 0 8px 4px rgba(216, 180, 248, 0.6)",
+        }}
+      ></div>
     </section>
   );
 };

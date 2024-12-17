@@ -1,4 +1,5 @@
 "use client";
+
 import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import { FaInstagram } from "react-icons/fa6";
@@ -18,7 +19,7 @@ export default function FormFooter() {
   return (
     <footer
       id="form-footer"
-      className="inset-0 w-full items-center justify-center border-t bg-gradient-to-br from-[#03071E] via-[#2F114A] to-[#9D4EDD] text-white"
+      className="inset-0 w-full items-center justify-center border-t bg-gradient-to-br from-[#03071E] via-[#03071E] to-[#03071E] text-white"
     >
       <div className="px-16 py-12 md:px-20 md:py-16 lg:py-20">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">

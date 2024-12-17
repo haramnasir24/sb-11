@@ -211,79 +211,89 @@ const RegistrationForm: React.FC = () => {
   });
 
   return (
-    <div className="mx-auto mt-10 max-w-lg rounded-lg border border-gray-300 p-6">
-      <StepTracker currentStep={currentStep} />
-      {currentStep === 1 && (
-        <Step1
-          errors={Object.keys(errors)
-            .filter((key) => key.startsWith("basicInfo."))
-            .reduce(
-              (acc, key) => {
-                acc[key.replace("basicInfo.", "")] = errors[key];
-                return acc;
-              },
-              {} as Record<string, string>,
-            )}
-          formData={formData}
-          handleInputChange={handleInputChange}
-        />
-      )}
-
-      {currentStep === 2 && (
-        <Step2
-          errors={Object.keys(errors)
-            .filter((key) => key.startsWith("applicationDetails."))
-            .reduce(
-              (acc, key) => {
-                acc[key.replace("applicationDetails.", "")] = errors[key];
-                return acc;
-              },
-              {} as Record<string, string>,
-            )}
-          formData={formData}
-          handleInputChange={handleInputChange}
-        />
-      )}
-
-      {currentStep === 3 && (
-        <Step3
-          errors={Object.keys(errors)
-            .filter((key) => key.startsWith("paymentInfo."))
-            .reduce(
-              (acc, key) => {
-                acc[key.replace("paymentInfo.", "")] = errors[key];
-                return acc;
-              },
-              {} as Record<string, string>,
-            )}
-          formData={formData}
-          handleInputChange={handleInputChange}
-          bankDetails={bankDetails}
-        />
-      )}
-      <div className="mt-6 flex justify-between">
-        <button
-          onClick={() => setCurrentStep((prev) => Math.max(prev - 1, 1))}
-          className={`rounded bg-purple-600 px-4 py-2 text-white ${currentStep === 1 ? "invisible" : ""}`}
-        >
-          Previous
-        </button>
-        {currentStep !== 3 && (
-          <button
-            onClick={() => setCurrentStep((prev) => Math.min(prev + 1, 3))}
-            className="rounded bg-purple-600 px-4 py-2 text-white"
-          >
-            Next
-          </button>
+    <div
+      className="flex min-h-screen items-center justify-center bg-cover bg-center"
+      style={{
+        backgroundColor: "#03071E",
+        backgroundImage: "url('images/regBack.png')",
+      }}
+    >
+      <div className="mx-auto mb-20 mt-10 max-w-lg rounded-lg border border-gray-300 bg-black p-6 shadow-2xl backdrop-blur-lg">
+        <StepTracker currentStep={currentStep} />
+        {currentStep === 1 && (
+          <Step1
+            errors={Object.keys(errors)
+              .filter((key) => key.startsWith("basicInfo."))
+              .reduce(
+                (acc, key) => {
+                  acc[key.replace("basicInfo.", "")] = errors[key];
+                  return acc;
+                },
+                {} as Record<string, string>,
+              )}
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
         )}
+
+        {currentStep === 2 && (
+          <Step2
+            errors={Object.keys(errors)
+              .filter((key) => key.startsWith("applicationDetails."))
+              .reduce(
+                (acc, key) => {
+                  acc[key.replace("applicationDetails.", "")] = errors[key];
+                  return acc;
+                },
+                {} as Record<string, string>,
+              )}
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+        )}
+
         {currentStep === 3 && (
-          <button
-            onClick={handleSubmit}
-            className="rounded bg-purple-600 px-4 py-2 text-white"
-          >
-            {isSubmitting ? "Submitting..." : "Submit"}
-          </button>
+          <Step3
+            errors={Object.keys(errors)
+              .filter((key) => key.startsWith("paymentInfo."))
+              .reduce(
+                (acc, key) => {
+                  acc[key.replace("paymentInfo.", "")] = errors[key];
+                  return acc;
+                },
+                {} as Record<string, string>,
+              )}
+            formData={formData}
+            handleInputChange={handleInputChange}
+            bankDetails={bankDetails}
+          />
         )}
+        <div className="mt-6 flex justify-between">
+          <button
+            onClick={() => setCurrentStep((prev) => Math.max(prev - 1, 1))}
+            className={`rounded bg-purple-600 px-4 py-2 text-white ${
+              currentStep === 1 ? "invisible" : ""
+            }`}
+          >
+            Previous
+          </button>
+          {currentStep !== 3 && (
+            <button
+              onClick={() => setCurrentStep((prev) => Math.min(prev + 1, 3))}
+              className="rounded bg-purple-600 px-4 py-2 text-white"
+            >
+              Next
+            </button>
+          )}
+          {currentStep === 3 && (
+            <button
+              onClick={handleSubmit}
+              className="rounded bg-purple-600 px-4 py-2 text-white"
+            >
+              {isSubmitting ? "Submitting..." : "Submit"}
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

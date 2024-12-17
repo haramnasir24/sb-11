@@ -11,6 +11,7 @@ export default function HeroSection() {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
+      {/* Background Image (Bottom Layer) */}
       <Image
         src="/images/hero-section.JPG"
         alt="Science Bee Background"
@@ -19,19 +20,80 @@ export default function HeroSection() {
         quality={100}
         priority
       />
-      <div className="absolute inset-0 bg-gradient-to-br from-[#03071E] via-[#2F114A] to-[#9D4EDD] opacity-80" />
 
-      {/* Content */}
-      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 py-20 text-center">
-        <h2 className="mb-2 text-xl font-medium text-yellow-400">Welcome to</h2>
-        <h1 className="mb-8 text-4xl font-bold text-white sm:text-xl md:text-5xl lg:text-7xl">
+      {/* Rich Gradient Overlay (Middle Layer) */}
+      <div
+        className="absolute inset-0 z-10"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(36, 17, 74, 0.9))",
+        }}
+      />
+
+      {/* Hexagon SVG with Glow Effect */}
+      <div className="absolute inset-0 z-20 flex items-center justify-center opacity-70">
+        <div
+          className="h-full w-full"
+          style={{
+            backgroundImage: "url('/images/hexagon.svg')",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "contain",
+            filter: "drop-shadow(0 0 20px rgba(255, 255, 255, 0.8))", // Glow effect
+          }}
+        />
+      </div>
+
+      {/* Diagonal Purple Glowing Lines on the Right */}
+      <div className="absolute right-10 top-0 z-20 flex flex-col items-end justify-start gap-1 opacity-80">
+        <div
+          className="h-[350px] w-[4px] bg-purple-500"
+          style={{
+            transform: "rotate(45deg)",
+            filter: "drop-shadow(0 0 15px rgba(128, 0, 128, 0.8))", // Purple glow effect
+          }}
+        />
+        <div
+          className="h-[350px] w-[4px] bg-purple-500"
+          style={{
+            transform: "rotate(45deg)",
+            filter: "drop-shadow(0 0 15px rgba(128, 0, 128, 0.8))", // Purple glow effect
+          }}
+        />
+      </div>
+
+      {/* Diagonal Purple Glowing Lines on the Left */}
+      <div className="absolute left-10 top-0 z-20 flex flex-col items-start justify-start gap-1 opacity-80">
+        <div
+          className="h-[350px] w-[4px] bg-purple-500"
+          style={{
+            transform: "rotate(-45deg)",
+            filter: "drop-shadow(0 0 15px rgba(128, 0, 128, 0.8))", // Purple glow effect
+          }}
+        />
+        <div
+          className="h-[350px] w-[4px] bg-purple-500"
+          style={{
+            transform: "rotate(-45deg)",
+            filter: "drop-shadow(0 0 15px rgba(128, 0, 128, 0.8))", // Purple glow effect
+          }}
+        />
+      </div>
+
+      {/* Content (Topmost Layer) */}
+      <div className="relative z-30 flex min-h-screen flex-col items-center justify-center px-6 py-20 text-center">
+        <h2 className="mb-4 text-lg font-semibold tracking-wide text-yellow-400">
+          Welcome to
+        </h2>
+        <h1 className="mb-8 text-4xl font-extrabold text-white sm:text-5xl md:text-6xl lg:text-7xl">
           Science Bee Gyara
         </h1>
 
-        <div className="mb-8 flex flex-col items-center gap-4 sm:flex-row">
-          <div className="flex items-center gap-2">
+        <div className="mb-8 flex flex-col items-center gap-6 sm:flex-row sm:gap-8">
+          {/* Location */}
+          <div className="flex items-center gap-3">
             <svg
-              className="h-5 w-5 text-yellow-400"
+              className="h-6 w-6 text-yellow-400"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -50,11 +112,15 @@ export default function HeroSection() {
                 d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
               />
             </svg>
-            <span className="text-white">NUST, H-12, ISLAMABAD</span>
+            <span className="text-lg font-medium text-white">
+              NUST, H-12, ISLAMABAD
+            </span>
           </div>
-          <div className="flex items-center gap-2">
+
+          {/* Date */}
+          <div className="flex items-center gap-3">
             <svg
-              className="h-5 w-5 text-yellow-400"
+              className="h-6 w-6 text-yellow-400"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -67,22 +133,27 @@ export default function HeroSection() {
                 d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
               />
             </svg>
-            <span className="text-white">7th - 9th February 2025</span>
+            <span className="text-lg font-medium text-white">
+              7th - 9th February 2025
+            </span>
           </div>
         </div>
 
-        <p className="mb-12 max-w-2xl text-sm font-medium text-yellow-400 md:text-lg">
+        {/* Event Description */}
+        <p className="mb-12 max-w-2xl text-base font-medium text-yellow-300 md:text-lg">
           3 Days of Innovation: 11 Modules, Stem Exhibitions, BUZZ Night, NUST
           Got Talent, and Beyond!
         </p>
 
+        {/* Register Button */}
         <Link
           href="/register"
-          className="inline-block rounded bg-yellow-500 px-4 py-2 text-base text-black hover:bg-yellow-600"
+          className="inline-block transform rounded bg-yellow-500 px-6 py-3 text-base font-semibold text-black shadow-lg transition-transform hover:scale-105 hover:bg-yellow-600"
         >
           REGISTER NOW
         </Link>
 
+        {/* Countdown Timer */}
         <div className="mt-24">
           <CountdownTimer targetDate={targetDate} />
         </div>

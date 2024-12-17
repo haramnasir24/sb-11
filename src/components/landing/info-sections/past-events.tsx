@@ -1,5 +1,7 @@
+"use client";
+
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   Carousel,
@@ -37,17 +39,51 @@ const CAROUSEL_ITEMS = [
 ];
 
 export default function PastEvents() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const totalSlides = CAROUSEL_ITEMS.length;
+
+  // Auto-play logic
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % totalSlides); // Infinite loop
+    }, 3000); // 3-second interval
+
+    return () => clearInterval(interval);
+  }, [totalSlides]);
+
   return (
     <section
       id="past-events"
-      className="from-primary to-primary-foreground bg-gradient-to-br py-10 md:py-16"
+      className="relative bg-gradient-to-t from-[#24114A] to-[#03071E] py-10 md:py-16"
     >
+      {/* Top Glowing Line */}
+      <div
+        className="absolute left-0 top-0 h-[4px] w-full"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(216, 180, 248, 0.8), rgba(216, 180, 248, 0.2), rgba(216, 180, 248, 0.8))",
+          boxShadow: "0 0 8px 4px rgba(216, 180, 248, 0.6)",
+        }}
+      ></div>
+
       <div className="container mx-auto px-4">
-        <h2 className="text-secondary mb-8 text-center text-xl font-bold md:text-3xl">
+        <h2 className="mb-8 text-center text-xl font-bold text-[#D8B4F8] md:text-3xl">
           Past Events <span className="text-yellow-400">(Gallery)</span>
         </h2>
-        <Carousel>
-          <CarouselContent className="-ml-1">
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true, // Infinite loop
+          }}
+          className="relative"
+        >
+          <CarouselContent
+            className="-ml-1"
+            style={{
+              transform: `translateX(-${(currentSlide * 100) / totalSlides}%)`,
+              transition: "transform 0.5s ease-in-out",
+            }}
+          >
             {CAROUSEL_ITEMS.map(({ id, image }) => (
               <CarouselItem key={id} className="pl-1 md:basis-1/2 lg:basis-1/3">
                 <div className="p-1">
@@ -69,6 +105,16 @@ export default function PastEvents() {
           <CarouselNext />
         </Carousel>
       </div>
+
+      {/* Bottom Glowing Line */}
+      <div
+        className="absolute bottom-0 left-0 z-10 h-[4px] w-full"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(216, 180, 248, 0.8), rgba(216, 180, 248, 0.2), rgba(216, 180, 248, 0.8))",
+          boxShadow: "0 0 8px 4px rgba(216, 180, 248, 0.6)",
+        }}
+      ></div>
     </section>
   );
 }

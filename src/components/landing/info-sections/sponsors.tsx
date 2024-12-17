@@ -13,11 +13,20 @@ const Sponsors = () => {
   return (
     <section
       id="sponsors"
-      className="bg-gradient-to-br from-gray-100 to-gray-200 py-10 md:py-16"
+      className="relative bg-gradient-to-t from-[#24114A] to-[#03071E] py-10 md:py-16"
     >
+      {/* Top Glowing Line */}
+      <div
+        className="absolute left-0 top-0 h-[4px] w-full"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(216, 180, 248, 0.8), rgba(216, 180, 248, 0.2), rgba(216, 180, 248, 0.8))",
+          boxShadow: "0 0 8px 4px rgba(216, 180, 248, 0.6)",
+        }}
+      ></div>
       <div className="container mx-auto px-4">
-        <h2 className="mb-8 text-center text-xl font-bold text-gray-800 md:text-3xl">
-          Our <span className="text-purple-600">Sponsors</span>
+        <h2 className="mb-8 text-center text-xl font-bold text-[#D8B4F8] md:text-3xl">
+          Our <span className="text-yellow-400">Sponsors</span>
         </h2>
         <div className="grid grid-cols-2 justify-center gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {SPONSORS.map((sponsor, index) => (
@@ -36,6 +45,16 @@ const Sponsors = () => {
           ))}
         </div>
       </div>
+
+      {/* Bottom Glowing Line */}
+      <div
+        className="absolute bottom-0 left-0 z-10 h-[4px] w-full"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(216, 180, 248, 0.8), rgba(216, 180, 248, 0.2), rgba(216, 180, 248, 0.8))",
+          boxShadow: "0 0 8px 4px rgba(216, 180, 248, 0.6)",
+        }}
+      ></div>
     </section>
   );
 };

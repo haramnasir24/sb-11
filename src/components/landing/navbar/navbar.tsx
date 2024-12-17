@@ -19,17 +19,17 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="absolute left-0 right-0 top-0 z-50 bg-transparent">
+    <nav className="fixed left-0 right-0 top-10 z-50 mx-auto w-[90%] rounded-lg bg-[#03071E] shadow-lg">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <div className="flex h-24 items-center justify-between">
+          <div className="flex items-center justify-between">
             <Link href="/">
               <Image
                 src="/images/sb11-logo.png"
                 alt="Science Bee Logo"
-                width={80}
-                height={80}
-                className="h-16 w-auto"
+                width={60} // Logo size reduced
+                height={60}
+                className="h-12 w-auto" // Smaller logo
               />
             </Link>
           </div>
@@ -77,7 +77,7 @@ export default function Navbar() {
 
       {isOpen && (
         <div className="md:hidden">
-          <div className="space-y-1 bg-black bg-opacity-75 px-2 pb-3 pt-2 sm:px-3">
+          <div className="space-y-1 rounded-lg bg-black bg-opacity-75 px-2 pb-3 pt-2 sm:px-3">
             {navItems.map(({ name, link }, index) => (
               <Link
                 key={index}
@@ -103,5 +103,3 @@ export default function Navbar() {
     </nav>
   );
 }
-
-// from-[#03071E] via-[#3C096C] to-[#2F114A]
