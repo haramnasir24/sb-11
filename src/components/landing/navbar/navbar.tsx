@@ -17,9 +17,9 @@ const navItems = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-
+  // "absolute left-0 right-0 top-0 z-50 bg-transparent
   return (
-    <nav className="absolute left-0 right-0 top-0 z-50 bg-transparent">
+    <nav className="absolute left-0 right-0 top-10 z-50 mx-auto w-[90%] rounded-lg bg-[#03071E] shadow-lg backdrop-blur">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex h-24 items-center justify-between">

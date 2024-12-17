@@ -12,9 +12,9 @@ const navItems = [
 
 export default function FormNavbar() {
   const [isOpen, setIsOpen] = useState(false);
-
+  // fixed left-0 right-0 top-0 z-50 bg-gradient-to-br from-[#03071E] via-[#2F114A] to-[#9D4EDD]
   return (
-    <nav className="fixed left-0 right-0 top-0 z-50 bg-gradient-to-br from-[#03071E] via-[#2F114A] to-[#9D4EDD]">
+    <nav className="absolute left-0 right-0 top-10 z-50 mx-auto w-[90%] rounded-lg bg-[#03071E] shadow-lg backdrop-blur">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex h-24 items-center justify-between">

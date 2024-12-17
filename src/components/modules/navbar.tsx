@@ -14,7 +14,7 @@ export default function ModulesNavbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="z-5 absolute left-0 right-0 top-0 bg-transparent">
+    <nav className="shadow-lgt absolute left-0 right-0 top-10 z-50 mx-auto w-[90%] rounded-lg bg-[#03071E] backdrop-blur">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex h-24 items-center justify-between">
