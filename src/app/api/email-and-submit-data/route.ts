@@ -179,7 +179,7 @@ export async function POST(request: NextRequest) {
 
     await Promise.all([
       new Promise<string>((resolve, reject) => {
-        transport.sendMail(mailOptions, (err, info) => {
+        transport.sendMail(mailOptions, (err) => {
           if (err) reject("Email not sent");
           else resolve("Email sent");
         });
@@ -227,6 +227,7 @@ async function createFolder(
       fields: "id",
     });
     return folder.data.id!;
+    // eslint-disable-next-line unused-imports/no-unused-vars
   } catch (error) {
     throw new Error("Failed to create folder in Google Drive");
   }
@@ -260,6 +261,7 @@ async function uploadFile(
       fields: "id",
     });
     return `https://drive.google.com/uc?id=${res.data.id}`;
+    // eslint-disable-next-line unused-imports/no-unused-vars
   } catch (error) {
     throw new Error("Failed to upload file to Google Drive");
   }

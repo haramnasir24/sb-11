@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
+import AnimatedGridPattern from "@/components/ui/animated-grid-pattern";
+
 import { CountdownTimer } from "./countdown-timer";
 
 export default function HeroSection() {
@@ -11,6 +13,13 @@ export default function HeroSection() {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
+      <AnimatedGridPattern
+        numSquares={30}
+        maxOpacity={0.1}
+        duration={3}
+        repeatDelay={1}
+        className="absolute top-[60%] z-10 skew-y-12 overflow-clip"
+      />
       <Image
         src="/images/hero-section.JPG"
         alt="Science Bee Background"

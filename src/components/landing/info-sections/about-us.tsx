@@ -14,7 +14,7 @@ export default function AboutUs() {
         </h2>
         <div className="grid items-center gap-8 md:grid-cols-2">
           <Card className="bg-primary-foreground/10 border-none shadow-xl">
-            <CardContent className="p-6">
+            <CardContent className="p-6 text-white">
               <h3 className="mb-4 text-base font-bold text-yellow-400 md:text-2xl">
                 About the event
               </h3>

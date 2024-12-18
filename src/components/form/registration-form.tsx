@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 "use client";
 import axios from "axios";
 import React, { useState } from "react";
@@ -259,6 +260,7 @@ const RegistrationForm: React.FC = () => {
     }));
   };
 
+  // eslint-disable-next-line unused-imports/no-unused-vars
   const [bankDetails, setBankDetails] = useState({
     accountName: "",
     accountNumber: "",
