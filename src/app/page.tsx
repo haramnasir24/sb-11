@@ -8,7 +8,7 @@ import HeroSection from "../components/landing/hero-section/hero-section";
 
 export default function Home() {
   return (
-    <main className="w-full bg-black text-white">
+    <main className="w-full bg-[#03071E] text-white">
       <Navbar />
       <HeroSection />
       <AboutUs />
