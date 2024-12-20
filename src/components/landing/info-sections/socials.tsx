@@ -5,13 +5,13 @@ import SocialCard from "./social-card";
 const SOCIALS_ITEMS = [
   {
     title: "Buzz Night",
-    image: "/images/buzz.jpg",
+    image: "/images/socials/buzz-night.jpg",
     content:
       "The modules here at Science Bee will surely leave your mind swarmed with possible solutions and answers but it's the Buzz Night that will leave you humming for more! Prepare to be stunned by a magnetic rave and an energetic crowd amongst the glittering night lights.",
   },
   {
     title: "STEM Expo",
-    image: "/images/bee.jpg",
+    image: "/images/socials/stem-expo.jpg",
     content:
       "Revolving around Science, Technology, Engineering, and Mathematics, STEM expo focuses on related innovations in these fields. This momentous event privileges the participants to display their projects whilst having the chance to be scouted by prestigious institutions.",
   },

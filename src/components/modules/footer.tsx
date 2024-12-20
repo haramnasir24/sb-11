@@ -18,7 +18,7 @@ export default function ModulesFooter() {
   return (
     <footer
       id="modules-footer"
-      className="iinset-0 w-full items-center justify-center border-t bg-gradient-to-br from-[#03071E] via-[#2F114A] to-[#9D4EDD] text-white"
+      className="inset-0 w-full items-center justify-center border-t bg-gradient-to-br from-[#03071E] via-[#2F114A] to-[#9D4EDD] text-white"
     >
       <div className="px-16 py-12 md:px-20 md:py-16 lg:py-20">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">

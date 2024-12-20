@@ -10,7 +10,7 @@
 }
 
 @font-face {
-  font-family: "NeueMontreal-Bold";
+  font-family: "NeueMontreal-Medium";
   src: url("/fonts/NeueMontreal-Bold.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
@@ -32,9 +32,7 @@
 
 @font-face {
   font-family: "kaffe-regular";
-  src: url("/fonts/kaffe-regular.otf") format("opentype");
-  font-weight: bold;
-  font-style: normal;
+  src: url("/fonts/kaffe-regular.otf");
 }
 
 /* ! DON'T REMOVE SHIT WITHOUT SEEING WHAT IT UNDOES OR DOES */
@@ -63,7 +61,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "NeueMontreal-Bold", "Georgia", serif;
+  font-family: "NeueMontreal-Medium", "Georgia", serif;
 }
 
 .shadow-text {

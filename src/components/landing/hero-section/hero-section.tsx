@@ -31,16 +31,18 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-br from-[#03071E] via-[#2F114A] to-[#9D4EDD] opacity-80" />
 
       {/* Content */}
-      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 py-20 text-center">
-        <h2 className="mb-2 text-xl font-medium text-yellow-400">Welcome to</h2>
-        <h1 className="mb-8 text-4xl font-bold text-white sm:text-xl md:text-5xl lg:text-7xl">
+      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 py-36 text-center">
+        <h2 className="mb-4 text-2xl font-medium text-yellow-400 md:text-3xl">
+          Welcome to
+        </h2>
+        <h1 className="mb-12 text-5xl font-bold text-white sm:text-6xl md:text-7xl lg:text-8xl">
           Science Bee Gyara
         </h1>
 
-        <div className="mb-8 flex flex-col items-center gap-4 sm:flex-row">
-          <div className="flex items-center gap-2">
+        <div className="mb-12 flex flex-col items-center gap-6 sm:flex-row sm:gap-12">
+          <div className="flex items-center gap-3">
             <svg
-              className="h-5 w-5 text-yellow-400"
+              className="h-6 w-6 text-yellow-400 md:h-8 md:w-8"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -59,11 +61,13 @@ export default function HeroSection() {
                 d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
               />
             </svg>
-            <span className="text-white">NUST, H-12, ISLAMABAD</span>
+            <span className="text-lg text-white md:text-xl">
+              NUST, H-12, ISLAMABAD
+            </span>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <svg
-              className="h-5 w-5 text-yellow-400"
+              className="h-6 w-6 text-yellow-400 md:h-8 md:w-8"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -76,23 +80,25 @@ export default function HeroSection() {
                 d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
               />
             </svg>
-            <span className="text-white">7th - 9th February 2025</span>
+            <span className="text-lg text-white md:text-xl">
+              7th - 9th February 2025
+            </span>
           </div>
         </div>
 
-        <p className="mb-12 max-w-2xl text-sm font-medium text-yellow-400 md:text-lg">
+        <p className="mb-16 max-w-3xl text-lg font-medium text-yellow-400 md:text-2xl">
           3 Days of Innovation: 11 Modules, Stem Exhibitions, BUZZ Night, NUST
           Got Talent, and Beyond!
         </p>
 
         <Link
           href="/register"
-          className="inline-block rounded bg-yellow-500 px-4 py-2 text-base text-black hover:bg-yellow-600"
+          className="inline-block rounded bg-yellow-500 px-6 py-3 text-lg font-semibold text-black transition-colors hover:bg-yellow-600 md:text-xl"
         >
           REGISTER NOW
         </Link>
 
-        <div className="mt-24">
+        <div className="mt-32">
           <CountdownTimer targetDate={targetDate} />
         </div>
       </div>

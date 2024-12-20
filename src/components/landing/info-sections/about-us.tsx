@@ -55,7 +55,7 @@ export default function AboutUs() {
           </Card>
           <div className="relative h-[350px] overflow-hidden rounded-lg shadow-xl md:h-[400px]">
             <Image
-              src="/images/about.JPG"
+              src="/images/about.jpg"
               alt="Science Bee Event"
               fill
               style={{ objectFit: "cover" }}

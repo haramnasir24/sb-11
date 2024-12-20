@@ -60,13 +60,13 @@ export function CountdownTimer({
   }, [targetDate, onComplete, isComplete]);
 
   return (
-    <div className="flex flex-wrap justify-center gap-4">
+    <div className="flex flex-wrap justify-center gap-8 md:gap-12">
       {Object.entries(timeLeft).map(([unit, value]) => (
-        <div key={unit} className="w-24 text-center">
-          <span className="text-2xl font-bold text-white md:text-4xl">
+        <div key={unit} className="w-32 text-center">
+          <span className="text-4xl font-bold text-white md:text-6xl">
             {value.toString().padStart(2, "0")}
           </span>
-          <span className="block text-xs uppercase text-white md:text-base">
+          <span className="mt-2 block text-sm uppercase text-white md:text-lg">
             {unit}
           </span>
         </div>

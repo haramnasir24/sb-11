@@ -25,7 +25,7 @@ export default function Navbar() {
           <div className="flex h-24 items-center justify-between">
             <Link href="/">
               <Image
-                src="/images/sb11-logo.png"
+                src="/images/icons/sb11-logo.png"
                 alt="Science Bee Logo"
                 width={80}
                 height={80}
