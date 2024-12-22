@@ -126,29 +126,25 @@ const RegistrationForm = () => {
     try {
       const formData = new FormData();
 
-      // Append all basic form fields
+      // Handle special fields that need to be stringified
+      formData.append(
+        "participationType",
+        JSON.stringify(data.participationType),
+      );
+      formData.append("accommodation", JSON.stringify(data.accommodation));
+
+      // Append all other fields
       Object.entries(data).forEach(([key, value]) => {
-        if (key === "participationType") {
-          formData.append(key, JSON.stringify(value));
-        } else if (key === "accommodation") {
-          formData.append(key, JSON.stringify(value));
-        } else if (value instanceof File) {
-          formData.append(key, value);
-        } else {
-          formData.append(key, String(value));
+        if (key !== "participationType" && key !== "accommodation") {
+          if (value instanceof File) {
+            formData.append(key, value);
+          } else if (value !== undefined && value !== null) {
+            formData.append(key, String(value));
+          }
         }
       });
 
-      if (data.profilePicture) {
-        formData.append("profilePicture", data.profilePicture);
-      }
-      if (data.studentCardorCNIC) {
-        formData.append("studentCardorCNIC", data.studentCardorCNIC);
-      }
-      if (data.paymentProof) {
-        formData.append("paymentProof", data.paymentProof);
-      }
-
+      // Handle team members' files if present
       if (data.participationType.type === "team") {
         data.participationType.teamDetails.members.forEach((member, index) => {
           if (member.studentCardPhoto) {
@@ -160,14 +156,14 @@ const RegistrationForm = () => {
         });
       }
 
-      const response = await fetch("/api/submit-form-data", {
+      const response = await fetch("/api/submit-form", {
         method: "POST",
         body: formData,
       });
 
       if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || "Failed to submit form");
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to submit form");
       }
 
       const result = await response.json();
