@@ -43,12 +43,12 @@ export const modules = [
       "Medical Mayhem places participants in a simulated hospital environment where they act as medical professionals tackling diverse challenges. From diagnosing patients to responding to emergencies, the module emphasizes quick thinking, teamwork, and composure under pressure.",
     images: [
       "/images/modules-images/medical-mayhem/mm1.JPG",
-      "/images/modules-images/crimeline/cl2.jpg",
-      "/images/modules-images/crimeline/cl3.jpg",
+      "/images/modules-images/medical-mayhem/mm2.JPG",
+      "/images/modules-images/medical-mayhem/mm3.JPG",
     ],
   },
   {
-    name: "Scirun",
+    name: "SciRun",
     slug: "scirun",
     description:
       "Participants will be provided with clues and perform tasks in a scavenger hunt type scenario.",
@@ -90,9 +90,9 @@ export const modules = [
     overview:
       "The Psych Realm immerses participants in the vast field of psychology, exploring experiments, treatments, mental health, and psychometric tests. Participants will delve into human behavior and cognition while learning the significance of ethics in psychological research. This module emphasizes understanding psychology as the art of reading the human mind.",
     images: [
-      "/images/modules-images/crimeline/cl1.jpg",
-      "/images/modules-images/crimeline/cl2.jpg",
-      "/images/modules-images/crimeline/cl3.jpg",
+      "/images/modules-images/psych-realm/pr1.jpg",
+      "/images/modules-images/psych-realm/pr2.jpg",
+      "/images/modules-images/psych-realm/pr3.jpg",
     ],
   },
   {
@@ -123,9 +123,9 @@ export const modules = [
     overview:
       "The Speed Programming module is a fast-paced competition designed to test participants' coding skills, logical thinking, and problem-solving abilities under strict time constraints. Teams will compete to solve programming challenges that range from algorithmic puzzles to debugging tasks, racing against the clock to score the highest points. Participants can use C++, Python, or Java (limited to provided compilers).",
     images: [
-      "/images/modules-images/crimeline/cl1.jpg",
-      "/images/modules-images/crimeline/cl2.jpg",
-      "/images/modules-images/crimeline/cl3.jpg",
+      "/images/modules-images/speed-programming/sp1.JPG",
+      "/images/modules-images/speed-programming/sp2.jpg",
+      "/images/modules-images/speed-programming/sp3.jpg",
     ],
   },
   {
@@ -139,7 +139,7 @@ export const modules = [
     overview:
       "Robo Wars is a 3-day competition where participants design, build, and battle robots. The event combines technical skill, strategy, and creativity, with a focus on engineering design, automation, and interpersonal tactics like deception and sabotage.",
     images: [
-      "/images/modules-images/robo-wars/rw1.jpg",
+      "/images/modules-images/robo-wars/rw1.JPG",
       "/images/modules-images/robo-wars/rw2.jpg",
       "/images/modules-images/robo-wars/rw3.jpg",
     ],
@@ -155,9 +155,9 @@ export const modules = [
     overview:
       "Chemathon is a thrilling module where participants put their chemical knowledge and creativity to the test. Participants will design chemically powered models using a selection of chemicals, competing to build the most innovative and functional design—all while adhering to strict safety protocols.",
     images: [
-      "/images/modules-images/crimeline/cl1.jpg",
-      "/images/modules-images/crimeline/cl2.jpg",
-      "/images/modules-images/crimeline/cl3.jpg",
+      "/images/modules-images/chemathon/ct1.JPG",
+      "/images/modules-images/chemathon/ct2.jpg",
+      "/images/modules-images/chemathon/cT3.JPG",
     ],
   },
   {
@@ -171,9 +171,9 @@ export const modules = [
     overview:
       "Participants will calculate the cooling load for a house based on given specifications and then design an HVAC system by selecting the optimal number, capacity, and placement of air conditioners. The goal is to create a comfortable indoor environment while ensuring energy efficiency.",
     images: [
-      "/images/modules-images/crimeline/cl1.jpg",
-      "/images/modules-images/crimeline/cl2.jpg",
-      "/images/modules-images/crimeline/cl3.jpg",
+      "/images/modules-images/heatops/ho1.jpg",
+      "/images/modules-images/heatops/ho2.jpg",
+      "/images/modules-images/heatops/ho3.jpg",
     ],
   },
 ] as const;
