@@ -31,8 +31,8 @@ export default function ModuleDetail({ params }: ModuleProps) {
   }
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-purple-deep via-purple-dark to-purple-light pb-24 pt-16">
-      <div className="absolute inset-0 overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#03071E] via-[#2F114A] to-[#9D4EDD] pb-24 pt-16">
+      {/* <div className="absolute inset-0 overflow-hidden">
         <div className="absolute left-0 top-0 h-full w-full">
           <div className="bg-yellow-accent/10 absolute left-10 top-20 h-32 w-32 animate-pulse rounded-full blur-xl"></div>
           <div className="bg-purple-light/20 absolute right-20 top-40 h-40 w-40 animate-pulse rounded-full blur-xl delay-300"></div>
@@ -46,7 +46,7 @@ export default function ModuleDetail({ params }: ModuleProps) {
             backgroundSize: "40px 40px",
           }}
         ></div>
-      </div>
+      </div> */}
 
       <main className="container relative mx-auto px-6 py-20">
         <Link
@@ -58,8 +58,8 @@ export default function ModuleDetail({ params }: ModuleProps) {
         </Link>
 
         <div className="relative">
-          <div className="absolute inset-0 rounded-2xl bg-white/5 backdrop-blur-3xl"></div>
-          <div className="relative rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 p-10 shadow-2xl md:p-12">
+          <div className="absolute inset-0 rounded-2xl bg-[#2F114A]"></div>
+          <div className="relative rounded-2xl border border-white/10 p-10 shadow-2xl md:p-12">
             <div className="flex flex-col gap-10">
               {/* Header Section */}
               <div className="space-y-4">
