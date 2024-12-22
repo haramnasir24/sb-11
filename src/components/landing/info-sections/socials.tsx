@@ -10,16 +10,16 @@ const SOCIALS_ITEMS = [
       "The modules here at Science Bee will surely leave your mind swarmed with possible solutions and answers but it's the Buzz Night that will leave you humming for more! Prepare to be stunned by a magnetic rave and an energetic crowd amongst the glittering night lights.",
   },
   {
-    title: "STEM Expo",
-    image: "/images/socials/stem-expo.jpg",
+    title: "Tech Connect",
+    image: "/images/socials/tc3.jpg",
     content:
-      "Revolving around Science, Technology, Engineering, and Mathematics, STEM expo focuses on related innovations in these fields. This momentous event privileges the participants to display their projects whilst having the chance to be scouted by prestigious institutions.",
+      "TechConnect will be a platform for students and groups from NUST to showcase their STEM-based projects and startup ideas to a panel of esteemed judges and industry experts. The event aims to provide SBXI participants with opportunities to connect with potential investors, pitch their solutions, receive valuable feedback, and secure funding to advance their initiatives.",
   },
   {
-    title: "Panel Talks",
-    image: "/images/image3.jpg",
+    title: "Bees Got Talent",
+    image: "/images/socials/bgt.jpg",
     content:
-      "Science is magic for the underdeveloped. In our age, the rate of innovation has turned inventing into a competition. With this in mind, we're starting the soon to be iconic Scientist's Seminars.",
+      "Bees Got Talent (BGT) will showcase a variety of imaginative projects, prototypes, and inventions by amateur innovators and enthusiasts from NUST and other universities, fostering creativity and fresh ideas. The event provides participants with a platform to exhibit their innovations in a collaborative environment, where judges offer feedback and recognition for their efforts.",
   },
 ];
 

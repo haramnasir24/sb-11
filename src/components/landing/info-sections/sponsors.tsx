@@ -1,13 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-const SPONSORS = [
-  { name: "Sponsor 1", logo: "/images/about.jpg" },
-  { name: "Sponsor 2", logo: "/images/about2.jpg" },
-  { name: "Sponsor 3", logo: "/images/image1.jpg" },
-  { name: "Sponsor 4", logo: "/images/image2.jpg" },
-  { name: "Sponsor 5", logo: "/images/image3.jpg" },
-];
+const SPONSORS = [{ name: "Ranchers", logo: "/images/icons/ranchers.png" }];
 
 const Sponsors = () => {
   return (
@@ -21,16 +15,13 @@ const Sponsors = () => {
         </h2>
         <div className="grid grid-cols-2 justify-center gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {SPONSORS.map((sponsor, index) => (
-            <div
-              key={index}
-              className="flex items-center justify-center rounded-lg bg-white p-4 shadow-md transition-shadow hover:shadow-lg"
-            >
+            <div key={index} className="flex items-center justify-center p-4">
               <Image
                 src={sponsor.logo}
                 alt={sponsor.name}
-                className="object-contain"
-                width={100}
-                height={100}
+                width={250}
+                height={250}
+                // className="h-16 w-auto"
               />
             </div>
           ))}

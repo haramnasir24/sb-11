@@ -51,7 +51,6 @@ export default function PastEvents() {
             {CAROUSEL_ITEMS.map(({ id, image }) => (
               <CarouselItem key={id} className="pl-1 md:basis-1/2 lg:basis-1/3">
                 <div className="p-1">
-                  {/* Adjust the height here */}
                   <div className="relative h-[300px] md:h-[400px] lg:h-[500px]">
                     <Image
                       src={image}
@@ -65,8 +64,8 @@ export default function PastEvents() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          <CarouselPrevious className="bg-white/70 text-gray-800 hover:bg-white/90" />
+          <CarouselNext className="bg-white/70 text-gray-800 hover:bg-white/90" />
         </Carousel>
       </div>
     </section>

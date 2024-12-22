@@ -11,7 +11,7 @@ const navItems = [
   { name: "Past Events", link: "past-events" },
   { name: "Socials", link: "socials" },
   { name: "Modules", link: "/modules" },
-  // { name: "Sponsors", link: "sponsors" },
+  { name: "Sponsors", link: "sponsors" },
   { name: "Contact Us", link: "contact" },
 ];
 

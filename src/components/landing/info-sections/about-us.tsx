@@ -19,11 +19,11 @@ export default function AboutUs() {
                 About the event
               </h3>
               <p className="text-primary-foreground mb-4 text-sm leading-relaxed md:text-lg">
-                <span className="text-secondary font-semibold">
+                <span className="text-secondary font-semibold text-purple-600">
                   NUST Science Society&nbsp;
                 </span>
                 proudly presents the crown jewel of its yearly tenure:&nbsp;
-                <span className="text-secondary font-semibold">
+                <span className="text-secondary font-semibold text-purple-600">
                   Science Bee
                 </span>
                 . This momentous event transforms the campus into a vibrant
@@ -31,21 +31,21 @@ export default function AboutUs() {
               </p>
               <p className="text-primary-foreground mb-4 text-sm leading-relaxed md:text-lg">
                 Featuring&nbsp;
-                <span className="text-secondary font-semibold">
+                <span className="text-secondary font-semibold text-purple-600">
                   11 mind-bending modules
                 </span>
                 , Science Bee pushes participants to their mental and physical
                 limits. But it's more than just a competition - it's an
-                immersive experience including panel talks, a STEM Expo, and
-                interactive puzzle-based games.
+                immersive experience including a Buzz Night, TechConnect, Bees
+                Got Talent, and interactive puzzle-based games.
               </p>
               <p className="text-primary-foreground text-sm leading-relaxed md:text-lg">
                 Don't miss out on the trademark&nbsp;
-                <span className="text-secondary font-semibold">
+                <span className="text-secondary font-semibold text-purple-600">
                   Buzz Night&nbsp;
                 </span>
                 for destressing and the&nbsp;
-                <span className="text-secondary font-semibold">
+                <span className="text-secondary font-semibold text-purple-600">
                   Theme Dinner&nbsp;
                 </span>
                 for networking. Science Bee promises an unforgettable journey of

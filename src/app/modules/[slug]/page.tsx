@@ -3,9 +3,11 @@ import {
   Beaker,
   Brain,
   FlaskRoundIcon as Flask,
+  Layers,
   Lightbulb,
   Puzzle,
   Share2,
+  Users,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,13 +22,6 @@ type ModuleProps = {
   }>;
 };
 
-const getModuleImages = (slug: string) => {
-  switch (slug) {
-    default:
-      return ["/images/image1.jpg", "/images/image2.jpg", "/images/image3.jpg"];
-  }
-};
-
 export default function ModuleDetail({ params }: ModuleProps) {
   const { slug } = use(params);
   const sb_module = modules.find((mod) => mod.slug === slug);
@@ -34,8 +29,6 @@ export default function ModuleDetail({ params }: ModuleProps) {
   if (!sb_module) {
     notFound();
   }
-
-  const moduleImages = getModuleImages(slug);
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-purple-deep via-purple-dark to-purple-light pb-24 pt-16">
@@ -80,7 +73,7 @@ export default function ModuleDetail({ params }: ModuleProps) {
 
               {/* Module Images */}
               <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-                {moduleImages.map((src, index) => (
+                {sb_module.images.map((src, index) => (
                   <div
                     key={index}
                     className="group relative h-48 overflow-hidden rounded-lg md:h-64"
@@ -106,11 +99,7 @@ export default function ModuleDetail({ params }: ModuleProps) {
                       Module Overview
                     </h2>
                   </div>
-                  <p className="pl-14 text-gray-200">
-                    Dive into the exciting world of {sb_module.name}! This
-                    module will challenge your scientific knowledge and
-                    problem-solving skills through an immersive experience.
-                  </p>
+                  <p className="pl-14 text-gray-200">{sb_module.overview}</p>
                 </section>
 
                 <section className="space-y-6">
@@ -119,29 +108,54 @@ export default function ModuleDetail({ params }: ModuleProps) {
                       <Lightbulb className="h-5 w-5 text-yellow-accent" />
                     </div>
                     <h2 className="text-2xl font-semibold text-yellow-bright">
-                      What to Expect
+                      Module Details
                     </h2>
                   </div>
                   <ul className="space-y-4 pl-14">
                     <li className="group flex items-center gap-3 text-gray-200">
                       <Brain className="text-yellow-accent/70 h-5 w-5 transition-colors group-hover:text-yellow-accent" />
-                      <span>Engaging hands-on activities</span>
+                      <span>Module Type: {sb_module.moduleType}</span>
                     </li>
                     <li className="group flex items-center gap-3 text-gray-200">
-                      <Puzzle className="text-yellow-accent/70 h-5 w-5 transition-colors group-hover:text-yellow-accent" />
-                      <span>Challenging scientific puzzles</span>
+                      <Users className="text-yellow-accent/70 h-5 w-5 transition-colors group-hover:text-yellow-accent" />
+                      <span>Team Members: {sb_module.teamMembers}</span>
                     </li>
                     <li className="group flex items-center gap-3 text-gray-200">
-                      <Share2 className="text-yellow-accent/70 h-5 w-5 transition-colors group-hover:text-yellow-accent" />
-                      <span>Collaborative problem-solving</span>
-                    </li>
-                    <li className="group flex items-center gap-3 text-gray-200">
-                      <Flask className="text-yellow-accent/70 h-5 w-5 transition-colors group-hover:text-yellow-accent" />
-                      <span>Application of scientific principles</span>
+                      <Layers className="text-yellow-accent/70 h-5 w-5 transition-colors group-hover:text-yellow-accent" />
+                      <span>Number of Rounds: {sb_module.rounds}</span>
                     </li>
                   </ul>
                 </section>
               </div>
+
+              <section className="space-y-6">
+                <div className="flex items-center gap-3">
+                  <div className="bg-yellow-accent/20 flex h-10 w-10 items-center justify-center rounded-full">
+                    <Puzzle className="h-5 w-5 text-yellow-accent" />
+                  </div>
+                  <h2 className="text-2xl font-semibold text-yellow-bright">
+                    What to Expect
+                  </h2>
+                </div>
+                <ul className="space-y-4 pl-14">
+                  <li className="group flex items-center gap-3 text-gray-200">
+                    <Brain className="text-yellow-accent/70 h-5 w-5 transition-colors group-hover:text-yellow-accent" />
+                    <span>Engaging hands-on activities</span>
+                  </li>
+                  <li className="group flex items-center gap-3 text-gray-200">
+                    <Puzzle className="text-yellow-accent/70 h-5 w-5 transition-colors group-hover:text-yellow-accent" />
+                    <span>Challenging scientific puzzles</span>
+                  </li>
+                  <li className="group flex items-center gap-3 text-gray-200">
+                    <Share2 className="text-yellow-accent/70 h-5 w-5 transition-colors group-hover:text-yellow-accent" />
+                    <span>Collaborative problem-solving</span>
+                  </li>
+                  <li className="group flex items-center gap-3 text-gray-200">
+                    <Flask className="text-yellow-accent/70 h-5 w-5 transition-colors group-hover:text-yellow-accent" />
+                    <span>Application of scientific principles</span>
+                  </li>
+                </ul>
+              </section>
             </div>
           </div>
         </div>

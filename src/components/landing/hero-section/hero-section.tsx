@@ -87,13 +87,13 @@ export default function HeroSection() {
         </div>
 
         <p className="mb-16 max-w-3xl text-lg font-medium text-yellow-400 md:text-2xl">
-          3 Days of Innovation: 11 Modules, Stem Exhibitions, BUZZ Night, NUST
-          Got Talent, and Beyond!
+          3 Days of Innovation: 11 Modules, Tech Connect, BUZZ Night, Bees Got
+          Talent, and Beyond!
         </p>
 
         <Link
           href="/register"
-          className="inline-block rounded bg-yellow-500 px-6 py-3 text-lg font-semibold text-black transition-colors hover:bg-yellow-600 md:text-xl"
+          className="inline-block rounded bg-yellow-500 px-6 py-3 text-lg text-black transition-colors hover:bg-yellow-600 md:text-xl"
         >
           REGISTER NOW
         </Link>
