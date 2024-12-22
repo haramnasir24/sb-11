@@ -2,11 +2,8 @@ import {
   ArrowLeft,
   Beaker,
   Brain,
-  FlaskRoundIcon as Flask,
   Layers,
   Lightbulb,
-  Puzzle,
-  Share2,
   Users,
 } from "lucide-react";
 import Image from "next/image";
@@ -32,22 +29,6 @@ export default function ModuleDetail({ params }: ModuleProps) {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#03071E] via-[#2F114A] to-[#9D4EDD] pb-24 pt-16">
-      {/* <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute left-0 top-0 h-full w-full">
-          <div className="bg-yellow-accent/10 absolute left-10 top-20 h-32 w-32 animate-pulse rounded-full blur-xl"></div>
-          <div className="bg-purple-light/20 absolute right-20 top-40 h-40 w-40 animate-pulse rounded-full blur-xl delay-300"></div>
-          <div className="bg-yellow-bright/10 absolute bottom-20 left-1/4 h-24 w-24 animate-pulse rounded-full blur-xl delay-700"></div>
-        </div>
-        <div
-          className="absolute inset-0 p-10"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0)",
-            backgroundSize: "40px 40px",
-          }}
-        ></div>
-      </div> */}
-
       <main className="container relative mx-auto px-6 py-20">
         <Link
           href="/modules"
@@ -89,7 +70,7 @@ export default function ModuleDetail({ params }: ModuleProps) {
                 ))}
               </div>
 
-              <div className="grid gap-8 md:grid-cols-2">
+              <div className="grid gap-12 md:grid-cols-2">
                 <section className="space-y-6">
                   <div className="flex items-center gap-3">
                     <div className="bg-yellow-accent/20 flex h-10 w-10 items-center justify-center rounded-full">
@@ -99,7 +80,9 @@ export default function ModuleDetail({ params }: ModuleProps) {
                       Module Overview
                     </h2>
                   </div>
-                  <p className="pl-14 text-gray-200">{sb_module.overview}</p>
+                  <p className="pl-14 leading-relaxed text-gray-200">
+                    {sb_module.overview}
+                  </p>
                 </section>
 
                 <section className="space-y-6">
@@ -128,7 +111,7 @@ export default function ModuleDetail({ params }: ModuleProps) {
                 </section>
               </div>
 
-              <section className="space-y-6">
+              {/* <section className="space-y-6">
                 <div className="flex items-center gap-3">
                   <div className="bg-yellow-accent/20 flex h-10 w-10 items-center justify-center rounded-full">
                     <Puzzle className="h-5 w-5 text-yellow-accent" />
@@ -155,7 +138,7 @@ export default function ModuleDetail({ params }: ModuleProps) {
                     <span>Application of scientific principles</span>
                   </li>
                 </ul>
-              </section>
+              </section> */}
             </div>
           </div>
         </div>

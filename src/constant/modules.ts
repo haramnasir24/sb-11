@@ -24,7 +24,7 @@ export const modules = [
     rounds: "2",
     teamMembers: "3-5",
     overview:
-      "All members of each team will be sent to a themed room, and you will have to escape the roomin a race against time. Various challenges await, including distractions from people inside the room, perplexing interconnected clues and hindrances. A number of teams with high scores in round 1 will be eligible for round 2, both rounds will have different theme and settings. The module puts your intellect and analytical skills to the test, and your team coordination and time management plays a vital role in ensuring your successful escape within the given time.",
+      "All members of each team will be sent to a themed room, and you will have to escape the room in a race against time. Various challenges await, including distractions from people inside the room, perplexing interconnected clues and hindrances. A number of teams with high scores in round 1 will be eligible for round 2, both rounds will have different theme and settings. The module puts your intellect and analytical skills to the test, and your team coordination and time management plays a vital role in ensuring your successful escape within the given time.",
     images: [
       "/images/modules-images/escape-room/er1.jpg",
       "/images/modules-images/escape-room/er2.jpg",
