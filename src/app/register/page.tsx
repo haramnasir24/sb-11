@@ -5,7 +5,7 @@ import RegistrationForm from "@/components/registration-form/common/registration
 
 const RegistrationPage = () => {
   return (
-    <main className="h-full max-h-screen w-full overflow-clip overflow-y-scroll">
+    <main className="container mx-auto px-4 pb-16 pt-32">
       <Suspense fallback={<LoadingIndicator />}>
         <RegistrationForm />
       </Suspense>

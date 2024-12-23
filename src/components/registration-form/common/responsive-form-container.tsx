@@ -27,7 +27,7 @@ const ResponsiveFormContainer = ({
   TOTAL_STEPS,
 }: ResponsiveFormContainerProps) => {
   return (
-    <div className="min-h-screen bg-gray-100 px-4 py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen w-full bg-gradient-to-br from-[#03071E] via-[#2F114A] to-[#9D4EDD] px-4 py-12 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-3xl">
         <div className="overflow-hidden rounded-lg bg-white shadow-md">
           <div className="px-4 py-5 sm:p-6">
