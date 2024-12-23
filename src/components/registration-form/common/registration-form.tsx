@@ -75,6 +75,81 @@ const RegistrationForm = () => {
       instituteName: "NUST-SEECS",
       guardianPhone: "03125341967",
       city: "Islamabad",
+      referralCode: "",
+      profilePicture: undefined,
+      studentCardorCNIC: undefined,
+      // Step 2
+      modules: {
+        selections: [
+          "Chemathon",
+          "Speed Programming",
+          "Crimeline Road",
+          "Escape Room",
+          "HeatOps",
+        ],
+      },
+      // Step 3
+      chaperone: {
+        bringing: "Yes",
+        accommodation: { required: "Yes", duration: "2 days" },
+        cnic: "3740515763723",
+        name: "Chaperone Name",
+      },
+      accommodation: { required: "Yes", duration: "2 days" },
+      participationType: {
+        type: "team",
+        teamDetails: {
+          teamName: "Team Name",
+          numberOfMembers: 2,
+          members: [
+            { name: "First Member", cnic: "3740515763723" },
+            { name: "Second Member", cnic: "3740515763723" },
+          ],
+        },
+      },
+      // Step
+      paymentProof: undefined,
+    },
+  });
+
+  // ! For Production
+  /* 
+    defaultValues: {
+      // Step 1
+      userName: "",
+      email: "",
+      phone: "",
+      cnic: "",
+      designation: "",
+      instituteName: "",
+      guardianPhone: "",
+      city: "",
+      profilePicture: undefined,
+      studentCardorCNIC: undefined,
+      // Step 2
+      modules: {
+        selections: [],
+      },
+      // Step 3
+      chaperone: { bringing: "No" },
+      accommodation: { required: "No" },
+      participationType: { type: "individual" },
+      // Step
+      paymentProof: undefined,
+    },
+  */
+  // ! For Testing
+  /* 
+    defaultValues: {
+      // Step 1
+      userName: "Muhammad Zain Jee",
+      email: "zainjee37405@gmail.com",
+      phone: "03125341967",
+      cnic: "3740515763723",
+      designation: "Student",
+      instituteName: "NUST-SEECS",
+      guardianPhone: "03125341967",
+      city: "Islamabad",
       profilePicture: undefined,
       studentCardorCNIC: undefined,
       // Step 2
@@ -86,27 +161,6 @@ const RegistrationForm = () => {
       accommodation: { required: "No" },
       participationType: { type: "individual" },
       // Step
-      paymentProof: undefined,
-    },
-  });
-
-  // ! For Production
-  /* 
-      defaultValues: {
-      // Step 1
-      userName: "",
-      email: "",
-      phone: "",
-      cnic: "",
-      instituteName: "",
-      guardianPhone: "",
-      city: "",
-      profilePicture: undefined,
-      studentCardorCNIC: undefined,
-      // Step 2
-      accommodation: { required: "No" },
-      participationType: { type: "individual" },
-      // Step 
       paymentProof: undefined,
     },
   */
@@ -138,35 +192,88 @@ const RegistrationForm = () => {
     try {
       const formData = new FormData();
 
-      // Handle special fields that need to be stringified
-      formData.append(
-        "participationType",
-        JSON.stringify(data.participationType),
-      );
+      // Basic Info
+      formData.append("userName", data.userName);
+      formData.append("email", data.email);
+      formData.append("phone", data.phone);
+      formData.append("cnic", data.cnic);
+      formData.append("designation", data.designation);
+      formData.append("instituteName", data.instituteName);
+      formData.append("guardianPhone", data.guardianPhone);
+      formData.append("city", data.city);
+      if (data.referralCode) {
+        formData.append("referralCode", data.referralCode);
+      }
+
+      // Files
+      formData.append("profilePicture", data.profilePicture);
+      formData.append("studentCardorCNIC", data.studentCardorCNIC);
+      formData.append("paymentProof", data.paymentProof);
+
+      // Modules
+      formData.append("modules", JSON.stringify(data.modules));
+
+      // Accommodation
       formData.append("accommodation", JSON.stringify(data.accommodation));
 
-      // Append all other fields
-      Object.entries(data).forEach(([key, value]) => {
-        if (key !== "participationType" && key !== "accommodation") {
-          if (value instanceof File) {
-            formData.append(key, value);
-          } else if (value !== undefined && value !== null) {
-            formData.append(key, String(value));
-          }
-        }
-      });
+      // Chaperone
+      formData.append("chaperone", JSON.stringify(data.chaperone));
 
-      // Handle team members' files if present
-      if (data.participationType.type === "team") {
+      // Participation Type
+      if (data.participationType.type === "individual") {
+        formData.append(
+          "participationType",
+          JSON.stringify({ type: "individual" }),
+        );
+      } else {
+        // Team details
+        const teamData = {
+          type: "team",
+          teamDetails: {
+            teamName: data.participationType.teamDetails.teamName,
+            numberOfMembers: data.participationType.teamDetails.numberOfMembers,
+            members: data.participationType.teamDetails.members.map(
+              (member) => ({
+                name: member.name,
+                cnic: member.cnic,
+                accommodation: member.accommodation,
+              }),
+            ),
+          },
+        };
+        formData.append("participationType", JSON.stringify(teamData));
+
+        // Handle team member files separately
         data.participationType.teamDetails.members.forEach((member, index) => {
-          if (member.studentCardPhoto) {
-            formData.append(
-              `teamMember${index + 1}StudentCardPhoto`,
-              member.studentCardPhoto,
-            );
-          }
+          // Use the correct path format for team member files
+          formData.append(
+            `participationType.teamDetails.members.${index}.studentCardPhoto`,
+            member.studentCardPhoto,
+          );
+          formData.append(
+            `participationType.teamDetails.members.${index}.teamMemberProfilePhoto`,
+            member.teamMemberProfilePhoto,
+          );
+          formData.append(
+            `participationType.teamDetails.members.${index}.name`,
+            member.name,
+          );
+          formData.append(
+            `participationType.teamDetails.members.${index}.cnic`,
+            member.cnic,
+          );
+          formData.append(
+            `participationType.teamDetails.members.${index}.accommodation`,
+            JSON.stringify(member.accommodation),
+          );
         });
       }
+
+      // Total Registration Amount
+      formData.append(
+        "totalRegistrationAmount",
+        data.totalRegistrationAmount.toString(),
+      );
 
       const response = await fetch("/api/submit-form", {
         method: "POST",
@@ -174,16 +281,13 @@ const RegistrationForm = () => {
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || "Failed to submit form");
+        toast.error("Failed to submit form");
       }
 
-      const result = await response.json();
-      toast.success(result.message);
+      toast.success("Form submitted successfully");
+      // eslint-disable-next-line unused-imports/no-unused-vars
     } catch (error) {
-      toast.error(
-        error instanceof Error ? error.message : "Failed to submit form",
-      );
+      toast.error("Failed to submit form");
     }
   };
 

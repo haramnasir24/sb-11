@@ -35,41 +35,34 @@ const SecondStep = () => {
         type: "team",
         teamDetails: {
           teamName: "",
-          numberOfMembers: 2,
-          members: [
-            {
-              name: "",
-              cnic: "",
-              studentCardPhoto: new File([], ""),
-              teamMemberProfilePhoto: new File([], ""),
-            },
-          ],
+          numberOfMembers: 0,
+          members: [],
         },
       });
     }
   };
 
   const handleNumberOfMembersChange = (value: number) => {
-    const validValue = Math.max(1, Math.min(value, 5));
+    setValue("participationType.teamDetails.numberOfMembers", value);
 
-    setValue("participationType.teamDetails.numberOfMembers", validValue);
-
-    const currentMembers = fields.length;
-    if (validValue > currentMembers) {
-      for (let i = currentMembers; i < validValue; i++) {
+    const currentCount = fields.length;
+    if (value > currentCount) {
+      for (let i = currentCount; i < value; i++) {
         append({
           name: "",
           cnic: "",
           studentCardPhoto: new File([], ""),
           teamMemberProfilePhoto: new File([], ""),
+          accommodation: { required: "No" },
         });
       }
-    } else if (validValue < currentMembers) {
-      for (let i = currentMembers - 1; i >= validValue; i--) {
+    } else if (value < currentCount) {
+      for (let i = currentCount - 1; i >= value; i--) {
         remove(i);
       }
     }
   };
+
   return (
     <div className="space-y-6">
       <h2 className="text-2xl font-bold">Additional Details</h2>
@@ -344,19 +337,26 @@ const SecondStep = () => {
               <FormItem>
                 <FormLabel>Number of Members</FormLabel>
                 <FormControl>
-                  <Input
-                    type="number"
-                    min="2"
-                    max="5"
-                    {...field}
-                    onChange={(e) => {
-                      const value = parseInt(e.target.value, 10);
-                      if (!isNaN(value) && value >= 2 && value <= 5) {
-                        field.onChange(value);
-                        handleNumberOfMembersChange(value);
-                      }
+                  <RadioGroup
+                    onValueChange={(value) => {
+                      const numValue = parseInt(value, 10);
+                      field.onChange(numValue);
+                      handleNumberOfMembersChange(numValue);
                     }}
-                  />
+                    value={field.value.toString()}
+                    className="flex space-x-4"
+                  >
+                    {[2, 3, 4, 5].map((num) => (
+                      <FormItem key={num} className="relative flex">
+                        <FormControl>
+                          <RadioGroupItem value={num.toString()} />
+                        </FormControl>
+                        <FormLabel className="absolute bottom-px left-5 font-normal">
+                          {num}
+                        </FormLabel>
+                      </FormItem>
+                    ))}
+                  </RadioGroup>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -395,14 +395,19 @@ const SecondStep = () => {
               <FormField
                 control={control}
                 name={`participationType.teamDetails.members.${index}.studentCardPhoto`}
-                render={({ field }) => (
+                render={({ field: { onChange, onBlur, name, ref } }) => (
                   <FormItem>
                     <FormLabel>Student Card Photo</FormLabel>
                     <FormControl>
                       <Input
                         type="file"
                         accept="image/jpeg,image/png,image/jpg"
-                        onChange={(e) => field.onChange(e.target.files?.[0])}
+                        name={name}
+                        ref={ref}
+                        onBlur={onBlur}
+                        onChange={(event) =>
+                          onChange(event.target.files && event.target.files[0])
+                        }
                       />
                     </FormControl>
                     <FormMessage />
@@ -412,20 +417,109 @@ const SecondStep = () => {
               <FormField
                 control={control}
                 name={`participationType.teamDetails.members.${index}.teamMemberProfilePhoto`}
-                render={({ field }) => (
+                render={({ field: { onChange, onBlur, name, ref } }) => (
                   <FormItem>
                     <FormLabel>Student Profile Photo</FormLabel>
                     <FormControl>
                       <Input
                         type="file"
                         accept="image/jpeg,image/png,image/jpg"
-                        onChange={(e) => field.onChange(e.target.files?.[0])}
+                        name={name}
+                        ref={ref}
+                        onBlur={onBlur}
+                        onChange={(event) =>
+                          onChange(event.target.files && event.target.files[0])
+                        }
                       />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
+              <FormField
+                control={control}
+                name={`participationType.teamDetails.members.${index}.accommodation.required`}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Does this member need accommodation?</FormLabel>
+                    <FormControl>
+                      <RadioGroup
+                        onValueChange={(value) => {
+                          field.onChange(value);
+                          if (value === "No") {
+                            setValue(
+                              `participationType.teamDetails.members.${index}.accommodation`,
+                              { required: "No" },
+                            );
+                          } else {
+                            setValue(
+                              `participationType.teamDetails.members.${index}.accommodation`,
+                              {
+                                required: "Yes",
+                                duration: "2 days",
+                              },
+                            );
+                          }
+                        }}
+                        value={field.value}
+                        className="flex flex-col space-y-1"
+                      >
+                        <FormItem className="flex items-center space-x-3 space-y-0">
+                          <FormControl>
+                            <RadioGroupItem value="Yes" />
+                          </FormControl>
+                          <FormLabel className="font-normal">Yes</FormLabel>
+                        </FormItem>
+                        <FormItem className="flex items-center space-x-3 space-y-0">
+                          <FormControl>
+                            <RadioGroupItem value="No" />
+                          </FormControl>
+                          <FormLabel className="font-normal">No</FormLabel>
+                        </FormItem>
+                      </RadioGroup>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              {watch(
+                `participationType.teamDetails.members.${index}.accommodation.required`,
+              ) === "Yes" && (
+                <FormField
+                  control={control}
+                  name={`participationType.teamDetails.members.${index}.accommodation.duration`}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Accommodation Duration</FormLabel>
+                      <FormControl>
+                        <RadioGroup
+                          onValueChange={field.onChange}
+                          value={field.value}
+                          className="flex flex-col space-y-1"
+                        >
+                          <FormItem className="flex items-center space-x-3 space-y-0">
+                            <FormControl>
+                              <RadioGroupItem value="2 days" />
+                            </FormControl>
+                            <FormLabel className="font-normal">
+                              2 days
+                            </FormLabel>
+                          </FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0">
+                            <FormControl>
+                              <RadioGroupItem value="3 days" />
+                            </FormControl>
+                            <FormLabel className="font-normal">
+                              3 days
+                            </FormLabel>
+                          </FormItem>
+                        </RadioGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              )}
             </div>
           ))}
         </div>

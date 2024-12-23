@@ -39,6 +39,17 @@ const teamMemberSchema = z.object({
   cnic: cnicSchema,
   studentCardPhoto: fileSchema,
   teamMemberProfilePhoto: fileSchema,
+  accommodation: z.discriminatedUnion("required", [
+    z.object({
+      required: z.literal("No"),
+    }),
+    z.object({
+      required: z.literal("Yes"),
+      duration: z.enum(["2 days", "3 days"], {
+        required_error: "Please select accommodation duration",
+      }),
+    }),
+  ]),
 });
 
 const phoneNumberSchema = z
@@ -84,7 +95,6 @@ export const formSchema = z.object({
       .max(5, "Cannot select more than 5 modules")
       .refine(
         (selections) => {
-          // Cast to readonly string[] for includes check
           const mysteryList = ModuleGroups.Mystery as readonly string[];
           const technicalList = ModuleGroups.Technical as readonly string[];
           const engineeringList = ModuleGroups.Engineering as readonly string[];
@@ -97,38 +107,38 @@ export const formSchema = z.object({
               .length,
           };
 
-          // 3 modules rules
+          // 3 modules: one from each category
           const isValidThreeModules =
             selections.length === 3 &&
-            ((counts.mystery >= 1 &&
-              counts.technical >= 1 &&
-              counts.engineering >= 1) ||
-              (counts.mystery === 2 &&
-                (counts.technical === 1 || counts.engineering === 1)) ||
-              (counts.technical === 2 &&
-                (counts.mystery === 1 || counts.engineering === 1)) ||
-              (counts.engineering === 2 &&
-                (counts.mystery === 1 || counts.technical === 1)));
+            counts.mystery === 1 &&
+            counts.technical === 1 &&
+            counts.engineering === 1;
 
-          // 4 modules rules
+          // 4 modules: two from one category, one each from others
           const isValidFourModules =
             selections.length === 4 &&
-            counts.mystery >= 1 &&
-            counts.technical >= 1 &&
-            counts.engineering >= 1;
+            ((counts.mystery === 2 &&
+              counts.technical === 1 &&
+              counts.engineering === 1) ||
+              (counts.technical === 2 &&
+                counts.mystery === 1 &&
+                counts.engineering === 1) ||
+              (counts.engineering === 2 &&
+                counts.mystery === 1 &&
+                counts.technical === 1));
 
-          // 5 modules rules
+          // 5 modules: two each from two categories, one from remaining
           const isValidFiveModules =
             selections.length === 5 &&
             ((counts.mystery === 2 &&
               counts.technical === 2 &&
               counts.engineering === 1) ||
               (counts.mystery === 2 &&
-                counts.technical === 1 &&
-                counts.engineering === 2) ||
-              (counts.mystery === 1 &&
-                counts.technical === 2 &&
-                counts.engineering === 2));
+                counts.engineering === 2 &&
+                counts.technical === 1) ||
+              (counts.technical === 2 &&
+                counts.engineering === 2 &&
+                counts.mystery === 1));
 
           return (
             isValidThreeModules || isValidFourModules || isValidFiveModules
@@ -136,7 +146,10 @@ export const formSchema = z.object({
         },
         {
           message:
-            "Invalid module selection. Please follow the group selection rules.",
+            "Module selection must follow these rules:\n" +
+            "- 3 modules: One from each category\n" +
+            "- 4 modules: Two from one category, one each from others\n" +
+            "- 5 modules: Two each from two categories, one from remaining",
         },
       ),
   }),
@@ -190,7 +203,7 @@ export const formSchema = z.object({
       teamDetails: z
         .object({
           teamName: z.string().min(1, "Team name is required"),
-          numberOfMembers: z.number().min(2).max(5),
+          numberOfMembers: z.coerce.number().min(2).max(5),
           members: z
             .array(teamMemberSchema)
             .min(2, "At least one team member required")
@@ -204,6 +217,7 @@ export const formSchema = z.object({
   ]),
 
   // Step 4:
+  totalRegistrationAmount: z.coerce.number(),
   paymentProof: fileSchema,
 });
 
