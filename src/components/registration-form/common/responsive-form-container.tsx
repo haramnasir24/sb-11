@@ -7,8 +7,10 @@ import { Form } from "@/components/ui/form";
 
 import { FormSchemaValues } from "@/schema/form";
 
+import RegistrationHeader from "./registration-form-header";
 import FinalStep from "../final-step";
 import FirstStep from "../first-step";
+import ModulesStep from "../modules-step";
 import SecondStep from "../second-step";
 
 interface ResponsiveFormContainerProps {
@@ -31,30 +33,7 @@ const ResponsiveFormContainer = ({
       <div className="mx-auto max-w-3xl">
         <div className="overflow-hidden rounded-lg bg-white shadow-md">
           <div className="px-4 py-5 sm:p-6">
-            <div className="mb-8">
-              <h2 className="text-center text-3xl font-extrabold text-gray-900">
-                Registration Form
-              </h2>
-              <div className="mt-4 flex items-center justify-between">
-                {[1, 2, 3].map((step) => (
-                  <div
-                    key={step}
-                    className={`flex-1 ${
-                      step < currStep
-                        ? "bg-blue-500"
-                        : step === currStep
-                          ? "bg-blue-200"
-                          : "bg-gray-200"
-                    } mx-1 h-2 rounded-full`}
-                  />
-                ))}
-              </div>
-              <div className="mt-2 flex justify-between text-sm text-gray-600">
-                <span>User Data</span>
-                <span>Additional Details</span>
-                <span>Payment Proof</span>
-              </div>
-            </div>
+            <RegistrationHeader currStep={currStep - 1} />
 
             <StepContext.Provider
               value={{
@@ -70,8 +49,9 @@ const ResponsiveFormContainer = ({
                   className="space-y-6"
                 >
                   {currStep === 1 && <FirstStep />}
-                  {currStep === 2 && <SecondStep />}
-                  {currStep === 3 && <FinalStep />}
+                  {currStep === 2 && <ModulesStep />}
+                  {currStep === 3 && <SecondStep />}
+                  {currStep === 4 && <FinalStep />}
                 </form>
               </Form>
             </StepContext.Provider>

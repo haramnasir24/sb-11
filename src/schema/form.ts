@@ -1,5 +1,22 @@
 import { z } from "zod";
 
+export const ModuleGroups = {
+  Mystery: [
+    "Crimeline Road",
+    "Escape Room",
+    "Medical Mayhem",
+    "Sci-Run",
+  ] as const,
+  Technical: ["Chemathon", "HeatOps", "Crack it Out", "Psych Realm"] as const,
+  Engineering: ["Speed Programming", "Mathlethics", "Robowars"] as const,
+} as const;
+
+const ALL_MODULES = [
+  ...ModuleGroups.Mystery,
+  ...ModuleGroups.Technical,
+  ...ModuleGroups.Engineering,
+] as const;
+
 // ! Helper Schemas
 const cnicSchema = z
   .string()
@@ -21,6 +38,7 @@ const teamMemberSchema = z.object({
   name: z.string().min(1, "Name is required"),
   cnic: cnicSchema,
   studentCardPhoto: fileSchema,
+  teamMemberProfilePhoto: fileSchema,
 });
 
 const phoneNumberSchema = z
@@ -41,6 +59,10 @@ export const formSchema = z.object({
 
   cnic: cnicSchema,
 
+  designation: z
+    .string()
+    .min(3, { message: "Designation must be at least 3 characters long" }),
+
   instituteName: z
     .string()
     .min(3, { message: "Institute name must be at least 3 characters long" }),
@@ -54,7 +76,99 @@ export const formSchema = z.object({
   profilePicture: fileSchema,
   studentCardorCNIC: fileSchema,
 
-  // Step 2:
+  // Step 2
+  modules: z.object({
+    selections: z
+      .array(z.enum(ALL_MODULES))
+      .min(3, "Select at least 3 modules")
+      .max(5, "Cannot select more than 5 modules")
+      .refine(
+        (selections) => {
+          // Cast to readonly string[] for includes check
+          const mysteryList = ModuleGroups.Mystery as readonly string[];
+          const technicalList = ModuleGroups.Technical as readonly string[];
+          const engineeringList = ModuleGroups.Engineering as readonly string[];
+
+          const counts = {
+            mystery: selections.filter((m) => mysteryList.includes(m)).length,
+            technical: selections.filter((m) => technicalList.includes(m))
+              .length,
+            engineering: selections.filter((m) => engineeringList.includes(m))
+              .length,
+          };
+
+          // 3 modules rules
+          const isValidThreeModules =
+            selections.length === 3 &&
+            ((counts.mystery >= 1 &&
+              counts.technical >= 1 &&
+              counts.engineering >= 1) ||
+              (counts.mystery === 2 &&
+                (counts.technical === 1 || counts.engineering === 1)) ||
+              (counts.technical === 2 &&
+                (counts.mystery === 1 || counts.engineering === 1)) ||
+              (counts.engineering === 2 &&
+                (counts.mystery === 1 || counts.technical === 1)));
+
+          // 4 modules rules
+          const isValidFourModules =
+            selections.length === 4 &&
+            counts.mystery >= 1 &&
+            counts.technical >= 1 &&
+            counts.engineering >= 1;
+
+          // 5 modules rules
+          const isValidFiveModules =
+            selections.length === 5 &&
+            ((counts.mystery === 2 &&
+              counts.technical === 2 &&
+              counts.engineering === 1) ||
+              (counts.mystery === 2 &&
+                counts.technical === 1 &&
+                counts.engineering === 2) ||
+              (counts.mystery === 1 &&
+                counts.technical === 2 &&
+                counts.engineering === 2));
+
+          return (
+            isValidThreeModules || isValidFourModules || isValidFiveModules
+          );
+        },
+        {
+          message:
+            "Invalid module selection. Please follow the group selection rules.",
+        },
+      ),
+  }),
+
+  // Step 3:
+  chaperone: z.discriminatedUnion("bringing", [
+    // Not bringing a chaperone
+    z.object({
+      bringing: z.literal("No"),
+    }),
+    // Bringing a chaperone
+    z.object({
+      bringing: z.literal("Yes"),
+      // Always required if chaperone is "Yes"
+      name: z.string().min(3, { message: "Name is required" }),
+      cnic: cnicSchema,
+      accommodation: z.discriminatedUnion("required", [
+        // Chaperone does not need accommodation
+        z.object({
+          required: z.literal("No"),
+        }),
+        // Chaperone does need accommodation
+        z.object({
+          required: z.literal("Yes"),
+          duration: z.enum(["2 days", "3 days"], {
+            required_error: "Please select chaperone accommodation duration",
+          }),
+        }),
+      ]),
+    }),
+  ]),
+
   accommodation: z.discriminatedUnion("required", [
     z.object({
       required: z.literal("Yes"),
@@ -76,10 +190,10 @@ export const formSchema = z.object({
       teamDetails: z
         .object({
           teamName: z.string().min(1, "Team name is required"),
-          numberOfMembers: z.number().min(1).max(5),
+          numberOfMembers: z.number().min(2).max(5),
           members: z
             .array(teamMemberSchema)
-            .min(1, "At least one team member required")
+            .min(2, "At least one team member required")
             .max(5, "Maximum 5 team members allowed"),
         })
         .refine(
@@ -89,7 +203,7 @@ export const formSchema = z.object({
     }),
   ]),
 
-  // Step 3:
+  // Step 4:
   paymentProof: fileSchema,
 });
 

@@ -12,8 +12,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
+import { FormSchemaValues } from "@/schema/form";
+
 const FirstStep = () => {
-  const { control } = useFormContext();
+  const { control } = useFormContext<FormSchemaValues>();
   const { onContinue } = useFormStep();
 
   return (
@@ -70,6 +72,20 @@ const FirstStep = () => {
             <FormLabel>CNIC</FormLabel>
             <FormControl>
               <Input placeholder="13-digit CNIC" {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+
+      <FormField
+        control={control}
+        name="designation"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Designation</FormLabel>
+            <FormControl>
+              <Input placeholder="Student / Teacher etc." {...field} />
             </FormControl>
             <FormMessage />
           </FormItem>

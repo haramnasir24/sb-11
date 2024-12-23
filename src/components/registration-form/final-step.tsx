@@ -45,7 +45,7 @@ const FinalStep = () => {
         <Button onClick={onBack} variant="outline">
           Back
         </Button>
-        <Button onClick={() => onContinue(3)} type="submit">
+        <Button onClick={() => onContinue(4)} type="submit">
           Submit
         </Button>
       </div>

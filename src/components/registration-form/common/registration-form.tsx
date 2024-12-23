@@ -14,7 +14,7 @@ import ResponsiveFormContainer from "./responsive-form-container";
 
 type FormField = FieldPath<FormSchemaValues>;
 
-const TOTAL_STEPS = 3;
+const TOTAL_STEPS = 4;
 
 type TStep = {
   id: string;
@@ -31,6 +31,7 @@ const steps: TStep[] = [
       "email",
       "phone",
       "cnic",
+      "designation",
       "instituteName",
       "guardianPhone",
       "city",
@@ -42,10 +43,15 @@ const steps: TStep[] = [
   {
     id: "Step 2",
     name: "Additional Details",
-    fields: ["accommodation", "participationType"],
+    fields: ["modules"],
   },
   {
     id: "Step 3",
+    name: "Additional Details",
+    fields: ["chaperone", "accommodation", "participationType"],
+  },
+  {
+    id: "Step 4",
     name: "Payment Proof",
     fields: ["paymentProof"],
   },
@@ -65,12 +71,18 @@ const RegistrationForm = () => {
       email: "zainjee37405@gmail.com",
       phone: "03125341967",
       cnic: "3740515763723",
+      designation: "Student",
       instituteName: "NUST-SEECS",
       guardianPhone: "03125341967",
       city: "Islamabad",
       profilePicture: undefined,
       studentCardorCNIC: undefined,
       // Step 2
+      modules: {
+        selections: ["Chemathon", "Speed Programming", "Crimeline Road"],
+      },
+      // Step 3
+      chaperone: { bringing: "No" },
       accommodation: { required: "No" },
       participationType: { type: "individual" },
       // Step

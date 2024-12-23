@@ -13,10 +13,14 @@ import {
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
+import { FormSchemaValues } from "@/schema/form";
+
 const SecondStep = () => {
-  const { control, watch, setValue } = useFormContext();
+  const { control, watch, setValue } = useFormContext<FormSchemaValues>();
   const { onContinue, onBack } = useFormStep();
   const participationType = watch("participationType.type");
+  const bringingChaperone = watch("chaperone.bringing");
+  const chaperoneAccommodation = watch("chaperone.accommodation.required");
 
   const { fields, append, remove } = useFieldArray({
     control,
@@ -31,8 +35,15 @@ const SecondStep = () => {
         type: "team",
         teamDetails: {
           teamName: "",
-          numberOfMembers: 1,
-          members: [{ name: "", cnic: "", studentCardPhoto: null }],
+          numberOfMembers: 2,
+          members: [
+            {
+              name: "",
+              cnic: "",
+              studentCardPhoto: new File([], ""),
+              teamMemberProfilePhoto: new File([], ""),
+            },
+          ],
         },
       });
     }
@@ -46,7 +57,12 @@ const SecondStep = () => {
     const currentMembers = fields.length;
     if (validValue > currentMembers) {
       for (let i = currentMembers; i < validValue; i++) {
-        append({ name: "", cnic: "", studentCardPhoto: null });
+        append({
+          name: "",
+          cnic: "",
+          studentCardPhoto: new File([], ""),
+          teamMemberProfilePhoto: new File([], ""),
+        });
       }
     } else if (validValue < currentMembers) {
       for (let i = currentMembers - 1; i >= validValue; i--) {
@@ -124,6 +140,155 @@ const SecondStep = () => {
 
       <FormField
         control={control}
+        name="chaperone.bringing"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Are you bringing a chaperone?</FormLabel>
+            <FormControl>
+              <RadioGroup
+                onValueChange={(value) => {
+                  field.onChange(value);
+                  if (value === "No") {
+                    setValue("chaperone", { bringing: "No" });
+                  } else {
+                    setValue("chaperone", {
+                      bringing: "Yes",
+                      name: "",
+                      cnic: "",
+                      accommodation: { required: "No" },
+                    });
+                  }
+                }}
+                defaultValue={field.value}
+                className="flex flex-col space-y-1"
+              >
+                <FormItem className="flex items-center space-x-3 space-y-0">
+                  <FormControl>
+                    <RadioGroupItem value="Yes" />
+                  </FormControl>
+                  <FormLabel className="font-normal">Yes</FormLabel>
+                </FormItem>
+                <FormItem className="flex items-center space-x-3 space-y-0">
+                  <FormControl>
+                    <RadioGroupItem value="No" />
+                  </FormControl>
+                  <FormLabel className="font-normal">No</FormLabel>
+                </FormItem>
+              </RadioGroup>
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+
+      {bringingChaperone === "Yes" && (
+        <>
+          <FormField
+            control={control}
+            name="chaperone.name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Chaperone Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter chaperone name" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={control}
+            name="chaperone.cnic"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Chaperone CNIC</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter chaperone CNIC" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={control}
+            name="chaperone.accommodation.required"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Does the chaperone need accommodation?</FormLabel>
+                <FormControl>
+                  <RadioGroup
+                    onValueChange={(value) => {
+                      field.onChange(value);
+                      if (value === "No") {
+                        setValue("chaperone.accommodation", { required: "No" });
+                      } else {
+                        setValue("chaperone.accommodation", {
+                          required: "Yes",
+                          duration: "2 days",
+                        });
+                      }
+                    }}
+                    defaultValue={field.value}
+                    className="flex flex-col space-y-1"
+                  >
+                    <FormItem className="flex items-center space-x-3 space-y-0">
+                      <FormControl>
+                        <RadioGroupItem value="Yes" />
+                      </FormControl>
+                      <FormLabel className="font-normal">Yes</FormLabel>
+                    </FormItem>
+                    <FormItem className="flex items-center space-x-3 space-y-0">
+                      <FormControl>
+                        <RadioGroupItem value="No" />
+                      </FormControl>
+                      <FormLabel className="font-normal">No</FormLabel>
+                    </FormItem>
+                  </RadioGroup>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {chaperoneAccommodation === "Yes" && (
+            <FormField
+              control={control}
+              name="chaperone.accommodation.duration"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Chaperone Accommodation Duration</FormLabel>
+                  <FormControl>
+                    <RadioGroup
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                      className="flex flex-col space-y-1"
+                    >
+                      <FormItem className="flex items-center space-x-3 space-y-0">
+                        <FormControl>
+                          <RadioGroupItem value="2 days" />
+                        </FormControl>
+                        <FormLabel className="font-normal">2 days</FormLabel>
+                      </FormItem>
+                      <FormItem className="flex items-center space-x-3 space-y-0">
+                        <FormControl>
+                          <RadioGroupItem value="3 days" />
+                        </FormControl>
+                        <FormLabel className="font-normal">3 days</FormLabel>
+                      </FormItem>
+                    </RadioGroup>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          )}
+        </>
+      )}
+
+      <FormField
+        control={control}
         name="participationType.type"
         render={({ field }) => (
           <FormItem>
@@ -181,12 +346,12 @@ const SecondStep = () => {
                 <FormControl>
                   <Input
                     type="number"
-                    min="1"
+                    min="2"
                     max="5"
                     {...field}
                     onChange={(e) => {
                       const value = parseInt(e.target.value, 10);
-                      if (!isNaN(value) && value >= 1 && value <= 5) {
+                      if (!isNaN(value) && value >= 2 && value <= 5) {
                         field.onChange(value);
                         handleNumberOfMembersChange(value);
                       }
@@ -244,6 +409,23 @@ const SecondStep = () => {
                   </FormItem>
                 )}
               />
+              <FormField
+                control={control}
+                name={`participationType.teamDetails.members.${index}.teamMemberProfilePhoto`}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Student Profile Photo</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="file"
+                        accept="image/jpeg,image/png,image/jpg"
+                        onChange={(e) => field.onChange(e.target.files?.[0])}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
             </div>
           ))}
         </div>
@@ -253,7 +435,7 @@ const SecondStep = () => {
         <Button onClick={onBack} variant="outline">
           Back
         </Button>
-        <Button onClick={() => onContinue(2)}>Continue</Button>
+        <Button onClick={() => onContinue(3)}>Continue</Button>
       </div>
     </div>
   );
