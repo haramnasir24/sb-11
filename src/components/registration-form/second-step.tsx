@@ -73,11 +73,10 @@ const SecondStep = () => {
         render={({ field }) => (
           <FormItem>
             <p className="text-sm">
-              {" "}
-              <span className="font-bold text-purple-600">Note: </span>{" "}
+              <span className="font-bold text-purple-600">Note: </span>
               Accomodation fee is 2000/night for each person including mess and
-              bedding.{" "}
-            </p>{" "}
+              bedding.
+            </p>
             <br />
             <FormLabel>Do you need accommodation?</FormLabel>
             <FormControl>
@@ -342,6 +341,11 @@ const SecondStep = () => {
             name="participationType.teamDetails.numberOfMembers"
             render={({ field }) => (
               <FormItem>
+                <p className="text-sm">
+                  <span className="font-bold text-purple-600">Note:</span> A
+                  team can have minimum 3 and maximum 6 people
+                </p>
+                <br />
                 <FormLabel>Number of Members</FormLabel>
                 <FormControl>
                   <RadioGroup
@@ -372,7 +376,7 @@ const SecondStep = () => {
 
           {fields.map((field, index) => (
             <div key={field.id} className="space-y-4 rounded border p-4">
-              <h3 className="font-semibold">Team Member {index + 1}</h3>
+              <h3>Team Member {index + 1}</h3>
               <FormField
                 control={control}
                 name={`participationType.teamDetails.members.${index}.name`}
