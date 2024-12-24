@@ -157,7 +157,7 @@ export const modules = [
     images: [
       "/images/modules-images/chemathon/ct1.JPG",
       "/images/modules-images/chemathon/ct2.jpg",
-      "/images/modules-images/chemathon/cT3.JPG",
+      "/images/modules-images/chemathon/ct3.JPG",
     ],
   },
   {
