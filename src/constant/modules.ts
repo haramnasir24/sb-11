@@ -140,8 +140,8 @@ export const modules = [
       "Robo Wars is a 3-day competition where participants design, build, and battle robots. The event combines technical skill, strategy, and creativity, with a focus on engineering design, automation, and interpersonal tactics like deception and sabotage.",
     images: [
       "/images/modules-images/robo-wars/rw1.JPG",
-      "/images/modules-images/robo-wars/rw2.jpg",
-      "/images/modules-images/robo-wars/rw3.jpg",
+      "/images/modules-images/robo-wars/rw2.JPG",
+      "/images/modules-images/robo-wars/rw3.JPG",
     ],
   },
   {
