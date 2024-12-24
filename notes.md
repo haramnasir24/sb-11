@@ -1,24 +1,11 @@
-# to-do
+To-do:
 
-issue: register now button
-issue: for some reason, website is not working as expected on safari browser
+# add contact info (havent received contact list yet, waiting on hammad)
 
-1. get the carousel (past events) to scroll on its own, make the arrows bigger and visible
+# fix the registration form header for mobile screens
 
-2. registration form page \*\*\* assigned to ali aqdas
+# fix the uploaded file thing (should show the uploaded file when going to previous step)
 
-3. connect to backend \*\*\*
+# send the confirmation email after form submission (nodemailer api)
 
-(to be done)
-
-# add logo
-
-# align the paragraph content
-
-# change images
-
-# add sponsors logos
-
-# add social events and relevant content
-
-# add contact info
+# after form is submitted, and after submission success notification display, clear the form and redirect to home page
