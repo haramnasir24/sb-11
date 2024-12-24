@@ -287,6 +287,8 @@ const RegistrationForm = () => {
       }
 
       toast.success("Form submitted successfully");
+      form.reset();
+      router.push("/");
     } catch (error) {
       toast.error("Failed to submit form");
     }
