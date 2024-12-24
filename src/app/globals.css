@@ -10,6 +10,13 @@
 }
 
 @font-face {
+  font-family: "NeueMontreal-Light";
+  src: url("/fonts/NeueMontreal-Light.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: "NeueMontreal-Medium";
   src: url("/fonts/NeueMontreal-Bold.otf") format("opentype");
   font-weight: normal;

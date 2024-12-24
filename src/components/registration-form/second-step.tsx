@@ -72,6 +72,13 @@ const SecondStep = () => {
         name="accommodation.required"
         render={({ field }) => (
           <FormItem>
+            <p className="text-sm">
+              {" "}
+              <span className="font-bold text-purple-600">Note: </span>{" "}
+              Accomodation fee is 2000/night for each person including mess and
+              bedding.{" "}
+            </p>{" "}
+            <br />
             <FormLabel>Do you need accommodation?</FormLabel>
             <FormControl>
               <RadioGroup

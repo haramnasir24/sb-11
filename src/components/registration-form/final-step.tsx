@@ -125,10 +125,10 @@ const FinalStep = () => {
           <li>
             Modules: Rs.&nbsp;
             {modules.length === 3
-              ? "6,000"
+              ? "5,000"
               : modules.length === 4
-                ? "6,700"
-                : "7,300"}
+                ? "5,700"
+                : "6,300"}
           </li>
           {participationType.type === "individual" &&
             accommodation.required === "Yes" && (
@@ -168,7 +168,7 @@ const FinalStep = () => {
           )}
         </ul>
       </div>
-      <p className="text-base font-semibold text-purple-800">
+      <p className="text-base text-purple-800">
         {/* Bank Details:<br/> */}
         Bank Name: HBL
         <br />
@@ -178,8 +178,9 @@ const FinalStep = () => {
         <br />
       </p>
       <p className="text-sm text-gray-600">
-        Please upload the payment proof of the registration fee. The payment
-        proof should be in the format of JPG, JPEG, or PNG.
+        Please transfer the total amount to the bank mentioned above and upload
+        the payment proof of the registration fee. The payment receipt should be
+        in the format of JPG, JPEG, or PNG.
       </p>
       <FormField
         control={control}

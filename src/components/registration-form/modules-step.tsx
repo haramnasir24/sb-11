@@ -26,7 +26,7 @@ const ModulesStep = () => {
       <p className="text-sm text-gray-500">
         Select 3-5 modules. Follow the group selection rules as specified.
       </p>
-      <p className="text-sm font-semibold text-purple-800">
+      <p className="text-sm text-purple-800">
         In case of 3 modules: Select one from each category.
         <br />
         In case of 4 modules: Select two from one category, one each from
@@ -46,7 +46,7 @@ const ModulesStep = () => {
               <div className="flex w-full flex-col justify-center pr-14 md:flex-row md:justify-between">
                 {Object.entries(ModuleGroups).map(([groupName, modules]) => (
                   <div key={groupName}>
-                    <h3 className="mb-2 font-semibold">{groupName}</h3>
+                    <h3 className="mb-2">{groupName}</h3>
                     {modules.map((module) => (
                       <FormField
                         key={module}
@@ -90,7 +90,7 @@ const ModulesStep = () => {
         )}
       />
       <div className="mt-4">
-        <h3 className="font-semibold">Selected Modules:</h3>
+        <h3>Selected Modules:</h3>
         <ul className="list-inside list-disc">
           {selectedModules?.map((module) => <li key={module}>{module}</li>)}
         </ul>
