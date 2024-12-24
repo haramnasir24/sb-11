@@ -8,7 +8,7 @@ const LoadingIndicator = () => {
         alt="Science Bee Logo"
         height={3817}
         width={4838}
-        className="w-28 animate-pulse md:w-36 lg:w-40 xl:w-48"
+        className="w-28 animate-bounce md:w-36 lg:w-40"
       />
     </div>
   );

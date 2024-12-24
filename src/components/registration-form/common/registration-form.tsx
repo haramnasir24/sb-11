@@ -1,3 +1,4 @@
+/* eslint-disable unused-imports/no-unused-vars */
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -285,7 +286,6 @@ const RegistrationForm = () => {
       }
 
       toast.success("Form submitted successfully");
-      // eslint-disable-next-line unused-imports/no-unused-vars
     } catch (error) {
       toast.error("Failed to submit form");
     }

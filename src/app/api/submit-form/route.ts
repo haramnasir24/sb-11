@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { NextRequest, NextResponse } from "next/server";
 
 import {
@@ -6,13 +5,13 @@ import {
   createUserFolder,
   uploadToDrive,
 } from "@/lib/google-services";
+import { formatDate } from "@/lib/utils";
 
 import { formSchema } from "@/schema/form";
 
 export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
-    console.log("Raw form data entries:", Array.from(formData.entries()));
 
     // Parse JSON fields first
     const rawFormData: Record<string, any> = {
@@ -42,13 +41,11 @@ export async function POST(req: NextRequest) {
       if (value) rawFormData[field] = value;
     });
 
-    // Handle file uploads
     const fileFields = ["profilePicture", "studentCardorCNIC", "paymentProof"];
     fileFields.forEach((field) => {
       rawFormData[field] = formData.get(field);
     });
 
-    // Handle team members if present
     if (rawFormData.participationType.type === "team") {
       const memberCount =
         rawFormData.participationType.teamDetails.numberOfMembers;
@@ -74,9 +71,7 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // Validate data
     const validatedData = await formSchema.parseAsync(rawFormData);
-    console.log("Validated data:", JSON.stringify(validatedData, null, 2));
 
     // Create folder once at the start
     const folderId = await createUserFolder(
@@ -84,7 +79,6 @@ export async function POST(req: NextRequest) {
       validatedData.instituteName,
     );
 
-    // Handle file uploads using the same folder ID
     const [profilePictureUrl, studentCardUrl, paymentProofUrl] =
       await Promise.all([
         uploadToDrive(
@@ -106,7 +100,7 @@ export async function POST(req: NextRequest) {
 
     // Prepare sheet data
     const sheetData = [
-      new Date().toISOString(), // Add timestamp
+      formatDate(new Date()),
       validatedData.userName,
       validatedData.email,
       validatedData.phone,
@@ -122,25 +116,25 @@ export async function POST(req: NextRequest) {
       validatedData.accommodation.required,
       validatedData.accommodation.required === "Yes"
         ? validatedData.accommodation.duration
-        : "N/A",
+        : "No Accomodation",
       validatedData.chaperone.bringing,
       validatedData.chaperone.bringing === "Yes"
         ? validatedData.chaperone.name
-        : "N/A",
+        : "No Chaperone",
       validatedData.chaperone.bringing === "Yes"
         ? validatedData.chaperone.cnic
-        : "N/A",
+        : "No Chaperone",
       validatedData.chaperone.bringing === "Yes"
         ? validatedData.chaperone.accommodation.required
-        : "N/A",
+        : "No Chaperone",
       validatedData.chaperone.bringing === "Yes" &&
       validatedData.chaperone.accommodation.required === "Yes"
         ? validatedData.chaperone.accommodation.duration
-        : "N/A",
+        : "No Chaperone",
       validatedData.participationType.type,
       validatedData.participationType.type === "team"
         ? validatedData.participationType.teamDetails.teamName
-        : "N/A",
+        : "Individual",
       validatedData.totalRegistrationAmount.toString(),
       paymentProofUrl,
     ];
@@ -153,12 +147,12 @@ export async function POST(req: NextRequest) {
             const [cardUrl, photoUrl] = await Promise.all([
               uploadToDrive(
                 member.studentCardPhoto,
-                `team_${member.name}_card`,
+                `team_${member.name}_student_card`,
                 folderId,
               ),
               uploadToDrive(
                 member.teamMemberProfilePhoto,
-                `team_${member.name}_profile`,
+                `team_${member.name}_profile_photo`,
                 folderId,
               ),
             ]);
@@ -170,7 +164,7 @@ export async function POST(req: NextRequest) {
               member.accommodation.required,
               member.accommodation.required === "Yes"
                 ? member.accommodation.duration
-                : "N/A",
+                : "No Accomodation",
             ];
           },
         ),
@@ -178,26 +172,10 @@ export async function POST(req: NextRequest) {
       sheetData.push(...memberData.flat());
     }
 
-    // Log the raw form data after processing
-    console.log(
-      "Processed raw form data:",
-      JSON.stringify(rawFormData, null, 2),
-    );
-
-    // Before sheet append
-    console.log("Final sheet data:", sheetData);
-
     await appendToSheet(sheetData);
-    console.log("Sheet append completed successfully");
 
     return NextResponse.json({ message: "Form submitted successfully" });
   } catch (error) {
-    console.error("Form submission error:", error);
-    // Log the full error object
-    console.error(
-      "Full error:",
-      JSON.stringify(error, Object.getOwnPropertyNames(error)),
-    );
     return NextResponse.json(
       {
         error:

@@ -1,6 +1,7 @@
-/* eslint-disable no-console */
+/* eslint-disable unused-imports/no-unused-vars */
 import { google } from "googleapis";
 import { sheets_v4 } from "googleapis";
+import { toast } from "sonner";
 import { Readable } from "stream";
 
 import { env } from "@/env";
@@ -18,11 +19,7 @@ function getServiceAccountCredentials() {
     ).toString();
     return JSON.parse(decodedCredentials);
   } catch (error) {
-    console.error(
-      "Failed to decode Google service account credentials:",
-      error,
-    );
-    throw new Error("Invalid Google service account credentials");
+    toast.error("Invalid Google service account credentials");
   }
 }
 
@@ -92,7 +89,7 @@ export async function createUserFolder(
 
     return createFolderResponse.data.id;
   } catch (error) {
-    console.error("Error creating user folder:", error);
+    toast.error("Error creating user folder");
     throw new Error("Failed to create user folder");
   }
 }
@@ -127,7 +124,7 @@ export async function uploadToDrive(
 
     return response.data.webViewLink;
   } catch (error) {
-    console.error("Error uploading file:", error);
+    toast.error("Error uploading file, please try again later");
     throw new Error("Failed to upload file");
   }
 }
@@ -148,7 +145,7 @@ export async function appendToSheet(values: any[]): Promise<void> {
       throw new Error(`Failed to append to sheet: ${response.statusText}`);
     }
   } catch (error) {
-    console.error("Error appending to Sheet:", error);
+    toast.error("Error appending to Sheet");
     throw new Error("Failed to append data to Google Sheets");
   }
 }
