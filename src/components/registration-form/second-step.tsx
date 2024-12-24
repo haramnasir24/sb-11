@@ -341,11 +341,6 @@ const SecondStep = () => {
             name="participationType.teamDetails.numberOfMembers"
             render={({ field }) => (
               <FormItem>
-                <p className="text-sm">
-                  <span className="font-bold text-purple-600">Note:</span> A
-                  team can have minimum 3 and maximum 6 people
-                </p>
-                <br />
                 <FormLabel>Number of Members</FormLabel>
                 <FormControl>
                   <RadioGroup
