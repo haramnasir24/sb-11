@@ -114,7 +114,7 @@ const FinalStep = () => {
       <div>
         <p className="font-semibold">
           Total registration fee:{" "}
-          <span className="text-indigo-600">
+          <span className="text-purple-800">
             Rs.&nbsp;{totalPrice.toLocaleString()}
           </span>
         </p>
@@ -168,6 +168,15 @@ const FinalStep = () => {
           )}
         </ul>
       </div>
+      <p className="text-base font-semibold text-purple-800">
+        {/* Bank Details:<br/> */}
+        Bank Name: HBL
+        <br />
+        Account Number: 0022927902085701
+        <br />
+        Account Title: NUST STUDENT
+        <br />
+      </p>
       <p className="text-sm text-gray-600">
         Please upload the payment proof of the registration fee. The payment
         proof should be in the format of JPG, JPEG, or PNG.

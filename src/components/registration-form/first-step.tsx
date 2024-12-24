@@ -20,7 +20,7 @@ const FirstStep = () => {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold">User Data</h2>
+      <h2 className="text-2xl font-bold text-[#03071E]">User Data</h2>
 
       <FormField
         control={control}
@@ -194,7 +194,7 @@ const FirstStep = () => {
         )}
       />
 
-      <Button onClick={() => onContinue(1)} className="w-full">
+      <Button onClick={() => onContinue(1)} className="w-full bg-[#03071E]">
         Continue
       </Button>
     </div>

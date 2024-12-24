@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 
-import LoadingIndicator from "@/components/loading-indicator";
 import RegistrationForm from "@/components/registration-form/common/registration-form";
+import LoadingIndicator from "@/components/ui/loading-indicator";
 
 const RegistrationPage = () => {
   return (

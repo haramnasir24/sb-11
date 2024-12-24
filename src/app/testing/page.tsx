@@ -1,6 +1,6 @@
 import React from "react";
 
-import LoadingIndicator from "@/components/loading-indicator";
+import LoadingIndicator from "@/components/ui/loading-indicator";
 
 const TestingPage = () => {
   return <LoadingIndicator />;

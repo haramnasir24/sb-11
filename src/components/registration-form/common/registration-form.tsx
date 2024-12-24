@@ -7,7 +7,7 @@ import React, { useCallback } from "react";
 import { FieldPath, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
-import LoadingIndicator from "@/components/loading-indicator";
+import LoadingIndicator from "@/components/ui/loading-indicator";
 
 import { formSchema, FormSchemaValues } from "@/schema/form";
 

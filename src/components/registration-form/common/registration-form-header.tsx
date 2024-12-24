@@ -21,7 +21,7 @@ const RegistrationHeader: React.FC<RegistrationHeaderProps> = ({
 
   return (
     <div className="mb-12 bg-white p-6">
-      <h2 className="mb-6 text-center text-3xl font-extrabold text-indigo-600">
+      <h2 className="mb-6 text-center text-3xl font-extrabold text-purple-800">
         Science Bee Registration Form
       </h2>
       <div className="flex items-center justify-between">
@@ -30,9 +30,9 @@ const RegistrationHeader: React.FC<RegistrationHeaderProps> = ({
             <div
               className={`flex h-12 w-12 items-center justify-center rounded-full border-4 ${
                 index < currStep
-                  ? "border-indigo-500 bg-indigo-500 text-white"
+                  ? "border-purple-800 bg-purple-800 text-white"
                   : index === currStep
-                    ? "border-indigo-500 bg-white text-indigo-500"
+                    ? "border-purple-800 bg-white text-purple-800"
                     : "border-gray-300 bg-white text-gray-300"
               }`}
             >
@@ -41,7 +41,7 @@ const RegistrationHeader: React.FC<RegistrationHeaderProps> = ({
             <div className="mt-2 h-1 w-full bg-gray-200">
               <div
                 className={`h-full ${
-                  index < currStep ? "bg-indigo-500" : "bg-gray-200"
+                  index < currStep ? "bg-purple-800" : "bg-gray-200"
                 }`}
                 style={{
                   width:
@@ -55,7 +55,7 @@ const RegistrationHeader: React.FC<RegistrationHeaderProps> = ({
             </div>
             <span
               className={`mt-2 text-xs font-medium ${
-                index <= currStep ? "text-indigo-600" : "text-gray-500"
+                index <= currStep ? "text-purple-800" : "text-gray-500"
               }`}
             >
               {step.label}

@@ -26,6 +26,16 @@ const ModulesStep = () => {
       <p className="text-sm text-gray-500">
         Select 3-5 modules. Follow the group selection rules as specified.
       </p>
+      <p className="text-sm font-semibold text-purple-800">
+        In case of 3 modules: Select one from each category.
+        <br />
+        In case of 4 modules: Select two from one category, one each from
+        others.
+        <br />
+        In case of 5 modules: Select two each from two categories, one from
+        remaining.
+        <br />
+      </p>
       <FormField
         control={control}
         name="modules.selections"
@@ -85,10 +95,12 @@ const ModulesStep = () => {
           {selectedModules?.map((module) => <li key={module}>{module}</li>)}
         </ul>
       </div>
-      <Button onClick={onBack} variant="outline">
-        Back
-      </Button>
-      <Button onClick={() => onContinue(2)}>Continue</Button>
+      <div className="flex justify-between">
+        <Button onClick={onBack} variant="outline">
+          Back
+        </Button>
+        <Button onClick={() => onContinue(2)}>Continue</Button>
+      </div>
     </div>
   );
 };

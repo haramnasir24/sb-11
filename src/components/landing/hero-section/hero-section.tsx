@@ -23,7 +23,7 @@ export default function HeroSection() {
         numSquares={30}
         maxOpacity={0.1}
         duration={3}
-        repeatDelay={1}
+        // repeatDelay={1}
         className="absolute top-[60%] z-10 skew-y-12 overflow-clip"
       />
       <Image
