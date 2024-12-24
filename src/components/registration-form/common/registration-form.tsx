@@ -68,46 +68,25 @@ const RegistrationForm = () => {
     // ! set default values
     defaultValues: {
       // Step 1
-      userName: "Muhammad Zain Jee",
-      email: "zainjee37405@gmail.com",
-      phone: "03125341967",
-      cnic: "3740515763723",
-      designation: "Student",
-      instituteName: "NUST-SEECS",
-      guardianPhone: "03125341967",
-      city: "Islamabad",
+      userName: "",
+      email: "",
+      phone: "",
+      cnic: "",
+      designation: "",
+      instituteName: "",
+      guardianPhone: "",
+      city: "",
       referralCode: "",
       profilePicture: undefined,
       studentCardorCNIC: undefined,
       // Step 2
       modules: {
-        selections: [
-          "Chemathon",
-          "Speed Programming",
-          "Crimeline Road",
-          "Escape Room",
-          "HeatOps",
-        ],
+        selections: [],
       },
       // Step 3
-      chaperone: {
-        bringing: "Yes",
-        accommodation: { required: "Yes", duration: "2 days" },
-        cnic: "3740515763723",
-        name: "Chaperone Name",
-      },
-      accommodation: { required: "Yes", duration: "2 days" },
-      participationType: {
-        type: "team",
-        teamDetails: {
-          teamName: "Team Name",
-          numberOfMembers: 2,
-          members: [
-            { name: "First Member", cnic: "3740515763723" },
-            { name: "Second Member", cnic: "3740515763723" },
-          ],
-        },
-      },
+      chaperone: { bringing: "No" },
+      accommodation: { required: "No" },
+      participationType: { type: "individual" },
       // Step
       paymentProof: undefined,
     },
@@ -151,16 +130,38 @@ const RegistrationForm = () => {
       instituteName: "NUST-SEECS",
       guardianPhone: "03125341967",
       city: "Islamabad",
+      referralCode: "",
       profilePicture: undefined,
       studentCardorCNIC: undefined,
       // Step 2
       modules: {
-        selections: ["Chemathon", "Speed Programming", "Crimeline Road"],
+        selections: [
+          "Chemathon",
+          "Speed Programming",
+          "Crimeline Road",
+          "Escape Room",
+          "HeatOps",
+        ],
       },
       // Step 3
-      chaperone: { bringing: "No" },
-      accommodation: { required: "No" },
-      participationType: { type: "individual" },
+      chaperone: {
+        bringing: "Yes",
+        accommodation: { required: "Yes", duration: "2 days" },
+        cnic: "3740515763723",
+        name: "Chaperone Name",
+      },
+      accommodation: { required: "Yes", duration: "2 days" },
+      participationType: {
+        type: "team",
+        teamDetails: {
+          teamName: "Team Name",
+          numberOfMembers: 2,
+          members: [
+            { name: "First Member", cnic: "3740515763723" },
+            { name: "Second Member", cnic: "3740515763723" },
+          ],
+        },
+      },
       // Step
       paymentProof: undefined,
     },
