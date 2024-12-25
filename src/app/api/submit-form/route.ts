@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { sendConfirmationEmail } from "@/lib/email-service";
 import {
   appendToSheet,
   createUserFolder,
@@ -174,8 +175,13 @@ export async function POST(req: NextRequest) {
 
     await appendToSheet(sheetData);
 
+    // Send confirmation email
+    await sendConfirmationEmail(validatedData);
+
     return NextResponse.json({ message: "Form submitted successfully" });
   } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error("Form submission error:", error);
     return NextResponse.json(
       {
         error:
