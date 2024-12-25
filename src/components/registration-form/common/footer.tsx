@@ -51,6 +51,14 @@ export default function FormFooter() {
             <ul className="space-y-2 text-sm text-gray-300">
               <li>
                 <Link
+                  href="/"
+                  className="transition-colors hover:text-yellow-500"
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/modules"
                   className="transition-colors hover:text-yellow-500"
                 >

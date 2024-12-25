@@ -6,7 +6,6 @@ import Link from "next/link";
 import { useState } from "react";
 
 const navItems = [
-  { name: "Home", link: "/" },
   { name: "About Us", link: "about" },
   { name: "Past Events", link: "past-events" },
   { name: "Socials", link: "socials" },
@@ -97,6 +96,14 @@ export default function Navbar() {
                 {name}
               </Link>
             ))}
+
+            <Link
+              href="/register"
+              className="block rounded-md px-3 py-2 text-base font-medium text-white hover:text-gray-300"
+              onClick={() => setIsOpen(false)}
+            >
+              Register Now
+            </Link>
           </div>
         </div>
       )}

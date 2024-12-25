@@ -92,6 +92,13 @@ export default function ModulesNavbar() {
                 {name}
               </Link>
             ))}
+            <Link
+              href="/register"
+              className="block rounded-md px-3 py-2 text-base font-medium text-white hover:text-gray-300"
+              onClick={() => setIsOpen(false)}
+            >
+              Register Now
+            </Link>
           </div>
         </div>
       )}
