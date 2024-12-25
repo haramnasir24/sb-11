@@ -40,10 +40,7 @@ const FinalStep = () => {
     // else if (modules.length === 5) totalPrice += 7300;
 
     // Individual accommodation
-    if (
-      participationType.type === "individual" &&
-      accommodation.required === "Yes"
-    ) {
+    if (accommodation.required === "Yes") {
       totalPrice += accommodation.duration === "2 days" ? 4000 : 6000;
     }
 
@@ -130,13 +127,12 @@ const FinalStep = () => {
                 ? "5,700"
                 : "6,300"}
           </li>
-          {participationType.type === "individual" &&
-            accommodation.required === "Yes" && (
-              <li>
-                Accommodation ({accommodation.duration}): Rs.&nbsp;
-                {accommodation.duration === "2 days" ? "4,000" : "6,000"}
-              </li>
-            )}
+          {accommodation.required === "Yes" && (
+            <li>
+              Team Lead Accommodation ({accommodation.duration}): Rs.&nbsp;
+              {accommodation.duration === "2 days" ? "4,000" : "6,000"}
+            </li>
+          )}
           {chaperone.bringing === "Yes" &&
             chaperone.accommodation.required === "Yes" && (
               <li>
