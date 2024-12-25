@@ -29,12 +29,20 @@ export default function Contact() {
             </p>
             <ul className="space-y-2 text-sm text-gray-300">
               <li className="flex items-center">
-                <Phone className="mr-2 h-4 w-4 text-yellow-500" />
-                +92 322 2727843
+                <Mail className="mr-2 h-4 w-4 text-yellow-500" />
+                info.sciencebee11@gmail.com
               </li>
               <li className="flex items-center">
-                <Mail className="mr-2 h-4 w-4 text-yellow-500" />
-                sbxregi@gmail.com
+                <Phone className="mr-2 h-4 w-4 text-yellow-500" />
+                +92 302 0660346
+              </li>
+              <li className="flex items-center">
+                <Phone className="mr-2 h-4 w-4 text-yellow-500" />
+                +92 317 5534344
+              </li>
+              <li className="flex items-center">
+                <Phone className="mr-2 h-4 w-4 text-yellow-500" />
+                +92 342 8355501
               </li>
             </ul>
           </div>
@@ -90,11 +98,19 @@ export default function Contact() {
             <ul className="space-y-2 text-sm text-gray-300">
               <li className="flex items-center">
                 <Mail className="mr-2 h-4 w-4 text-yellow-500" />
-                sbxregi@gmail.com
+                info.sciencebee11@gmail.com
               </li>
               <li className="flex items-center">
                 <Phone className="mr-2 h-4 w-4 text-yellow-500" />
-                +92 322 2727843
+                +92 302 0660346
+              </li>
+              <li className="flex items-center">
+                <Phone className="mr-2 h-4 w-4 text-yellow-500" />
+                +92 317 5534344
+              </li>
+              <li className="flex items-center">
+                <Phone className="mr-2 h-4 w-4 text-yellow-500" />
+                +92 342 8355501
               </li>
               <li className="flex items-center">
                 <MapPin className="mr-2 h-4 w-4 text-yellow-500" />
