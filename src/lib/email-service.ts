@@ -111,8 +111,10 @@ export async function sendConfirmationEmail(
             <ul>
               <li>Please keep this email for your records</li>
               <li>Bring your CNIC/Student Card on the event day</li>
-              <li>For any queries, contact us at sbxregi@gmail.com</li>
+              <li>For any queries, contact us at sciencebee.nss.nust@gmail.com</li>
             </ul>
+
+            <p style="color: red;"><strong>Important:</strong><em> This is an automated email. Please do not reply to this. Kindly wait until we verify your payment.</em></p>
 
             <p>Best regards,<br>
             Science Bee XI Team<br>
