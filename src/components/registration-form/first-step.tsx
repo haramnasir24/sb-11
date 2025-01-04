@@ -20,8 +20,11 @@ const FirstStep = () => {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-[#03071E]">User Data</h2>
-
+      <h2 className="text-2xl font-bold text-[#03071E]">User Data </h2>
+      <p className="font-bold text-purple-600">
+        {" "}
+        (To be filled by the team lead){" "}
+      </p>
       <FormField
         control={control}
         name="userName"

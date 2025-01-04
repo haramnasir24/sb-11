@@ -291,7 +291,13 @@ const SecondStep = () => {
         name="participationType.type"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Participation Type</FormLabel>
+            <FormLabel>
+              Participation Type
+              <span className="font-bold text-purple-600">
+                {" "}
+                (Individual entries are not allowed){" "}
+              </span>
+            </FormLabel>
             <FormControl>
               <RadioGroup
                 onValueChange={(value: "individual" | "team") => {
