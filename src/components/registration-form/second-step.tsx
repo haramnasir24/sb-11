@@ -76,6 +76,12 @@ const SecondStep = () => {
               <span className="font-bold text-purple-600">Note: </span>
               Accomodation fee is 2000/night for each person including mess and
               bedding.
+              <br /> <br />
+              <span className="font-bold text-purple-600">
+                {" "}
+                Please note that accomodation for 4 nights will include
+                thursday-sunday.
+              </span>
             </p>
             <br />
             <FormLabel>Do you need accommodation?</FormLabel>
@@ -119,15 +125,21 @@ const SecondStep = () => {
                 >
                   <FormItem className="flex items-center space-x-3 space-y-0">
                     <FormControl>
-                      <RadioGroupItem value="2 days" />
+                      <RadioGroupItem value="2 nights" />
                     </FormControl>
-                    <FormLabel className="font-normal">2 days</FormLabel>
+                    <FormLabel className="font-normal">2 nights</FormLabel>
                   </FormItem>
                   <FormItem className="flex items-center space-x-3 space-y-0">
                     <FormControl>
-                      <RadioGroupItem value="3 days" />
+                      <RadioGroupItem value="3 nights" />
                     </FormControl>
-                    <FormLabel className="font-normal">3 days</FormLabel>
+                    <FormLabel className="font-normal">3 nights</FormLabel>
+                  </FormItem>
+                  <FormItem className="flex items-center space-x-3 space-y-0">
+                    <FormControl>
+                      <RadioGroupItem value="4 nights" />
+                    </FormControl>
+                    <FormLabel className="font-normal">4 nights</FormLabel>
                   </FormItem>
                 </RadioGroup>
               </FormControl>
@@ -225,7 +237,7 @@ const SecondStep = () => {
                       } else {
                         setValue("chaperone.accommodation", {
                           required: "Yes",
-                          duration: "2 days",
+                          duration: "2 nights",
                         });
                       }
                     }}
@@ -266,15 +278,21 @@ const SecondStep = () => {
                     >
                       <FormItem className="flex items-center space-x-3 space-y-0">
                         <FormControl>
-                          <RadioGroupItem value="2 days" />
+                          <RadioGroupItem value="2 nights" />
                         </FormControl>
-                        <FormLabel className="font-normal">2 days</FormLabel>
+                        <FormLabel className="font-normal">2 nights</FormLabel>
                       </FormItem>
                       <FormItem className="flex items-center space-x-3 space-y-0">
                         <FormControl>
-                          <RadioGroupItem value="3 days" />
+                          <RadioGroupItem value="3 nights" />
                         </FormControl>
-                        <FormLabel className="font-normal">3 days</FormLabel>
+                        <FormLabel className="font-normal">3 nights</FormLabel>
+                      </FormItem>
+                      <FormItem className="flex items-center space-x-3 space-y-0">
+                        <FormControl>
+                          <RadioGroupItem value="4 nights" />
+                        </FormControl>
+                        <FormLabel className="font-normal">4 nights</FormLabel>
                       </FormItem>
                     </RadioGroup>
                   </FormControl>
@@ -296,7 +314,7 @@ const SecondStep = () => {
               <span className="font-bold text-purple-600">
                 {" "}
                 (Individual entries are not allowed){" "}
-              </span>
+              </span>{" "}
             </FormLabel>
             <FormControl>
               <RadioGroup
@@ -353,7 +371,7 @@ const SecondStep = () => {
                 </p>
                 <br />
                 <FormLabel>
-                  Number of Team Members (other than you i.e. the team lead)
+                  Number of Team Members (other than the team lead)
                 </FormLabel>
 
                 <FormControl>
@@ -476,7 +494,7 @@ const SecondStep = () => {
                               `participationType.teamDetails.members.${index}.accommodation`,
                               {
                                 required: "Yes",
-                                duration: "2 days",
+                                duration: "2 nights",
                               },
                             );
                           }
@@ -519,18 +537,26 @@ const SecondStep = () => {
                         >
                           <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl>
-                              <RadioGroupItem value="2 days" />
+                              <RadioGroupItem value="2 nights" />
                             </FormControl>
                             <FormLabel className="font-normal">
-                              2 days
+                              2 nights
                             </FormLabel>
                           </FormItem>
                           <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl>
-                              <RadioGroupItem value="3 days" />
+                              <RadioGroupItem value="3 nights" />
                             </FormControl>
                             <FormLabel className="font-normal">
-                              3 days
+                              3 nights
+                            </FormLabel>
+                          </FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0">
+                            <FormControl>
+                              <RadioGroupItem value="4 nights" />
+                            </FormControl>
+                            <FormLabel className="font-normal">
+                              4 nights
                             </FormLabel>
                           </FormItem>
                         </RadioGroup>

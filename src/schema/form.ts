@@ -45,7 +45,7 @@ const teamMemberSchema = z.object({
     }),
     z.object({
       required: z.literal("Yes"),
-      duration: z.enum(["2 days", "3 days"], {
+      duration: z.enum(["2 nights", "3 nights", "4 nights"], {
         required_error: "Please select accommodation duration",
       }),
     }),
@@ -192,7 +192,7 @@ export const formSchema = z.object({
         // Chaperone does need accommodation
         z.object({
           required: z.literal("Yes"),
-          duration: z.enum(["2 days", "3 days"], {
+          duration: z.enum(["2 nights", "3 nights", "4 nights"], {
             required_error: "Please select chaperone accommodation duration",
           }),
         }),
@@ -203,7 +203,7 @@ export const formSchema = z.object({
   accommodation: z.discriminatedUnion("required", [
     z.object({
       required: z.literal("Yes"),
-      duration: z.enum(["2 days", "3 days"], {
+      duration: z.enum(["2 nights", "3 nights", "4 nights"], {
         required_error: "Please select accommodation duration",
       }),
     }),

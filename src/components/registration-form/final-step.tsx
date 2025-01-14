@@ -41,7 +41,14 @@ const FinalStep = () => {
 
     // Individual accommodation
     if (accommodation.required === "Yes") {
-      totalPrice += accommodation.duration === "2 days" ? 4000 : 6000;
+      totalPrice +=
+        accommodation.duration === "2 nights"
+          ? 4000
+          : accommodation.duration === "3 nights"
+            ? 6000
+            : accommodation.duration === "4 nights"
+              ? 8000
+              : 0;
     }
 
     // Chaperone accommodation
@@ -49,7 +56,14 @@ const FinalStep = () => {
       chaperone.bringing === "Yes" &&
       chaperone.accommodation.required === "Yes"
     ) {
-      totalPrice += chaperone.accommodation.duration === "2 days" ? 4000 : 6000;
+      totalPrice +=
+        chaperone.accommodation.duration === "2 nights"
+          ? 4000
+          : chaperone.accommodation.duration === "3 nights"
+            ? 6000
+            : chaperone.accommodation.duration === "4 nights"
+              ? 8000
+              : 0;
     }
 
     // Team members accommodation
@@ -57,7 +71,13 @@ const FinalStep = () => {
       participationType.teamDetails.members.forEach((member) => {
         if (member.accommodation.required === "Yes") {
           totalPrice +=
-            member.accommodation.duration === "2 days" ? 4000 : 6000;
+            member.accommodation.duration === "2 nights"
+              ? 4000
+              : member.accommodation.duration === "3 nights"
+                ? 6000
+                : member.accommodation.duration === "4 nights"
+                  ? 8000
+                  : 0;
         }
       });
     }
@@ -130,7 +150,13 @@ const FinalStep = () => {
           {accommodation.required === "Yes" && (
             <li>
               Team Lead Accommodation ({accommodation.duration}): Rs.&nbsp;
-              {accommodation.duration === "2 days" ? "4,000" : "6,000"}
+              {accommodation.duration === "2 nights"
+                ? "4,000"
+                : accommodation.duration === "3 nights"
+                  ? "6,000"
+                  : accommodation.duration === "4 nights"
+                    ? "8,000"
+                    : 0}
             </li>
           )}
           {chaperone.bringing === "Yes" &&
@@ -138,9 +164,13 @@ const FinalStep = () => {
               <li>
                 Chaperone Accommodation ({chaperone.accommodation.duration}):
                 Rs.&nbsp;
-                {chaperone.accommodation.duration === "2 days"
+                {chaperone.accommodation.duration === "2 nights"
                   ? "4,000"
-                  : "6,000"}
+                  : chaperone.accommodation.duration === "3 nights"
+                    ? "6,000"
+                    : chaperone.accommodation.duration === "4 nights"
+                      ? "8,000"
+                      : 0}
               </li>
             )}
           {participationType.type === "team" && (
@@ -153,9 +183,13 @@ const FinalStep = () => {
                       <li key={index}>
                         {member.name} ({member.accommodation.duration}):
                         Rs.&nbsp;
-                        {member.accommodation.duration === "2 days"
+                        {member.accommodation.duration === "2 nights"
                           ? "4,000"
-                          : "6,000"}
+                          : member.accommodation.duration === "3 nights"
+                            ? "6,000"
+                            : member.accommodation.duration === "4 nights"
+                              ? "8, 000"
+                              : 0}
                       </li>
                     ),
                 )}
