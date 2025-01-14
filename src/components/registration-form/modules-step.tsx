@@ -27,7 +27,8 @@ const ModulesStep = () => {
         Select 3-5 modules. Follow the group selection rules as specified.
       </p>
       <p className="text-sm text-purple-800">
-        In case of 3 modules: Select one from each category.
+        In case of 3 modules: Select one from each category. Or select two from
+        one category and the third from any other category.
         <br />
         In case of 4 modules: Select two from one category, one each from
         others.

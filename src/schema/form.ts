@@ -110,9 +110,27 @@ export const formSchema = z.object({
           // 3 modules: one from each category
           const isValidThreeModules =
             selections.length === 3 &&
-            counts.mystery === 1 &&
-            counts.technical === 1 &&
-            counts.engineering === 1;
+            ((counts.mystery === 1 &&
+              counts.technical === 1 &&
+              counts.engineering === 1) ||
+              (counts.technical === 2 &&
+                counts.mystery === 1 &&
+                counts.engineering === 0) ||
+              (counts.technical === 2 &&
+                counts.mystery === 0 &&
+                counts.engineering === 1) ||
+              (counts.technical === 1 &&
+                counts.mystery === 2 &&
+                counts.engineering === 0) ||
+              (counts.technical === 0 &&
+                counts.mystery === 2 &&
+                counts.engineering === 1) ||
+              (counts.technical === 1 &&
+                counts.mystery === 0 &&
+                counts.engineering === 2) ||
+              (counts.technical === 0 &&
+                counts.mystery === 1 &&
+                counts.engineering === 2));
 
           // 4 modules: two from one category, one each from others
           const isValidFourModules =
@@ -147,7 +165,7 @@ export const formSchema = z.object({
         {
           message:
             "Module selection must follow these rules:\n" +
-            "- 3 modules: One from each category\n" +
+            "- 3 modules: One from each category or Two from one category, third from any other category\n" +
             "- 4 modules: Two from one category, one each from others\n" +
             "- 5 modules: Two each from two categories, one from remaining",
         },
