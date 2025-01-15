@@ -21,6 +21,7 @@ const SecondStep = () => {
   const participationType = watch("participationType.type");
   const bringingChaperone = watch("chaperone.bringing");
   const chaperoneAccommodation = watch("chaperone.accommodation.required");
+  const isContinueDisabled = watch("participationType.type") === "individual";
 
   const { fields, append, remove } = useFieldArray({
     control,
@@ -575,7 +576,20 @@ const SecondStep = () => {
         <Button onClick={onBack} variant="outline">
           Back
         </Button>
-        <Button onClick={() => onContinue(3)}>Continue</Button>
+        <div className="flex items-center gap-5">
+          <span>
+            {isContinueDisabled && (
+              <span className="text-red-500">
+                Individual Entries are not allowed!
+                <br />
+                Please select Team.
+              </span>
+            )}
+          </span>
+          <Button onClick={() => onContinue(3)} disabled={isContinueDisabled}>
+            Continue
+          </Button>
+        </div>
       </div>
     </div>
   );
