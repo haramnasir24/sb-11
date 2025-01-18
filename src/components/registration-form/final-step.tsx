@@ -39,6 +39,13 @@ const FinalStep = () => {
     // else if (modules.length === 4) totalPrice += 6700;
     // else if (modules.length === 5) totalPrice += 7300;
 
+    const numberOfMembers =
+      participationType.type === "team"
+        ? participationType.teamDetails.members.length
+        : 0;
+
+    totalPrice += totalPrice * numberOfMembers;
+
     // Individual accommodation
     if (accommodation.required === "Yes") {
       totalPrice +=
@@ -221,10 +228,9 @@ const FinalStep = () => {
         the required amount. Please send the payment proof to this email:
         <span className="text-purple-600"> zraees08@gmail.com </span>
         or this phone number:{" "}
-        <span className="text-purple-600">
-          03378344449
-        </span> within six days of registration. Failure to do so will result in
-        the cancellation of your registration.
+        <span className="text-purple-600">03378344449</span> within six days of
+        registration. Failure to do so will result in the cancellation of your
+        registration.
       </p>
       <FormField
         control={control}
