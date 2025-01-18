@@ -212,6 +212,20 @@ const FinalStep = () => {
         the payment proof of the registration fee. The payment receipt should be
         in the format of JPG, JPEG, or PNG.
       </p>
+      <p className="text-sm text-gray-600">
+        <span className="text-red-600"> Note:</span> In case you are unable to
+        make the payment immediately, you may submit a photo of a written page
+        in the field below, acknowledging that submitting this form without
+        payment proof does not guarantee you a seat in the Science Bee. Your
+        seat will only be confirmed upon payment to the specified account for
+        the required amount. Please send the payment proof to this email:
+        <span className="text-purple-600"> zraees08@gmail.com </span>
+        or this phone number:{" "}
+        <span className="text-purple-600">
+          03378344449
+        </span> within six days of registration. Failure to do so will result in
+        the cancellation of your registration.
+      </p>
       <FormField
         control={control}
         name="paymentProof"

@@ -107,6 +107,8 @@ export async function sendConfirmationEmail(
             <h3>Total Registration Amount:</h3>
             <p>Rs. ${data.totalRegistrationAmount.toLocaleString()}</p>
 
+            <p style="color: red;"><strong>Note:</strong> In case you have not submitted the payment proof yet, please send the payment proof to this email: zraees08@gmail.com or this phone number: 03378344449 within six days of registration. Failure to do so will result in the cancellation of your registration.</p>
+
             <h3>Important Notes:</h3>
             <ul>
               <li>Please keep this email for your records</li>
