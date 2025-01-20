@@ -138,7 +138,6 @@ export async function POST(req: NextRequest) {
         : "Individual",
       validatedData.totalRegistrationAmount.toString(),
       paymentProofUrl,
-      validatedData.participationType.teamDetails.numberOfMembers+1,
     ];
 
     // Handle team members data if present
