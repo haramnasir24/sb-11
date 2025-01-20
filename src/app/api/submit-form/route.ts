@@ -99,11 +99,13 @@ export async function POST(req: NextRequest) {
         ),
       ]);
 
-      // Calculate number of members
-      let numberOfMem = 1
-      const addMem = validatedData.participationType.type === "team" ? validatedData.participationType.teamDetails.numberOfMembers : 0
-      numberOfMem = numberOfMem + addMem
-
+    // Calculate number of members
+    let numberOfMem = 1;
+    const addMem =
+      validatedData.participationType.type === "team"
+        ? validatedData.participationType.teamDetails.numberOfMembers
+        : 0;
+    numberOfMem = numberOfMem + addMem;
 
     // Prepare sheet data
     const sheetData = [

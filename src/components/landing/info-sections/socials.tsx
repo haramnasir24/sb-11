@@ -10,10 +10,10 @@ const SOCIALS_ITEMS = [
       "The modules here at Science Bee will surely leave your mind swarmed with possible solutions and answers but it's the Buzz Night that will leave you humming for more! Prepare to be stunned by a magnetic rave and an energetic crowd amongst the glittering night lights.",
   },
   {
-    title: "Tech Connect",
-    image: "/images/socials/tc3.jpg",
+    title: "Theme Dinner",
+    image: "/images/socials/td.jpeg",
     content:
-      "TechConnect will be a platform for students and groups from NUST to showcase their STEM-based projects and startup ideas to a panel of esteemed judges and industry experts. The event aims to provide SBXI participants with opportunities to connect with potential investors, pitch their solutions, receive valuable feedback, and secure funding to advance their initiatives.",
+      "The Theme Dinner offers participants a perfect blend of socializing and savouring delicacies. This is your chance to embrace the theme and leave everyone in awe with your stunning attire!",
   },
   {
     title: "Bees Got Talent",
