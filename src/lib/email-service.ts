@@ -43,7 +43,7 @@ export async function sendConfirmationEmail(
       data.participationType.type === "team"
         ? `
         <p><strong>Team Name:</strong> ${data.participationType.teamDetails.teamName}</p>
-        <p><strong>Number of Members:</strong> ${data.participationType.teamDetails.numberOfMembers}</p>
+        <p><strong>Number of Members:</strong> ${data.participationType.teamDetails.numberOfMembers + 1}</p>
         <h4>Team Members:</h4>
         <ul>
           ${data.participationType.teamDetails.members
