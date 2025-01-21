@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Toaster } from "sonner";
 
@@ -17,6 +18,7 @@ export default function RootLayout({ children }: Readonly<TRootLayout>) {
     <html lang="en">
       <body>
         {children}
+        <Analytics />
         <Toaster richColors />
       </body>
     </html>

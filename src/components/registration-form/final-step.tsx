@@ -209,7 +209,7 @@ const FinalStep = () => {
         {/* Bank Details:<br/> */}
         Bank Name: HBL
         <br />
-        Account Number: 0022927902085701
+        Account Number: 22927902085701
         <br />
         Account Title: NUST STUDENT
         <br />
@@ -228,10 +228,9 @@ const FinalStep = () => {
         the required amount. Please send the payment proof to this email:
         <span className="text-purple-600"> zraees08@gmail.com </span>
         or this phone number:{" "}
-        <span className="text-purple-600">
-          03378344449
-        </span> within six days of registration. Failure to do so will result in
-        the cancellation of your registration.
+        <span className="text-purple-600">03378344449</span> within six days of
+        registration. Failure to do so will result in the cancellation of your
+        registration.
       </p>
       <FormField
         control={control}
