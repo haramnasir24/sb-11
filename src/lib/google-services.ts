@@ -134,7 +134,7 @@ export async function appendToSheet(values: any[]): Promise<void> {
   try {
     const response = await sheets.spreadsheets.values.append({
       spreadsheetId: SHEET_ID,
-      range: "Sheet1!A:Z",
+      range: "Sheet1!A:BC",
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values: [values],
