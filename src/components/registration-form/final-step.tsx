@@ -30,14 +30,14 @@ const FinalStep = () => {
     let totalPrice = 0;
 
     // ! Early Bird Module prices
-    if (modules.length === 3) totalPrice += 5000;
-    else if (modules.length === 4) totalPrice += 5700;
-    else if (modules.length === 5) totalPrice += 6300;
+    // if (modules.length === 3) totalPrice += 5000;
+    // else if (modules.length === 4) totalPrice += 5700;
+    // else if (modules.length === 5) totalPrice += 6300;
 
     // ! Normal Module prices
-    // if (modules.length === 3) totalPrice += 6000;
-    // else if (modules.length === 4) totalPrice += 6700;
-    // else if (modules.length === 5) totalPrice += 7300;
+    if (modules.length === 3) totalPrice += 6000;
+    else if (modules.length === 4) totalPrice += 6700;
+    else if (modules.length === 5) totalPrice += 7300;
 
     const numberOfMembers =
       participationType.type === "team"
