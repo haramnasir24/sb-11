@@ -149,10 +149,10 @@ const FinalStep = () => {
           <li>
             Modules: Rs.&nbsp;
             {modules.length === 3
-              ? "5,000"
+              ? "6,000"
               : modules.length === 4
-                ? "5,700"
-                : "6,300"}
+                ? "6,700"
+                : "7,300"}
           </li>
           {accommodation.required === "Yes" && (
             <li>
