@@ -6,19 +6,15 @@ import Link from "next/link";
 import { useState } from "react";
 
 const navItems = [
-  { name: "About Us", link: "about" },
-  { name: "Past Events", link: "past-events" },
-  { name: "Socials", link: "socials" },
-  { name: "Modules", link: "/modules" },
-  { name: "Sponsors", link: "sponsors" },
-  { name: "Contact Us", link: "contact" },
+  { name: "Home", link: "/" },
+  { name: "Contact Us", link: "modules-footer" },
 ];
 
-export default function Navbar() {
+export default function BgtNavbar() {
   const [isOpen, setIsOpen] = useState(false);
-  // "absolute left-0 right-0 top-0 z-50 bg-transparent
+
   return (
-    <nav className="absolute left-0 right-0 top-24 z-50 mx-auto w-[90%] rounded-lg bg-[#03071E] shadow-lg backdrop-blur md:top-16">
+    <nav className="shadow-lgt absolute left-0 right-0 top-10 z-50 mx-auto w-[90%] rounded-lg bg-[#03071E] backdrop-blur">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex h-24 items-center justify-between">
@@ -35,18 +31,12 @@ export default function Navbar() {
 
           <div className="hidden md:block">
             <div className="ml-5 flex items-baseline space-x-4 lg:ml-10">
-              <Link
-                href="/bgt"
-                className="inline-block rounded bg-yellow-500 px-4 py-2 text-base text-black hover:bg-yellow-600"
-              >
-                Bees Got Talent
-              </Link>
               {navItems.map(({ name, link }, index) => (
                 <Link
                   key={index}
                   href={link}
                   onClick={(e) => {
-                    if (link !== "/" && link !== "/modules") {
+                    if (link !== "/") {
                       e.preventDefault();
                       setIsOpen(false);
                       setTimeout(() => {
@@ -55,13 +45,13 @@ export default function Navbar() {
                       }, 300);
                     }
                   }}
-                  className="rounded-md px-3 py-2 text-xs font-medium uppercase text-white hover:text-gray-300 lg:text-base"
+                  className="rounded-md px-3 py-2 text-xs font-medium uppercase text-white hover:text-gray-300 lg:text-sm"
                 >
                   {name}
                 </Link>
               ))}
               <Link
-                href="/register"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdGNzXJkkSQJJnJ-j0q0kvu-UfSQkeHk0x9uiRri925mV_UYw/viewform"
                 className="inline-block rounded bg-yellow-500 px-4 py-2 text-base text-black hover:bg-yellow-600"
               >
                 REGISTER NOW
@@ -89,7 +79,7 @@ export default function Navbar() {
                 href={link}
                 className="block rounded-md px-3 py-2 text-base font-medium text-white hover:text-gray-300"
                 onClick={(e) => {
-                  if (link !== "/" && link !== "/modules") {
+                  if (link !== "/") {
                     e.preventDefault();
                     setIsOpen(false);
                     setTimeout(() => {
@@ -102,21 +92,12 @@ export default function Navbar() {
                 {name}
               </Link>
             ))}
-
             <Link
-              href="/register"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdGNzXJkkSQJJnJ-j0q0kvu-UfSQkeHk0x9uiRri925mV_UYw/viewform"
               className="block rounded-md px-3 py-2 text-base font-medium text-white hover:text-gray-300"
               onClick={() => setIsOpen(false)}
             >
               Register Now
-            </Link>
-
-            <Link
-              href="/bgt"
-              className="block rounded-md px-3 py-2 text-base font-medium text-white hover:text-gray-300"
-              onClick={() => setIsOpen(false)}
-            >
-              Bees Got Talent
             </Link>
           </div>
         </div>
@@ -124,5 +105,3 @@ export default function Navbar() {
     </nav>
   );
 }
-
-// from-[#03071E] via-[#3C096C] to-[#2F114A]
