@@ -91,7 +91,7 @@ export const formSchema = z.object({
   modules: z.object({
     selections: z
       .array(z.enum(ALL_MODULES))
-      .min(3, "Select at least 3 modules")
+      .min(1, "Select at least 1 module")
       .max(5, "Cannot select more than 5 modules")
       .refine(
         (selections) => {
@@ -106,6 +106,12 @@ export const formSchema = z.object({
             engineering: selections.filter((m) => engineeringList.includes(m))
               .length,
           };
+
+          // 1 module: Any category
+          const isValidOneModule = selections.length === 1;
+
+          // 2 modules: Any two modules from any category
+          const isValidTwoModules = selections.length === 2;
 
           // 3 modules: one from each category
           const isValidThreeModules =
@@ -159,15 +165,29 @@ export const formSchema = z.object({
                 counts.mystery === 1));
 
           return (
-            isValidThreeModules || isValidFourModules || isValidFiveModules
+            isValidOneModule ||
+            isValidTwoModules ||
+            isValidThreeModules ||
+            isValidFourModules ||
+            isValidFiveModules
           );
+
+          // return (
+          //   isValidThreeModules || isValidFourModules || isValidFiveModules
+          // );
         },
         {
           message:
+            // "Module selection must follow these rules:\n" +
+            // "- 3 modules: One from each category or Two from one category, third from any other category\n" +
+            // "- 4 modules: Two from one category, one each from others\n" +
+            // "- 5 modules: Two each from two categories, one from remaining",
             "Module selection must follow these rules:\n" +
-            "- 3 modules: One from each category or Two from one category, third from any other category\n" +
-            "- 4 modules: Two from one category, one each from others\n" +
-            "- 5 modules: Two each from two categories, one from remaining",
+            "- 1 module: Any category\n" +
+            "- 2 modules: Any two modules from any category\n" +
+            "- 3 modules: One from each category OR Two from one category, one from another\n" +
+            "- 4 modules: Two from one category, one each from the others\n" +
+            "- 5 modules: Two each from two categories, one from the remaining\n",
         },
       ),
   }),

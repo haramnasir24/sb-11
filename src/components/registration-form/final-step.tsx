@@ -35,9 +35,15 @@ const FinalStep = () => {
     // else if (modules.length === 5) totalPrice += 6300;
 
     // ! Normal Module prices
-    if (modules.length === 3) totalPrice += 6000;
-    else if (modules.length === 4) totalPrice += 6700;
-    else if (modules.length === 5) totalPrice += 7300;
+    // if (modules.length === 3) totalPrice += 6000;
+    // else if (modules.length === 4) totalPrice += 6700;
+    // else if (modules.length === 5) totalPrice += 7300;
+
+    if (modules.length === 1) totalPrice += 3200;
+    else if (modules.length === 2) totalPrice += 4000;
+    else if (modules.length === 3) totalPrice += 4500;
+    else if (modules.length === 4) totalPrice += 5000;
+    else if (modules.length === 5) totalPrice += 5500;
 
     const numberOfMembers =
       participationType.type === "team"
@@ -148,11 +154,20 @@ const FinalStep = () => {
         <ul className="mt-1 list-inside list-disc text-sm text-gray-600">
           <li>
             Modules: Rs.&nbsp;
-            {modules.length === 3
+            {/* {modules.length === 3
               ? "6,000"
               : modules.length === 4
                 ? "6,700"
-                : "7,300"}
+                : "7,300"} */}
+            {modules.length === 1
+              ? "3,200"
+              : modules.length === 2
+                ? "4,000"
+                : modules.length === 3
+                  ? "4,500"
+                  : modules.length === 4
+                    ? "5,000"
+                    : "5,500"}
           </li>
           {accommodation.required === "Yes" && (
             <li>

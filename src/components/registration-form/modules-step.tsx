@@ -24,17 +24,28 @@ const ModulesStep = () => {
     <div className="space-y-6">
       <h2 className="text-2xl font-bold">Module Selection</h2>
       <p className="text-sm text-gray-500">
-        Select 3-5 modules. Follow the group selection rules as specified.
+        Select 1-5 modules. Follow the group selection rules as specified.
       </p>
       <p className="text-sm text-purple-800">
-        In case of 3 modules: Select one from each category. Or select two from
-        one category and the third from any other category.
+        In case of 1 module: You can select from any category. <br />
+        Price: 3,200 PKR
         <br />
-        In case of 4 modules: Select two from one category, one each from
-        others.
+        In case of 2 modules: You can select any two modules from any category.{" "}
         <br />
-        In case of 5 modules: Select two each from two categories, one from
-        remaining.
+        Price: 4,000 PKR
+        <br />
+        In case of 3 modules: Select one from each category, or select two from
+        one category and the third from any other category. <br />
+        Price: 4,500 PKR
+        <br />
+        In case of 4 modules: Select two from one category, one each from the
+        others. <br />
+        Price: 5,000 PKR
+        <br />
+        In case of 5 modules: Select two each from two categories, one from the
+        remaining. <br />
+        Price: 5,500 PKR
+        <br />
         <br />
       </p>
       <FormField
