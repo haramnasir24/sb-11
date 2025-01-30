@@ -21,9 +21,22 @@ const FirstStep = () => {
   return (
     <div className="space-y-6">
       <h2 className="text-2xl font-bold text-[#03071E]">User Data </h2>
-      <p className="font-bold text-purple-600">
+      <p className="font-bold text-purple-800">
         {" "}
         (To be filled by the team lead){" "}
+      </p>
+
+      <p className="text-sm font-bold text-gray-600">
+        If you are using an iOS device, please register via this{" "}
+        <a
+          href="https://docs.google.com/forms/u/1/d/e/1FAIpQLSdDLOyR5Hd8Tx1ZX_DMe3VRguAf1LkZb2OFJZ7GBo-LD_zNDg/viewform?usp=header"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-500 underline"
+        >
+          Google Form
+        </a>{" "}
+        instead.
       </p>
       <FormField
         control={control}
