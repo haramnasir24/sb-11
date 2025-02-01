@@ -92,6 +92,19 @@ export default function Contact() {
                 </Link>
               </li>
             </ul>
+            <Button
+              className="bg-yellow-400 text-base text-black hover:bg-yellow-500"
+              size="lg"
+              onClick={() =>
+                window.open(
+                  "https://docs.google.com/document/d/1iQFDJgghesvOyvCKL5YTmPMdON4IjyVS/view?",
+                  "_blank",
+                )
+              }
+            >
+              Refund Policy
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
           </div>
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Contact Us</h3>
