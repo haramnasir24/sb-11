@@ -1,7 +1,14 @@
 import Image from "next/image";
 import React from "react";
 
-const SPONSORS = [{ name: "Ranchers", logo: "/images/icons/ranchers.png" }];
+const SPONSORS = [
+  { name: "Ranchers", logo: "/images/icons/ranchers.png" },
+  { name: "crumble", logo: "/images/icons/crumble.png" },
+  { name: "haval", logo: "/images/icons/haval.png" },
+  { name: "AEO", logo: "/images/icons/aeo.png" },
+  { name: "catkin", logo: "/images/icons/catkin.png" },
+  { name: "nurture", logo: "/images/icons/nurture.png" },
+];
 
 const Sponsors = () => {
   return (
