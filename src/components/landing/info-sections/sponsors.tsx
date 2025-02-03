@@ -6,7 +6,7 @@ const SPONSORS = [
   { name: "crumble", logo: "/images/icons/crumble.png" },
   { name: "haval", logo: "/images/icons/haval.png" },
   { name: "AEO", logo: "/images/icons/aeo.png" },
-  { name: "catkin", logo: "/images/icons/catkin.png" },
+  { name: "catkin", logo: "/images/icons/cat.png" },
   { name: "nurture", logo: "/images/icons/nurture.png" },
 ];
 
