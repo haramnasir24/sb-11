@@ -65,7 +65,7 @@ export default function HeroSection() {
                 {/* <p className="text-lg font-bold md:text-xl">Breaking News:</p> */}
               </div>
               <p className="text-base font-semibold md:text-xl">
-                Hurry up, Registrations will close on 3rd of February!
+                Registrations are closed!
               </p>
               <button
                 onClick={() => setShowBanner(false)}
